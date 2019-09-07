@@ -3,7 +3,7 @@ from copy import deepcopy
 import numpy as np
 from manimlib.animation.transform import ApplyMethod
 from manimlib.imports import Scene, Dot, Circle, Square, Polygon, ShowCreation, FadeOut, GrowFromCenter, Transform, \
-    Mobject, COLOR_MAP, Line, ThreeDScene, DOWN, Sphere
+    Mobject, COLOR_MAP, Line, ThreeDScene, DOWN, Sphere, Matrix, Write, Vector, MovingCameraScene
 from rdkit.Chem import AllChem
 
 # https://pubchem.ncbi.nlm.nih.gov/compound/68827
@@ -55,9 +55,9 @@ class Molecule(Mobject):
         conformer = self.mol.GetConformer(0)
         for atom in self.mol.GetAtoms():
             pos = conformer.GetAtomPosition(atom.GetIdx())
-            # circle = Circle()
+            circle = Circle()
             # circle.set_points([[pos.x, pos.y, pos.z]])
-            circle = Sphere()
+            # circle = Sphere()
             circle.set_x(pos.x)
             circle.set_y(pos.y)
             circle.set_z(pos.z)
@@ -77,18 +77,31 @@ class Molecule(Mobject):
         return AllChem.MolToSmiles(self.mol)
 
 
-class ExampleScene(ThreeDScene):
+class ExampleScene(MovingCameraScene):
 
     def construct(self):
         molecule = Molecule()
         # self.play(ShowCreation(molecule))
         # self.play(FadeOut(molecule))
-        self.camera.set_frame_center(molecule.get_center())
-        self.play(GrowFromCenter(molecule))
-        self.play(ApplyMethod(molecule.shift, 3 * DOWN))
-        self.move_camera(0.8*np.pi/2, -0.45*np.pi)
-        self.begin_ambient_camera_rotation()
-        self.wait(6)
+        matrix1 = Matrix(np.zeros((2, 1), dtype=int))
+        matrix2 = Matrix([[0], [0], [0], [0]] * 2)
+        matrix3 = Matrix([[0], [0], [0], [0]] * 3)
+        matrix4 = Matrix([[0], [0], [0], [0]] * 4)
+        self.play(Write(matrix1))
+        self.play(Transform(matrix1, matrix2,
+                            replace_mobject_with_target_in_scene=True))
+        self.play(
+            Transform(matrix2, matrix4, replace_mobject_with_target_in_scene=True),
+            self.camera_frame.set_height, matrix4.get_height())
+
+        # self.camera.set_frame_center(molecule.get_center())
+        # self.play(GrowFromCenter(molecule))
+        # self.play(ApplyMethod(molecule.shift, 3 * DOWN))
+        # self.add()
+        # self.move_camera(0.8*np.pi/2, -0.45*np.pi)
+        # self.begin_ambient_camera_rotation()
+
+        self.wait(3)
 
 
 class Shapes(Scene):
