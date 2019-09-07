@@ -1,0 +1,4120 @@
+{
+  "Record": {
+    "RecordType": "CID",
+    "RecordNumber": 68827,
+    "RecordTitle": "Artemisinin",
+    "Section": [
+      {
+        "TOCHeading": "Structures",
+        "Description": "Structure depictions and information for 2D, 3D, and crystal related",
+        "Section": [
+          {
+            "TOCHeading": "2D Structure",
+            "Description": "A two-dimensional representation of the compound",
+            "DisplayControls": {
+              "MoveToTop": true
+            },
+            "Information": [
+              {
+                "ReferenceNumber": 33,
+                "Value": {
+                  "Boolean": [
+                    true
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "TOCHeading": "3D Conformer",
+            "Description": "A three-dimensional representation of the compound. The 3D structure is not experimentally determined, but computed by PubChem. More detailed information on this conformer model is described in the PubChem3D thematic series published in the Journal of Cheminformatics.",
+            "DisplayControls": {
+              "MoveToTop": true
+            },
+            "Information": [
+              {
+                "ReferenceNumber": 33,
+                "Description": "Artemisinin",
+                "Value": {
+                  "Number": [
+                    68827
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "TOCHeading": "Crystal Structures",
+            "Description": "This section provides links to crystallographic information in the Cambridge Structural Database (CSD) hosted by the Cambridge Crystallographic Data Centre (CCDC).",
+            "URL": "https://www.ccdc.cam.ac.uk/pages/Home.aspx",
+            "DisplayControls": {
+              "CreateTable": {
+                "FromInformationIn": "Subsections",
+                "NumberOfColumns": 2,
+                "ColumnContents": [
+                  "Name",
+                  "Value"
+                ]
+              },
+              "MoveToTop": true,
+              "ShowAtMost": 1
+            },
+            "Section": [
+              {
+                "TOCHeading": "CCDC Number",
+                "Description": "The CCDC record identifier for the crystal structure data, link to the CCDC Citation",
+                "Information": [
+                  {
+                    "ReferenceNumber": 28,
+                    "Name": "CCDC Number",
+                    "URL": "http://doi.org/10.5517/ccr6ng1",
+                    "Value": {
+                      "StringWithMarkup": [
+                        {
+                          "String": "691593"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "ReferenceNumber": 29,
+                    "Name": "CCDC Number",
+                    "URL": "http://doi.org/10.5517/cctbjj5",
+                    "Value": {
+                      "StringWithMarkup": [
+                        {
+                          "String": "754897"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "TOCHeading": "Crystal Structure Data",
+                "Description": "The Crystal Structure Data information, link to the CCDC Citation",
+                "Information": [
+                  {
+                    "ReferenceNumber": 28,
+                    "Name": "Crystal Structure Data",
+                    "URL": "http://doi.org/10.5517/ccr6ng1",
+                    "Value": {
+                      "StringWithMarkup": [
+                        {
+                          "String": "DOI:10.5517/ccr6ng1"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "ReferenceNumber": 28,
+                    "Name": "Crystal Structure Depiction",
+                    "URL": "http://doi.org/10.5517/ccr6ng1",
+                    "Value": {
+                      "ExternalDataURL": [
+                        "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/key/3359502_1"
+                      ],
+                      "MimeType": "image/png"
+                    }
+                  },
+                  {
+                    "ReferenceNumber": 29,
+                    "Name": "Crystal Structure Data",
+                    "URL": "http://doi.org/10.5517/cctbjj5",
+                    "Value": {
+                      "StringWithMarkup": [
+                        {
+                          "String": "DOI:10.5517/cctbjj5"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "ReferenceNumber": 29,
+                    "Name": "Crystal Structure Depiction",
+                    "URL": "http://doi.org/10.5517/cctbjj5",
+                    "Value": {
+                      "ExternalDataURL": [
+                        "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/key/3371506_1"
+                      ],
+                      "MimeType": "image/png"
+                    }
+                  }
+                ]
+              },
+              {
+                "TOCHeading": "Associated Article",
+                "Description": "Associated (original) publications to the crystal structure record",
+                "Information": [
+                  {
+                    "ReferenceNumber": 28,
+                    "Name": "Associated Article",
+                    "URL": "http://doi.org/10.1023/A:1023244122450",
+                    "Value": {
+                      "StringWithMarkup": [
+                        {
+                          "String": "DOI:10.1023/A:1023244122450"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "ReferenceNumber": 29,
+                    "Name": "Associated Article",
+                    "URL": "http://doi.org/10.1016/j.tet.2010.01.051",
+                    "Value": {
+                      "StringWithMarkup": [
+                        {
+                          "String": "DOI:10.1016/j.tet.2010.01.051"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "TOCHeading": "Chemical Safety",
+        "Description": "Launch the Laboratory Chemical Safety Summary datasheet, and link to the safety and hazard section",
+        "DisplayControls": {
+          "HideThisSection": true,
+          "MoveToTop": true
+        },
+        "Information": [
+          {
+            "ReferenceNumber": 33,
+            "Name": "Chemical Safety",
+            "Value": {
+              "StringWithMarkup": [
+                {
+                  "String": "          ",
+                  "Markup": [
+                    {
+                      "Start": 0,
+                      "Length": 1,
+                      "URL": "https://pubchem.ncbi.nlm.nih.gov/images/ghs/GHS02.svg",
+                      "Type": "Icon",
+                      "Extra": "Flammable"
+                    },
+                    {
+                      "Start": 1,
+                      "Length": 1,
+                      "URL": "https://pubchem.ncbi.nlm.nih.gov/images/ghs/GHS09.svg",
+                      "Type": "Icon",
+                      "Extra": "Environmental Hazard"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "TOCHeading": "Names and Identifiers",
+        "Description": "Record identifiers, synonyms, chemical names, descriptors, etc.",
+        "Section": [
+          {
+            "TOCHeading": "Record Description",
+            "Description": "Summary Information",
+            "DisplayControls": {
+              "HideThisSection": true,
+              "MoveToTop": true
+            },
+            "Information": [
+              {
+                "ReferenceNumber": 1,
+                "Name": "Record Description",
+                "Description": "Ontology Summary",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "(+)-artemisinin is a sesquiterpene lactone obtained from sweet wormwood, Artemisia annua, which is used as an antimalarial for the treatment of multi-drug resistant strains of falciparum malaria. It has a role as an antimalarial and a plant metabolite. It is a sesquiterpene lactone and an organic peroxide.",
+                      "Markup": [
+                        {
+                          "Start": 0,
+                          "Length": 15,
+                          "URL": "https://pubchem.ncbi.nlm.nih.gov/compound/%28%2B%29-artemisinin",
+                          "Type": "PubChem Internal Link",
+                          "Extra": "CID-68827"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 6,
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "Artemisinin has been used in trials studying the treatment of Schizophrenia, Malaria, Falciparum, and Plasmodium Falciparum.",
+                      "Markup": [
+                        {
+                          "Start": 0,
+                          "Length": 11,
+                          "URL": "https://pubchem.ncbi.nlm.nih.gov/compound/Artemisinin",
+                          "Type": "PubChem Internal Link",
+                          "Extra": "CID-68827"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 15,
+                "Name": "Record Description",
+                "Description": "LiverTox Summary",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "Artemisinin is an ancient Chinese herbal therapy for malarial fevers which has been recently found to have potent activity against many forms of malarial organisms, including chloroquine-resistant Plasmodium falciparum. Several artemisinin derivatives have been developed for clinical use in prevention and treatment of malaria, some of which have been linked to rare instances of acute liver injury.",
+                      "Markup": [
+                        {
+                          "Start": 0,
+                          "Length": 11,
+                          "URL": "https://pubchem.ncbi.nlm.nih.gov/compound/Artemisinin",
+                          "Type": "PubChem Internal Link",
+                          "Extra": "CID-68827"
+                        },
+                        {
+                          "Start": 175,
+                          "Length": 11,
+                          "URL": "https://pubchem.ncbi.nlm.nih.gov/compound/chloroquine",
+                          "Type": "PubChem Internal Link",
+                          "Extra": "CID-2719"
+                        },
+                        {
+                          "Start": 228,
+                          "Length": 11,
+                          "URL": "https://pubchem.ncbi.nlm.nih.gov/compound/artemisinin",
+                          "Type": "PubChem Internal Link",
+                          "Extra": "CID-68827"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "TOCHeading": "Computed Descriptors",
+            "Description": "Descriptors generated from chemical structure input",
+            "Section": [
+              {
+                "TOCHeading": "IUPAC Name",
+                "Description": "Chemical name computed from chemical structure that uses International Union of Pure and Applied Chemistry (IUPAC) nomenclature standards.",
+                "URL": "http://old.iupac.org/publications/books/seriestitles/nomenclature.html",
+                "Information": [
+                  {
+                    "ReferenceNumber": 33,
+                    "Value": {
+                      "StringWithMarkup": [
+                        {
+                          "String": "(1R,4S,5R,8S,9R,12S,13R)-1,5,9-trimethyl-11,14,15,16-tetraoxatetracyclo[10.3.1.04,13.08,13]hexadecan-10-one",
+                          "Markup": [
+                            {
+                              "Start": 2,
+                              "Length": 1,
+                              "Type": "Italics"
+                            },
+                            {
+                              "Start": 5,
+                              "Length": 1,
+                              "Type": "Italics"
+                            },
+                            {
+                              "Start": 8,
+                              "Length": 1,
+                              "Type": "Italics"
+                            },
+                            {
+                              "Start": 11,
+                              "Length": 1,
+                              "Type": "Italics"
+                            },
+                            {
+                              "Start": 14,
+                              "Length": 1,
+                              "Type": "Italics"
+                            },
+                            {
+                              "Start": 18,
+                              "Length": 1,
+                              "Type": "Italics"
+                            },
+                            {
+                              "Start": 22,
+                              "Length": 1,
+                              "Type": "Italics"
+                            },
+                            {
+                              "Start": 80,
+                              "Length": 4,
+                              "Type": "Superscript"
+                            },
+                            {
+                              "Start": 86,
+                              "Length": 4,
+                              "Type": "Superscript"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "TOCHeading": "InChI",
+                "Description": "International Chemical Identifier (InChI) computed from chemical structure using the International Union of Pure and Applied Chemistry (IUPAC) standard.",
+                "URL": "http://www.iupac.org/home/publications/e-resources/inchi.html",
+                "Information": [
+                  {
+                    "ReferenceNumber": 33,
+                    "Value": {
+                      "StringWithMarkup": [
+                        {
+                          "String": "InChI=1S/C15H22O5/c1-8-4-5-11-9(2)12(16)17-13-15(11)10(8)6-7-14(3,18-13)19-20-15/h8-11,13H,4-7H2,1-3H3/t8-,9-,10+,11+,13-,14-,15-/m1/s1"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "TOCHeading": "InChI Key",
+                "Description": "International Chemical Identifier hash (InChIKey) computed from chemical structure using the International Union of Pure and Applied Chemistry (IUPAC) standard.",
+                "URL": "http://www.iupac.org/home/publications/e-resources/inchi.html",
+                "Information": [
+                  {
+                    "ReferenceNumber": 33,
+                    "Value": {
+                      "StringWithMarkup": [
+                        {
+                          "String": "BLUAFEHZUWYNDE-NNWCWBAJSA-N"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "TOCHeading": "Canonical SMILES",
+                "Description": "Simplified Molecular-Input Line-Entry System (SMILES) computed from chemical structure devoid of isotopic and stereochemical information.",
+                "URL": "http://www.daylight.com/dayhtml/doc/theory/theory.smiles.html",
+                "Information": [
+                  {
+                    "ReferenceNumber": 33,
+                    "Value": {
+                      "StringWithMarkup": [
+                        {
+                          "String": "CC1CCC2C(C(=O)OC3C24C1CCC(O3)(OO4)C)C"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "TOCHeading": "Isomeric SMILES",
+                "Description": "Simplified Molecular-Input Line-Entry System (SMILES) computed from chemical structure containing isotopic and stereochemical information.  SMILES written with isotopic and chiral specifications are collectively known as \"isomeric SMILES\".",
+                "URL": "http://www.daylight.com/dayhtml/doc/theory/theory.smiles.html",
+                "Information": [
+                  {
+                    "ReferenceNumber": 33,
+                    "Value": {
+                      "StringWithMarkup": [
+                        {
+                          "String": "C[C@@H]1CC[C@H]2[C@H](C(=O)O[C@H]3[C@@]24[C@H]1CC[C@](O3)(OO4)C)C"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "TOCHeading": "Molecular Formula",
+            "Description": "A chemical formula is a way of expressing information about the proportions of atoms that constitute a particular chemical compound, using a single line of chemical element symbols and numbers. PubChem uses the Hill system whereby the number of carbon atoms in a molecule is indicated first, the number of hydrogen atoms second, and then the number of all other chemical elements in alphabetical order. When the formula contains no carbon, all the elements, including hydrogen, are listed alphabetically. Sources other than PubChem may include a variant of the formula that is more structural or natural to chemists, for example \"H2SO4\" for sulfuric acid, rather than the Hill version \"H2O4S.\"",
+            "DisplayControls": {
+              "MoveToTop": true
+            },
+            "Information": [
+              {
+                "ReferenceNumber": 33,
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "C15H22O5"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "TOCHeading": "Other Identifiers",
+            "Description": "Important identifiers assigned to this chemical substance by authoritative organizations",
+            "Section": [
+              {
+                "TOCHeading": "CAS",
+                "Description": "A proprietary registry number assigned by the Chemical Abstracts Service (CAS) division of the American Chemical Society (ACS) often used to help describe chemical ingredients.",
+                "URL": "http://en.wikipedia.org/wiki/CAS_Registry_Number",
+                "Information": [
+                  {
+                    "ReferenceNumber": 2,
+                    "Value": {
+                      "StringWithMarkup": [
+                        {
+                          "String": "63968-64-9"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "ReferenceNumber": 6,
+                    "Value": {
+                      "StringWithMarkup": [
+                        {
+                          "String": "63968-64-9"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "ReferenceNumber": 7,
+                    "Name": "CAS",
+                    "Value": {
+                      "StringWithMarkup": [
+                        {
+                          "String": "63968-64-9"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "ReferenceNumber": 9,
+                    "Name": "CAS",
+                    "Value": {
+                      "StringWithMarkup": [
+                        {
+                          "String": "63968-64-9"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "ReferenceNumber": 11,
+                    "Value": {
+                      "StringWithMarkup": [
+                        {
+                          "String": "63968-64-9"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "ReferenceNumber": 12,
+                    "Value": {
+                      "StringWithMarkup": [
+                        {
+                          "String": "63968-64-9"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "TOCHeading": "European Community (EC) Number",
+                "Description": "A seven-digit regulatory identifier currently assigned by the European Chemicals Agency (ECHA) known as a European Community (EC) number.  It is sometimes referred to as an EINECS, ELINCS, or NLP number, which are subsets of an EC number.",
+                "URL": "http://en.wikipedia.org/wiki/European_Community_number",
+                "Information": [
+                  {
+                    "ReferenceNumber": 11,
+                    "URL": "https://echa.europa.eu/substance-information/-/substanceinfo/100.110.458",
+                    "Value": {
+                      "StringWithMarkup": [
+                        {
+                          "String": "700-290-5"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "ReferenceNumber": 12,
+                    "Value": {
+                      "StringWithMarkup": [
+                        {
+                          "String": "613-408-4"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "TOCHeading": "NSC Number",
+                "Description": "The NSC number is a numeric identifier for substances submitted to the National Cancer Institute (NCI) for testing and evaluation. It is a registration number for the Developmental Therapeutics Program (DTP) repository. NSC stands for National Service Center.",
+                "Information": [
+                  {
+                    "ReferenceNumber": 7,
+                    "Name": "NSC Number",
+                    "URL": "https://dtp.cancer.gov/dtpstandard/servlet/dwindex?searchtype=NSC&outputformat=html&searchlist=758216",
+                    "Value": {
+                      "StringWithMarkup": [
+                        {
+                          "String": "758216"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "TOCHeading": "UNII",
+                "Description": "A non-proprietary registry number assigned by the U.S. Food and Drug Administration (FDA) known as an UNique Ingredient Identifier (UNII) code.",
+                "URL": "http://www.fda.gov/ForIndustry/DataStandards/SubstanceRegistrationSystem-UniqueIngredientIdentifierUNII/",
+                "Information": [
+                  {
+                    "ReferenceNumber": 13,
+                    "Name": "UNII",
+                    "Value": {
+                      "StringWithMarkup": [
+                        {
+                          "String": "9RMU91N5K2"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "TOCHeading": "Wikipedia",
+                "Description": "Links to Wikipedia or wikidata for this record.",
+                "Information": [
+                  {
+                    "ReferenceNumber": 32,
+                    "Name": "Wikipedia",
+                    "URL": "https://en.wikipedia.org/wiki/Artemisinin",
+                    "Value": {
+                      "StringWithMarkup": [
+                        {
+                          "String": "Artemisinin"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "TOCHeading": "Synonyms",
+            "Description": "Alternative names for this PubChem Compound record.  A compound can have many different names.  For example, acetone (CH3C(=O)CH3) is also known as propanone, propan-2-one, or dimethyl ketone.  The brand name of a product is commonly used to indicate the primary chemical ingredient(s) in the product (e.g., Tylenol, a common pain killer, is often used for acetaminophen, its active ingredient).  Another example of common synonyms is record identifiers used in different data collections, such as Chemical Abstract Service (CAS) registry numbers, FDA UNII (Unique Ingredient Identifiers), and many others.  All these various names and identifiers that designate this compound are organized under the Synonyms section.",
+            "Section": [
+              {
+                "TOCHeading": "MeSH Entry Terms",
+                "Description": "Medical Subject Heading (MeSH) names or identifiers matching this PubChem Compound record.  The matching between the MeSH and compound records is performed by name matching (i.e., identical common names).",
+                "DisplayControls": {
+                  "ListType": "Columns"
+                },
+                "Information": [
+                  {
+                    "ReferenceNumber": 34,
+                    "Value": {
+                      "StringWithMarkup": [
+                        {
+                          "String": "arteannuin"
+                        },
+                        {
+                          "String": "artemisinin"
+                        },
+                        {
+                          "String": "artemisinine"
+                        },
+                        {
+                          "String": "qinghaosu"
+                        },
+                        {
+                          "String": "quing hau sau"
+                        },
+                        {
+                          "String": "quinghaosu"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "TOCHeading": "Depositor-Supplied Synonyms",
+                "Description": "Chemical names provided by individual data contributors. Synonyms of Substances corresponding to a PubChem Compound record are combined. Some contributed names may be considered erroneous and filtered out. The link on each synonym shows which depositors provided that particular synonym for this structure.",
+                "DisplayControls": {
+                  "ListType": "Columns",
+                  "MoveToTop": true
+                },
+                "Information": [
+                  {
+                    "ReferenceNumber": 33,
+                    "Value": {
+                      "StringWithMarkup": [
+                        {
+                          "String": "artemisinin"
+                        },
+                        {
+                          "String": "Qinghaosu"
+                        },
+                        {
+                          "String": "63968-64-9"
+                        },
+                        {
+                          "String": "Artemisinine"
+                        },
+                        {
+                          "String": "Artemisine"
+                        },
+                        {
+                          "String": "(+)-Artemisinin"
+                        },
+                        {
+                          "String": "Huanghuahaosu"
+                        },
+                        {
+                          "String": "Artemisinina"
+                        },
+                        {
+                          "String": "Artemisininum"
+                        },
+                        {
+                          "String": "Qinghosu"
+                        },
+                        {
+                          "String": "Quing Hau Sau"
+                        },
+                        {
+                          "String": "Qing Hau SU"
+                        },
+                        {
+                          "String": "Artemisinin [INN]"
+                        },
+                        {
+                          "String": "Qinghaosu [Chinese]"
+                        },
+                        {
+                          "String": "Artemisinine [French]"
+                        },
+                        {
+                          "String": "Artemisininum [Latin]"
+                        },
+                        {
+                          "String": "Artemisinina [Spanish]"
+                        },
+                        {
+                          "String": "Qing Hau Sau [Chinese]"
+                        },
+                        {
+                          "String": "UNII-9RMU91N5K2"
+                        },
+                        {
+                          "String": "Artemisia annua L., extract"
+                        },
+                        {
+                          "String": "Artemisnini"
+                        },
+                        {
+                          "String": "NSC 369397"
+                        },
+                        {
+                          "String": "Qing Hau Sau"
+                        },
+                        {
+                          "String": "CHEBI:223316"
+                        },
+                        {
+                          "String": "BRN 4194670"
+                        },
+                        {
+                          "String": "Octahydro-3,6,9-trimethyl-3,12-epoxy-12H-pyrano(4,3-j)-1,2-benzodioxepin-10(3H)-one"
+                        },
+                        {
+                          "String": "9RMU91N5K2"
+                        },
+                        {
+                          "String": "C15H22O5"
+                        },
+                        {
+                          "String": "MFCD00081057"
+                        },
+                        {
+                          "String": "Astemisinin"
+                        },
+                        {
+                          "String": "quinghaosu"
+                        },
+                        {
+                          "String": "(+)-Arteannuin"
+                        },
+                        {
+                          "String": "(3R,5aS,6R,8aS,9R,12S,12aR)-3,6,9-trimethyloctahydro-12H-3,12-epoxy[1,2]dioxepino[4,3-i]isochromen-10(3H)-one"
+                        },
+                        {
+                          "String": "(3R,5aS,6R,8aS,9R,12S,12aR)-3,6,9-Trimethyloctahydro-3,12-epoxypyrano(4,3-j)(1,2)benzodioxepin-10(3H)-one"
+                        },
+                        {
+                          "String": "(3R,5aS,6R,8aS,9R,12S,12aR)-3,6,9-trimethyloctahydro-3,12-epoxypyrano[4,3-j][1,2]benzodioxepin-10(3H)-one"
+                        },
+                        {
+                          "String": "(3R,5aS,6R,8aS,9R,12S,12aR)-Octahydro-3,6,9-trimethyl-3,12-epoxy-12H-pyrano(4,3-j)-1,2-benzodioxepin-10(3H)-one"
+                        },
+                        {
+                          "String": "(3R,5aS,6R,8aS,9R,12S,12aR)-Octahydro-3,6,9-trimethyl-3,12-epoxy-12H-pyrano[4,3-j]-1,2-benzodioxepin-10(3H)-one"
+                        },
+                        {
+                          "String": "1,5,9-trimethyl-(1R,4S,5R,9R,12S,13R)-11,14,15,16-tetraoxatetracyclo[10.3.1.04,13.08,13]hexadecan-10-one"
+                        },
+                        {
+                          "String": "3,12-Epoxy-12H-pyranol(4,3-j)-1,2-benzodioxepin-10(3H)-one, octahydro-3,6,9-trimethyl-, (3-alpha,5a-beta,6-beta,8a-beta,9-alpha,12-beta,12aR*)-(+)-"
+                        },
+                        {
+                          "String": "QHS"
+                        },
+                        {
+                          "String": "SMR000578089"
+                        },
+                        {
+                          "String": "SR-01000802560"
+                        },
+                        {
+                          "String": "Artemesinin"
+                        },
+                        {
+                          "String": "Artesin"
+                        },
+                        {
+                          "String": "Artemisinin/"
+                        },
+                        {
+                          "String": "Qinghaosu,Artemisinine"
+                        },
+                        {
+                          "String": "Spectrum_001351"
+                        },
+                        {
+                          "String": "AC1L2AIV"
+                        },
+                        {
+                          "String": "ATM;"
+                        },
+                        {
+                          "String": "Prestwick0_000498"
+                        },
+                        {
+                          "String": "Prestwick1_000498"
+                        },
+                        {
+                          "String": "Prestwick2_000498"
+                        },
+                        {
+                          "String": "Prestwick3_000498"
+                        },
+                        {
+                          "String": "Spectrum2_001512"
+                        },
+                        {
+                          "String": "Spectrum3_001549"
+                        },
+                        {
+                          "String": "Spectrum4_000721"
+                        },
+                        {
+                          "String": "Spectrum5_001098"
+                        },
+                        {
+                          "String": "EC 700-290-5"
+                        },
+                        {
+                          "String": "AC1Q6O1J"
+                        },
+                        {
+                          "String": "SCHEMBL60304"
+                        },
+                        {
+                          "String": "BSPBio_000395"
+                        },
+                        {
+                          "String": "BSPBio_002998"
+                        },
+                        {
+                          "String": "KBioGR_000982"
+                        },
+                        {
+                          "String": "KBioSS_001831"
+                        },
+                        {
+                          "String": "MLS001097650"
+                        },
+                        {
+                          "String": "MLS001304036"
+                        },
+                        {
+                          "String": "MLS002153846"
+                        },
+                        {
+                          "String": "DivK1c_000656"
+                        },
+                        {
+                          "String": "SPBio_001583"
+                        },
+                        {
+                          "String": "SPBio_002316"
+                        },
+                        {
+                          "String": "BPBio1_000435"
+                        },
+                        {
+                          "String": "CHEMBL269671"
+                        },
+                        {
+                          "String": "GTPL9954"
+                        },
+                        {
+                          "String": "DTXSID2040652"
+                        },
+                        {
+                          "String": "KBio1_000656"
+                        },
+                        {
+                          "String": "KBio2_001831"
+                        },
+                        {
+                          "String": "KBio2_004399"
+                        },
+                        {
+                          "String": "KBio2_006967"
+                        },
+                        {
+                          "String": "KBio3_002498"
+                        },
+                        {
+                          "String": "AOB5074"
+                        },
+                        {
+                          "String": "BIA4320"
+                        },
+                        {
+                          "String": "BLUAFEHZUWYNDE-NNWCWBAJSA-N"
+                        },
+                        {
+                          "String": "NINDS_000656"
+                        },
+                        {
+                          "String": "ZX-AFC001145"
+                        },
+                        {
+                          "String": "HMS2090I17"
+                        },
+                        {
+                          "String": "HMS2096D17"
+                        },
+                        {
+                          "String": "HMS2267N09"
+                        },
+                        {
+                          "String": "HMS3269L13"
+                        },
+                        {
+                          "String": "HMS3677P13"
+                        },
+                        {
+                          "String": "HMS3713D17"
+                        },
+                        {
+                          "String": "Pharmakon1600-01503042"
+                        },
+                        {
+                          "String": "3,12-Epoxy-12H-pyrano[4,3-j]-1,2-benzodioxepin-10(3H)-one, octahydro-3,6,9-trimethyl-, (3R,5aS,6R,8aS,9R,12S,12aR)-"
+                        },
+                        {
+                          "String": "BCP02096"
+                        },
+                        {
+                          "String": "HY-B0094"
+                        },
+                        {
+                          "String": "ZINC8143788"
+                        },
+                        {
+                          "String": "ABP000602"
+                        },
+                        {
+                          "String": "BDBM50088447"
+                        },
+                        {
+                          "String": "NSC758216"
+                        },
+                        {
+                          "String": "AKOS024457231"
+                        },
+                        {
+                          "String": "CCG-220498"
+                        },
+                        {
+                          "String": "CS-1794"
+                        },
+                        {
+                          "String": "DB13132"
+                        },
+                        {
+                          "String": "EBD2138452"
+                        },
+                        {
+                          "String": "LMPR0103190003"
+                        },
+                        {
+                          "String": "NSC-758216"
+                        },
+                        {
+                          "String": "RL04438"
+                        },
+                        {
+                          "String": "IDI1_000656"
+                        },
+                        {
+                          "String": "AS-12692"
+                        },
+                        {
+                          "String": "LS-64242"
+                        },
+                        {
+                          "String": "AB0007990"
+                        },
+                        {
+                          "String": "FT-0082854"
+                        },
+                        {
+                          "String": "S1282"
+                        },
+                        {
+                          "String": "J10178"
+                        },
+                        {
+                          "String": "968A649"
+                        },
+                        {
+                          "String": "SR-01000802560-2"
+                        },
+                        {
+                          "String": "SR-01000802560-3"
+                        },
+                        {
+                          "String": "SR-01000802560-4"
+                        },
+                        {
+                          "String": "BRD-K13112821-001-08-3"
+                        },
+                        {
+                          "String": "BRD-K13112821-001-17-4"
+                        },
+                        {
+                          "String": "2AB44F63-5D0F-424A-AA3F-24062F9C1CED"
+                        },
+                        {
+                          "String": "(3R,5aS,6R,8aS,9R,12S,12aR)-3,6,9-trimethyloctahydro-3H-3,12-epoxy[1,2]dioxepino[4,3-i]isochromen-10(12H)-one"
+                        },
+                        {
+                          "String": "(3R,5aS,6R,8aS,9R,12S,12aR)-Octahydro-3,6,9-trimethyl-3,12-epox12H-pyrano[4,3-j]-1,2-benzodioxepin-10(3H)-one"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "TOCHeading": "Removed Synonyms",
+                "Description": "Potentially erroneous chemical names and identifiers provided by PubChem Substance records for the same chemical structure that were removed by name/structure consistency filtering.",
+                "DisplayControls": {
+                  "HideThisSection": true
+                },
+                "Information": [
+                  {
+                    "ReferenceNumber": 33,
+                    "Value": {
+                      "StringWithMarkup": [
+                        {
+                          "String": "Arteannuin"
+                        },
+                        {
+                          "String": "Artemisin"
+                        },
+                        {
+                          "String": "Artemef"
+                        },
+                        {
+                          "String": "Cotexin"
+                        },
+                        {
+                          "String": "Artemisinin, 99% 1g"
+                        },
+                        {
+                          "String": "HMS3413P13"
+                        },
+                        {
+                          "String": "CID68827"
+                        },
+                        {
+                          "String": "ACN-035562"
+                        },
+                        {
+                          "String": "C15-H22-O5"
+                        },
+                        {
+                          "String": "CS-O-30484"
+                        },
+                        {
+                          "String": "C031327"
+                        },
+                        {
+                          "String": "Artemisinin, 99%, from Artemisia annua Linn - 1G 1g"
+                        },
+                        {
+                          "String": "Artemisinin, 98%, from Artemisia annua L. - 100MG 100mg"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "TOCHeading": "Create Date",
+            "Description": "Date the compound record was initially added to PubChem",
+            "DisplayControls": {
+              "HideThisSection": true,
+              "MoveToTop": true
+            },
+            "Information": [
+              {
+                "ReferenceNumber": 33,
+                "Value": {
+                  "DateISO8601": [
+                    "2005-06-24"
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "TOCHeading": "Modify Date",
+            "Description": "Date this record was last updated in PubChem",
+            "DisplayControls": {
+              "HideThisSection": true,
+              "MoveToTop": true
+            },
+            "Information": [
+              {
+                "ReferenceNumber": 33,
+                "Value": {
+                  "DateISO8601": [
+                    "2019-08-31"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "TOCHeading": "Chemical and Physical Properties",
+        "Description": "Chemical and physical properties such as melting point, molecular weight, etc.",
+        "Section": [
+          {
+            "TOCHeading": "Computed Properties",
+            "Description": "Properties computed automatically from the given chemical structure",
+            "DisplayControls": {
+              "CreateTable": {
+                "FromInformationIn": "Subsections",
+                "NumberOfColumns": 2,
+                "ColumnHeadings": [
+                  "Property Name",
+                  "Property Value"
+                ],
+                "ColumnContents": [
+                  "Name",
+                  "Value"
+                ]
+              }
+            },
+            "Section": [
+              {
+                "TOCHeading": "Molecular Weight",
+                "Description": "Molecular weight or molecular mass refers to the mass of a molecule. It is calculated as the sum of the mass of each constituent atom multiplied by the number of atoms of that element in the molecular formula.",
+                "DisplayControls": {
+                  "MoveToTop": true
+                },
+                "Information": [
+                  {
+                    "ReferenceNumber": 33,
+                    "Value": {
+                      "Number": [
+                        282.33
+                      ],
+                      "Unit": "g/mol"
+                    }
+                  }
+                ]
+              },
+              {
+                "TOCHeading": "XLogP3",
+                "Description": "Computed Octanol/Water Partition Coefficient",
+                "Information": [
+                  {
+                    "ReferenceNumber": 33,
+                    "Name": "XLogP3-AA",
+                    "Value": {
+                      "Number": [
+                        2.8
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "TOCHeading": "Hydrogen Bond Donor Count",
+                "Description": "Hydrogen Bond Donor count",
+                "Information": [
+                  {
+                    "ReferenceNumber": 33,
+                    "Value": {
+                      "Number": [
+                        0
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "TOCHeading": "Hydrogen Bond Acceptor Count",
+                "Description": "Hydrogen Bond Acceptor count",
+                "Information": [
+                  {
+                    "ReferenceNumber": 33,
+                    "Value": {
+                      "Number": [
+                        5
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "TOCHeading": "Rotatable Bond Count",
+                "Description": "Rotatable bond is defined as any single non-ring bond, bounded to nonterminal heavy (i.e., non-hydrogen) atom.",
+                "Information": [
+                  {
+                    "ReferenceNumber": 33,
+                    "Value": {
+                      "Number": [
+                        0
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "TOCHeading": "Exact Mass",
+                "Description": "The exact mass of an isotopic species is obtained by summing the masses of the individual isotopes of the molecule.",
+                "Information": [
+                  {
+                    "ReferenceNumber": 33,
+                    "Value": {
+                      "Number": [
+                        282.146724
+                      ],
+                      "Unit": "g/mol"
+                    }
+                  }
+                ]
+              },
+              {
+                "TOCHeading": "Monoisotopic Mass",
+                "Description": "The monoisotopic mass is the sum of the masses of the atoms in a molecule using the unbound, ground-state, rest mass of the principal (most abundant) isotope for each element instead of the isotopic average mass.",
+                "Information": [
+                  {
+                    "ReferenceNumber": 33,
+                    "Value": {
+                      "Number": [
+                        282.146724
+                      ],
+                      "Unit": "g/mol"
+                    }
+                  }
+                ]
+              },
+              {
+                "TOCHeading": "Topological Polar Surface Area",
+                "Description": "The topological polar surface area (TPSA) of a molecule is defined as the surface sum over all polar atoms in a molecule. ",
+                "Information": [
+                  {
+                    "ReferenceNumber": 33,
+                    "Value": {
+                      "Number": [
+                        54
+                      ],
+                      "Unit": "A^2"
+                    }
+                  }
+                ]
+              },
+              {
+                "TOCHeading": "Heavy Atom Count",
+                "Description": "A heavy atom is defined as any atom except hydrogen in a chemical structure.",
+                "Information": [
+                  {
+                    "ReferenceNumber": 33,
+                    "Value": {
+                      "Number": [
+                        20
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "TOCHeading": "Formal Charge",
+                "Description": "Formal charge is the difference between the number of valence electrons of each atom and the number of electrons the atom is associated with. Formal charge assumes any shared electrons are equally shared between the two bonded atoms.",
+                "Information": [
+                  {
+                    "ReferenceNumber": 33,
+                    "Value": {
+                      "Number": [
+                        0
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "TOCHeading": "Complexity",
+                "Description": "The complexity rating of a compound is a rough estimate of how complicated a structure is, seen from both the point of view of the elements contained and the displayed structural features including symmetry. This complexity rating is computed using the Bertz/Hendrickson/Ihlenfeldt formula.",
+                "Information": [
+                  {
+                    "ReferenceNumber": 33,
+                    "Value": {
+                      "Number": [
+                        452
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "TOCHeading": "Isotope Atom Count",
+                "Description": "Isotopte Atom Count is the number of isotopes that are not most abundant for the corresponding chemical elements.  Isotopes are variants of a chemical element which differ in neutron number.  For example, among three isotopes of carbon (i.e., C-12, C-13, and C-14), the isotope atom count considers the C-13 and C-14 atoms, because C-12 is the most abundant isotope of carbon.",
+                "Information": [
+                  {
+                    "ReferenceNumber": 33,
+                    "Value": {
+                      "Number": [
+                        0
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "TOCHeading": "Defined Atom Stereocenter Count",
+                "Description": "An atom stereocenter, also known as a chiral center, is an atom that is attached to four different types of atoms (or groups of atoms) in the tetrahedral arrangement. It can have either (R)- or (S)- configurations.  Some compounds, such as racemic mixtures, have an undefined atom stereocenter, whose (R/S)-configuration is not specifically defined.",
+                "Information": [
+                  {
+                    "ReferenceNumber": 33,
+                    "Value": {
+                      "Number": [
+                        7
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "TOCHeading": "Undefined Atom Stereocenter Count",
+                "Description": "An atom stereocenter, also known as a chiral center, is an atom that is attached to four different types of atoms (or groups of atoms) in the tetrahedral arrangement. It can have either (R)- or (S)- configurations.  Some compounds, such as racemic mixtures, have an undefined atom stereocenter, whose (R/S)-configuration is not specifically defined.",
+                "Information": [
+                  {
+                    "ReferenceNumber": 33,
+                    "Value": {
+                      "Number": [
+                        0
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "TOCHeading": "Defined Bond Stereocenter Count",
+                "Description": "A bond stereocenter is a non-rotatable bond around which two atoms can have different arrangement (as in cis- and trans-forms of butene around its double bond).  Some compounds have an undefined bond stereocenter, whose stereochemistry is not specifically defined.",
+                "Information": [
+                  {
+                    "ReferenceNumber": 33,
+                    "Value": {
+                      "Number": [
+                        0
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "TOCHeading": "Undefined Bond Stereocenter Count",
+                "Description": "A bond stereocenter is a non-rotatable bond around which two atoms can have different arrangement (as in cis- and trans-forms of butene around its double bond).  Some compounds have an undefined bond stereocenter, whose stereochemistry is not specifically defined.",
+                "Information": [
+                  {
+                    "ReferenceNumber": 33,
+                    "Value": {
+                      "Number": [
+                        0
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "TOCHeading": "Covalently-Bonded Unit Count",
+                "Description": "Covalently-Bonded Unit Count ",
+                "Information": [
+                  {
+                    "ReferenceNumber": 33,
+                    "Value": {
+                      "Number": [
+                        1
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "TOCHeading": "Compound Is Canonicalized",
+                "Description": "Compound is canonicalized",
+                "Information": [
+                  {
+                    "ReferenceNumber": 33,
+                    "Value": {
+                      "StringWithMarkup": [
+                        {
+                          "String": "Yes"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "TOCHeading": "Experimental Properties",
+            "Description": "Properties determined experimentally (See also Safety and Hazard Properties section for more information if available)",
+            "Section": [
+              {
+                "TOCHeading": "Octanol/Water Partition Coefficient",
+                "Description": "Octanol/Water Partition Coefficient, used as a measure of molecular lipophilicity",
+                "Information": [
+                  {
+                    "ReferenceNumber": 9,
+                    "Name": "Octanol/Water Partition Coefficient",
+                    "Reference": [
+                      "AVERY,MA ET AL. (1995)"
+                    ],
+                    "Value": {
+                      "StringWithMarkup": [
+                        {
+                          "String": "2.9 (LogP)"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "TOCHeading": "Spectral Information",
+        "Description": "Spectral data for chemical compounds",
+        "Section": [
+          {
+            "TOCHeading": "1D NMR Spectra",
+            "Description": "1D NMR Spectra data or Linking.",
+            "DisplayControls": {
+              "CreateTable": {
+                "FromInformationIn": "ThisSection",
+                "NumberOfColumns": 2,
+                "ColumnContents": [
+                  "Name",
+                  "Value"
+                ]
+              },
+              "ShowAtMost": 2
+            },
+            "Section": [
+              {
+                "TOCHeading": "13C NMR Spectra",
+                "Description": "Carbon-13 NMR (13C NMR or CMR) is the application of nuclear magnetic resonance (NMR) spectroscopy to carbon isotope 13.",
+                "DisplayControls": {
+                  "CreateTable": {
+                    "FromInformationIn": "ThisSection",
+                    "NumberOfColumns": 2,
+                    "ColumnContents": [
+                      "Name",
+                      "Value"
+                    ]
+                  },
+                  "ShowAtMost": 2
+                },
+                "Information": [
+                  {
+                    "ReferenceNumber": 21,
+                    "Name": "Copyright",
+                    "Value": {
+                      "StringWithMarkup": [
+                        {
+                          "String": "Copyright © 1980, 1981-2018  Bio-Rad Laboratories, Inc.  All Rights Reserved."
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "ReferenceNumber": 21,
+                    "Name": "Thumbnail",
+                    "URL": "https://spectrabase.com/spectrum/HAiuq3EBf2G",
+                    "Value": {
+                      "ExternalDataURL": [
+                        "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/key/4550984_1"
+                      ],
+                      "MimeType": "image/png"
+                    }
+                  },
+                  {
+                    "ReferenceNumber": 22,
+                    "Name": "Copyright",
+                    "Value": {
+                      "StringWithMarkup": [
+                        {
+                          "String": "Copyright © 2016  W. Robien, Inst. of Org. Chem., Univ. of Vienna.  All Rights Reserved."
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "ReferenceNumber": 22,
+                    "Name": "Thumbnail",
+                    "URL": "https://spectrabase.com/spectrum/CyaGCVfUyZ1",
+                    "Value": {
+                      "ExternalDataURL": [
+                        "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/key/4550985_1"
+                      ],
+                      "MimeType": "image/png"
+                    }
+                  },
+                  {
+                    "ReferenceNumber": 23,
+                    "Name": "Copyright",
+                    "Value": {
+                      "StringWithMarkup": [
+                        {
+                          "String": "Copyright © 2016  W. Robien, Inst. of Org. Chem., Univ. of Vienna.  All Rights Reserved."
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "ReferenceNumber": 23,
+                    "Name": "Thumbnail",
+                    "URL": "https://spectrabase.com/spectrum/Etmz8q4aQI3",
+                    "Value": {
+                      "ExternalDataURL": [
+                        "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/key/4550986_1"
+                      ],
+                      "MimeType": "image/png"
+                    }
+                  },
+                  {
+                    "ReferenceNumber": 24,
+                    "Name": "Copyright",
+                    "Value": {
+                      "StringWithMarkup": [
+                        {
+                          "String": "Copyright © 2016  W. Robien, Inst. of Org. Chem., Univ. of Vienna.  All Rights Reserved."
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "ReferenceNumber": 24,
+                    "Name": "Thumbnail",
+                    "URL": "https://spectrabase.com/spectrum/6yo4umbFjUo",
+                    "Value": {
+                      "ExternalDataURL": [
+                        "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/key/4550987_1"
+                      ],
+                      "MimeType": "image/png"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "TOCHeading": "Mass Spectrometry",
+            "Description": "Mass spectrometry (MS or mass spec) is a technique to determine molecular structure through ionization and fragmentation of the parent compound into smaller components.",
+            "DisplayControls": {
+              "CreateTable": {
+                "FromInformationIn": "ThisSection",
+                "NumberOfColumns": 2,
+                "ColumnContents": [
+                  "Name",
+                  "Value"
+                ]
+              },
+              "ShowAtMost": 2
+            },
+            "Information": [
+              {
+                "ReferenceNumber": 16,
+                "Name": "MoNA ID",
+                "URL": "http://mona.fiehnlab.ucdavis.edu/spectra/display/CCMSLIB00000080460",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "CCMSLIB00000080460"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 16,
+                "Name": "MS Category",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "Experimental"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 16,
+                "Name": "MS Type",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "Chromatography identified as LC-MS"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 16,
+                "Name": "MS Level",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "MS2"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 16,
+                "Name": "Precursor Type",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "[M+H]+"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 16,
+                "Name": "precursor m/z",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "283.155"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 16,
+                "Name": "Instrument",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "qTof"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 16,
+                "Name": "Ionization Mode",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "positive"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 16,
+                "Name": "Splash",
+                "URL": "http://mona.fiehnlab.ucdavis.edu/spectra/browse?query=splash.splash%3D%3D%22splash10-0a59-0900000000-189290ae52e9283563ba%22",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "splash10-0a59-0900000000-189290ae52e9283563ba"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 16,
+                "Name": "Thumbnail",
+                "URL": "http://mona.fiehnlab.ucdavis.edu/spectra/display/CCMSLIB00000080460",
+                "Value": {
+                  "ExternalDataURL": [
+                    "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/key/3429893_1"
+                  ],
+                  "MimeType": "image/png"
+                }
+              },
+              {
+                "ReferenceNumber": 16,
+                "Name": "Submitter",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "GNPS Collaboration, University of California, San Diego"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 17,
+                "Name": "MoNA ID",
+                "URL": "http://mona.fiehnlab.ucdavis.edu/spectra/display/FIO00415",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "FIO00415"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 17,
+                "Name": "MS Category",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "Experimental"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 17,
+                "Name": "MS Type",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "Chromatography identified as LC-MS"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 17,
+                "Name": "MS Level",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "MS2"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 17,
+                "Name": "Precursor Type",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "[M+H]+"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 17,
+                "Name": "precursor m/z",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "283.15399980399997"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 17,
+                "Name": "Instrument",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "maXis (Bruker Daltonics)"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 17,
+                "Name": "Instrument Type",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "LC-ESI-QTOF"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 17,
+                "Name": "Ionization",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "ESI"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 17,
+                "Name": "Ionization Mode",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "positive"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 17,
+                "Name": "Collision Energy",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "10 eV"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 17,
+                "Name": "Splash",
+                "URL": "http://mona.fiehnlab.ucdavis.edu/spectra/browse?query=splash.splash%3D%3D%22splash10-014i-0190000000-3391c971e951545100ee%22",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "splash10-014i-0190000000-3391c971e951545100ee"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 17,
+                "Name": "Thumbnail",
+                "URL": "http://mona.fiehnlab.ucdavis.edu/spectra/display/FIO00415",
+                "Value": {
+                  "ExternalDataURL": [
+                    "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/key/3447365_1"
+                  ],
+                  "MimeType": "image/png"
+                }
+              },
+              {
+                "ReferenceNumber": 17,
+                "Name": "Submitter",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "Markus Kohlhoff, Natural Product Chemistry Lab, Fiocruz"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 18,
+                "Name": "MoNA ID",
+                "URL": "http://mona.fiehnlab.ucdavis.edu/spectra/display/FIO00416",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "FIO00416"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 18,
+                "Name": "MS Category",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "Experimental"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 18,
+                "Name": "MS Type",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "Chromatography identified as LC-MS"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 18,
+                "Name": "MS Level",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "MS2"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 18,
+                "Name": "Precursor Type",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "[M+H]+"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 18,
+                "Name": "precursor m/z",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "283.15399980399997"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 18,
+                "Name": "Instrument",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "maXis (Bruker Daltonics)"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 18,
+                "Name": "Instrument Type",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "LC-ESI-QTOF"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 18,
+                "Name": "Ionization",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "ESI"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 18,
+                "Name": "Ionization Mode",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "positive"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 18,
+                "Name": "Collision Energy",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "20 eV"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 18,
+                "Name": "Splash",
+                "URL": "http://mona.fiehnlab.ucdavis.edu/spectra/browse?query=splash.splash%3D%3D%22splash10-0ldj-0960000000-ff3a9e18db5c8c53bcb4%22",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "splash10-0ldj-0960000000-ff3a9e18db5c8c53bcb4"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 18,
+                "Name": "Thumbnail",
+                "URL": "http://mona.fiehnlab.ucdavis.edu/spectra/display/FIO00416",
+                "Value": {
+                  "ExternalDataURL": [
+                    "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/key/3447366_1"
+                  ],
+                  "MimeType": "image/png"
+                }
+              },
+              {
+                "ReferenceNumber": 18,
+                "Name": "Submitter",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "Markus Kohlhoff, Natural Product Chemistry Lab, Fiocruz"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 19,
+                "Name": "MoNA ID",
+                "URL": "http://mona.fiehnlab.ucdavis.edu/spectra/display/FIO00417",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "FIO00417"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 19,
+                "Name": "MS Category",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "Experimental"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 19,
+                "Name": "MS Type",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "Chromatography identified as LC-MS"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 19,
+                "Name": "MS Level",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "MS2"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 19,
+                "Name": "Precursor Type",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "[M+H]+"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 19,
+                "Name": "precursor m/z",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "283.15399980399997"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 19,
+                "Name": "Instrument",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "maXis (Bruker Daltonics)"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 19,
+                "Name": "Instrument Type",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "LC-ESI-QTOF"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 19,
+                "Name": "Ionization",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "ESI"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 19,
+                "Name": "Ionization Mode",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "positive"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 19,
+                "Name": "Collision Energy",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "30 eV"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 19,
+                "Name": "Splash",
+                "URL": "http://mona.fiehnlab.ucdavis.edu/spectra/browse?query=splash.splash%3D%3D%22splash10-01wb-0910000000-42c2b516c8462b3dd492%22",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "splash10-01wb-0910000000-42c2b516c8462b3dd492"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 19,
+                "Name": "Thumbnail",
+                "URL": "http://mona.fiehnlab.ucdavis.edu/spectra/display/FIO00417",
+                "Value": {
+                  "ExternalDataURL": [
+                    "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/key/3447367_1"
+                  ],
+                  "MimeType": "image/png"
+                }
+              },
+              {
+                "ReferenceNumber": 19,
+                "Name": "Submitter",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "Markus Kohlhoff, Natural Product Chemistry Lab, Fiocruz"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 20,
+                "Name": "MoNA ID",
+                "URL": "http://mona.fiehnlab.ucdavis.edu/spectra/display/FIO00418",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "FIO00418"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 20,
+                "Name": "MS Category",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "Experimental"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 20,
+                "Name": "MS Type",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "Chromatography identified as LC-MS"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 20,
+                "Name": "MS Level",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "MS2"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 20,
+                "Name": "Precursor Type",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "[M+H]+"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 20,
+                "Name": "precursor m/z",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "283.15399980399997"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 20,
+                "Name": "Instrument",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "maXis (Bruker Daltonics)"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 20,
+                "Name": "Instrument Type",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "LC-ESI-QTOF"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 20,
+                "Name": "Ionization",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "ESI"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 20,
+                "Name": "Ionization Mode",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "positive"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 20,
+                "Name": "Collision Energy",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "40 eV"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 20,
+                "Name": "Splash",
+                "URL": "http://mona.fiehnlab.ucdavis.edu/spectra/browse?query=splash.splash%3D%3D%22splash10-01x1-0900000000-5c3e44b5d52be3adbba2%22",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "splash10-01x1-0900000000-5c3e44b5d52be3adbba2"
+                    }
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 20,
+                "Name": "Thumbnail",
+                "URL": "http://mona.fiehnlab.ucdavis.edu/spectra/display/FIO00418",
+                "Value": {
+                  "ExternalDataURL": [
+                    "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/key/3447368_1"
+                  ],
+                  "MimeType": "image/png"
+                }
+              },
+              {
+                "ReferenceNumber": 20,
+                "Name": "Submitter",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "Markus Kohlhoff, Natural Product Chemistry Lab, Fiocruz"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "TOCHeading": "Related Records",
+        "Description": "Related compounds/substances information based on the similar structure, annotations, etc.",
+        "Section": [
+          {
+            "TOCHeading": "Related Compounds with Annotation",
+            "Description": "The subset of compounds that are related to the one currently displayed AND that have biomedical annotations.",
+            "Information": [
+              {
+                "ReferenceNumber": 33,
+                "Value": {
+                  "Boolean": [
+                    true
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "TOCHeading": "Related Compounds",
+            "Description": "Compound records closely associated to this record.",
+            "DisplayControls": {
+              "CreateTable": {
+                "FromInformationIn": "ThisSection",
+                "NumberOfColumns": 2,
+                "ColumnContents": [
+                  "Name",
+                  "Value"
+                ]
+              },
+              "ShowAtMost": 1
+            },
+            "Information": [
+              {
+                "ReferenceNumber": 33,
+                "Name": "Same Connectivity Count",
+                "URL": "https://www.ncbi.nlm.nih.gov/pccompound?cmd=Link&LinkName=pccompound_pccompound_sameconnectivity_pulldown&from_uid=68827",
+                "Value": {
+                  "Number": [
+                    99
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 33,
+                "Name": "Same Stereo Count",
+                "URL": "https://www.ncbi.nlm.nih.gov/pccompound?cmd=Link&LinkName=pccompound_pccompound_samestereochem_pulldown&from_uid=68827",
+                "Value": {
+                  "Number": [
+                    6
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 33,
+                "Name": "Same Isotope Count",
+                "URL": "https://www.ncbi.nlm.nih.gov/pccompound?cmd=Link&LinkName=pccompound_pccompound_sameisotopic_pulldown&from_uid=68827",
+                "Value": {
+                  "Number": [
+                    91
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 33,
+                "Name": "Same Parent, Connectivity Count",
+                "URL": "https://www.ncbi.nlm.nih.gov/pccompound?cmd=Link&LinkName=pccompound_pccompound_parent_connectivity_pulldown&from_uid=68827",
+                "Value": {
+                  "Number": [
+                    113
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 33,
+                "Name": "Same Parent, Stereo Count",
+                "URL": "https://www.ncbi.nlm.nih.gov/pccompound?cmd=Link&LinkName=pccompound_pccompound_parent_stereo_pulldown&from_uid=68827",
+                "Value": {
+                  "Number": [
+                    7
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 33,
+                "Name": "Same Parent, Isotope Count",
+                "URL": "https://www.ncbi.nlm.nih.gov/pccompound?cmd=Link&LinkName=pccompound_pccompound_parent_isotopes_pulldown&from_uid=68827",
+                "Value": {
+                  "Number": [
+                    105
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 33,
+                "Name": "Same Parent, Exact Count",
+                "URL": "https://www.ncbi.nlm.nih.gov/pccompound?cmd=Link&LinkName=pccompound_pccompound_parent_pulldown&from_uid=68827",
+                "Value": {
+                  "Number": [
+                    2
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 33,
+                "Name": "Mixtures, Components, and Neutralized Forms Count",
+                "URL": "https://www.ncbi.nlm.nih.gov/pccompound?cmd=Link&LinkName=pccompound_pccompound_mixture&from_uid=68827",
+                "Value": {
+                  "Number": [
+                    7
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 33,
+                "Name": "Similar Compounds Count",
+                "URL": "https://www.ncbi.nlm.nih.gov/pccompound?cmd=Link&LinkName=pccompound_pccompound&from_uid=68827",
+                "Value": {
+                  "Number": [
+                    331
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 33,
+                "Name": "Similar Conformers Count",
+                "URL": "https://www.ncbi.nlm.nih.gov/pccompound?cmd=Link&LinkName=pccompound_pccompound_3d&from_uid=68827",
+                "Value": {
+                  "Number": [
+                    401
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "TOCHeading": "Substances",
+            "Description": "Substance records linked to this compound.",
+            "Section": [
+              {
+                "TOCHeading": "Related Substances",
+                "Description": "Substances identical or nearly identical to this record.",
+                "URL": "https://pubchemdocs.ncbi.nlm.nih.gov/substances",
+                "DisplayControls": {
+                  "CreateTable": {
+                    "FromInformationIn": "ThisSection",
+                    "NumberOfColumns": 2,
+                    "ColumnContents": [
+                      "Name",
+                      "Value"
+                    ]
+                  },
+                  "ShowAtMost": 1
+                },
+                "Information": [
+                  {
+                    "ReferenceNumber": 33,
+                    "Name": "All Count",
+                    "URL": "https://www.ncbi.nlm.nih.gov/pcsubstance/?term=68827[CompoundID]",
+                    "Value": {
+                      "Number": [
+                        144
+                      ]
+                    }
+                  },
+                  {
+                    "ReferenceNumber": 33,
+                    "Name": "Same Count",
+                    "URL": "https://www.ncbi.nlm.nih.gov/pcsubstance/?term=68827[StandardizedCID]",
+                    "Value": {
+                      "Number": [
+                        136
+                      ]
+                    }
+                  },
+                  {
+                    "ReferenceNumber": 33,
+                    "Name": "Mixture Count",
+                    "URL": "https://www.ncbi.nlm.nih.gov/pcsubstance/?term=68827[ComponentCID]",
+                    "Value": {
+                      "Number": [
+                        8
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "TOCHeading": "Substances by Category",
+                "Description": "Substance category according to the depositors. Substance Categorization Classification - The subheaders in this section of a PubChem Compound record reflect the various categories of depositors that have submitted corresponding PubChem Substance records. This allows you to quickly find the corresponding PubChem Substance records that are likely to contain a given type of information, such as Chemical Reactions.",
+                "URL": "https://pubchemdocs.ncbi.nlm.nih.gov/substances",
+                "Information": [
+                  {
+                    "ReferenceNumber": 33,
+                    "Value": {
+                      "StringWithMarkup": [
+                        {
+                          "String": "Chemical Vendors"
+                        },
+                        {
+                          "String": "Curation Efforts"
+                        },
+                        {
+                          "String": "Governmental Organizations"
+                        },
+                        {
+                          "String": "Journal Publishers"
+                        },
+                        {
+                          "String": "Legacy Depositors"
+                        },
+                        {
+                          "String": "NIH Initiatives"
+                        },
+                        {
+                          "String": "Research and Development"
+                        },
+                        {
+                          "String": "Subscription Services"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "TOCHeading": "Entrez Crosslinks",
+            "Description": "Cross-references to associated records in other Entrez databases such as PubMed, Gene, Protein, etc.",
+            "DisplayControls": {
+              "CreateTable": {
+                "FromInformationIn": "ThisSection",
+                "NumberOfColumns": 2,
+                "ColumnContents": [
+                  "Name",
+                  "Value"
+                ]
+              },
+              "ShowAtMost": 1
+            },
+            "Information": [
+              {
+                "ReferenceNumber": 33,
+                "Name": "PubMed Count",
+                "URL": "https://www.ncbi.nlm.nih.gov/sites/entrez?LinkName=pccompound_pubmed&db=pccompound&cmd=Link&from_uid=68827",
+                "Value": {
+                  "Number": [
+                    2523
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 33,
+                "Name": "Taxonomy Count",
+                "URL": "https://www.ncbi.nlm.nih.gov/sites/entrez?LinkName=pccompound_taxonomy&db=pccompound&cmd=Link&from_uid=68827",
+                "Value": {
+                  "Number": [
+                    4
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 33,
+                "Name": "OMIM Count",
+                "URL": "https://www.ncbi.nlm.nih.gov/sites/entrez?LinkName=pccompound_omim&db=pccompound&cmd=Link&from_uid=68827",
+                "Value": {
+                  "Number": [
+                    3
+                  ]
+                }
+              },
+              {
+                "ReferenceNumber": 33,
+                "Name": "Gene Count",
+                "URL": "https://www.ncbi.nlm.nih.gov/sites/entrez?LinkName=pccompound_gene&db=pccompound&cmd=Link&from_uid=68827",
+                "Value": {
+                  "Number": [
+                    27
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "TOCHeading": "Chemical Vendors",
+        "Description": "A list of chemical vendors that sell this compound.  Each vendor may have multiple products containing the same chemical, but different in various aspects, such as amount and purity.  For each product, the external identifier used to locate the product on the vendor's website is provided under the Purcharsable Chemical column, and clicking this identifier directs you to the vendor's website.  The information on the product provided by the vendor to PubChem can be accessed at the Summary page of the corresponding PubChem Substance ID (SID).  Note that the order of chemical vendors on the list is randomized, and that PubChem do not endorse any of the vendors.",
+        "Information": [
+          {
+            "ReferenceNumber": 33,
+            "Value": {
+              "Boolean": [
+                true
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "TOCHeading": "Drug and Medication Information",
+        "Description": "Drug and medication information from multiple sources.",
+        "Section": [
+          {
+            "TOCHeading": "LiverTox Summary",
+            "Description": "This section provides an overview of drug induced liver injury, diagnostic criteria, assessment of causality and severity, descriptions of different clinical patterns (phenotypes), information on management and treatment, and standardized nomenclature.  The role of liver biopsy and major histological patterns of drug induced liver disease are also given.",
+            "URL": "https://livertox.nlm.nih.gov/aboutus.html",
+            "Information": [
+              {
+                "ReferenceNumber": 15,
+                "Name": "LiverTox Summary",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "Artemisinin is an ancient Chinese herbal therapy for malarial fevers which has been recently found to have potent activity against many forms of malarial organisms, including chloroquine-resistant Plasmodium falciparum. Several artemisinin derivatives have been developed for clinical use in prevention and treatment of malaria, some of which have been linked to rare instances of acute liver injury.",
+                      "Markup": [
+                        {
+                          "Start": 0,
+                          "Length": 11,
+                          "URL": "https://pubchem.ncbi.nlm.nih.gov/compound/Artemisinin",
+                          "Type": "PubChem Internal Link",
+                          "Extra": "CID-68827"
+                        },
+                        {
+                          "Start": 175,
+                          "Length": 11,
+                          "URL": "https://pubchem.ncbi.nlm.nih.gov/compound/chloroquine",
+                          "Type": "PubChem Internal Link",
+                          "Extra": "CID-2719"
+                        },
+                        {
+                          "Start": 228,
+                          "Length": 11,
+                          "URL": "https://pubchem.ncbi.nlm.nih.gov/compound/artemisinin",
+                          "Type": "PubChem Internal Link",
+                          "Extra": "CID-68827"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "TOCHeading": "Drug Classes",
+            "Description": "Drug classes information from various sources.",
+            "Information": [
+              {
+                "ReferenceNumber": 15,
+                "Name": "Drug Classes",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "Antimalarial Agents"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "TOCHeading": "Clinical Trials",
+            "Description": "Clinical trials are research studies performed in people that are aimed at evaluating a medical, surgical, or behavioral intervention. They are the primary way that researchers find out if a new treatment, like a new drug or diet or medical device (for example, a pacemaker) is safe and effective in people.",
+            "Section": [
+              {
+                "TOCHeading": "ClinicalTrials.gov",
+                "Description": "The brief clinical trials summary from the ClinicalTrials.gov at the U.S. National Library of Medicine.",
+                "URL": "https://clinicaltrials.gov/",
+                "Information": [
+                  {
+                    "ReferenceNumber": 4,
+                    "Name": "ClinicalTrials.gov",
+                    "Value": {
+                      "ExternalTableName": "clinicaltrials",
+                      "ExternalTableNumRows": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "TOCHeading": "Pharmacology and Biochemistry",
+        "Description": "Pharmacology and biochemistry information related to this record",
+        "Section": [
+          {
+            "TOCHeading": "MeSH Pharmacological Classification",
+            "Description": "Pharmacological action classes that provided by MeSH",
+            "Information": [
+              {
+                "ReferenceNumber": 44,
+                "Name": "Anti-Infective Agents",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "Substances that prevent infectious agents or organisms from spreading or kill infectious agents in order to prevent the spread of infection. (See all compounds classified as Anti-Infective Agents.)",
+                      "Markup": [
+                        {
+                          "Start": 146,
+                          "Length": 49,
+                          "URL": "https://www.ncbi.nlm.nih.gov/sites/entrez?Db=pccompound&DbFrom=mesh&Cmd=Link&LinkName=mesh_pccompound&IdsFromResult=68000890"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "TOCHeading": "ATC Code",
+            "Description": "The Anatomical Therapeutic Chemical (ATC) Classification System is used for the classification of drugs. This pharmaceutical coding system divides drugs into different groups according to the organ or system on which they act and/or their therapeutic and chemical characteristics. Each bottom-level ATC code stands for a pharmaceutically used substance, or a combination of substances, in a single indication (or use). This means that one drug can have more than one code: acetylsalicylic acid (aspirin), for example, has A01AD05 as a drug for local oral treatment, B01AC06 as a platelet inhibitor, and N02BA01 as an analgesic and antipyretic. On the other hand, several different brands share the same code if they have the same active substance and indications.",
+            "URL": "http://www.whocc.no/atc/",
+            "Information": [
+              {
+                "ReferenceNumber": 31,
+                "Name": "ATC Code",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "P - Antiparasitic products, insecticides and repellents",
+                      "Markup": [
+                        {
+                          "Start": 0,
+                          "Length": 1,
+                          "URL": "https://www.whocc.no/atc_ddd_index/?code=P"
+                        }
+                      ]
+                    },
+                    {
+                      "String": "P01 - Antiprotozoals",
+                      "Markup": [
+                        {
+                          "Start": 0,
+                          "Length": 3,
+                          "URL": "https://www.whocc.no/atc_ddd_index/?code=P01"
+                        }
+                      ]
+                    },
+                    {
+                      "String": "P01B - Antimalarials",
+                      "Markup": [
+                        {
+                          "Start": 0,
+                          "Length": 4,
+                          "URL": "https://www.whocc.no/atc_ddd_index/?code=P01B"
+                        }
+                      ]
+                    },
+                    {
+                      "String": "P01BE - Artemisinin and derivatives, plain",
+                      "Markup": [
+                        {
+                          "Start": 0,
+                          "Length": 5,
+                          "URL": "https://www.whocc.no/atc_ddd_index/?code=P01BE"
+                        },
+                        {
+                          "Start": 8,
+                          "Length": 11,
+                          "URL": "https://pubchem.ncbi.nlm.nih.gov/compound/Artemisinin",
+                          "Type": "PubChem Internal Link",
+                          "Extra": "CID-68827"
+                        }
+                      ]
+                    },
+                    {
+                      "String": "P01BE01 - Artemisinin",
+                      "Markup": [
+                        {
+                          "Start": 0,
+                          "Length": 7,
+                          "URL": "https://www.whocc.no/atc_ddd_index/?code=P01BE01"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "TOCHeading": "Use and Manufacturing",
+        "Description": "The use and manufacture of the chemical and related information",
+        "Section": [
+          {
+            "TOCHeading": "Use Classification",
+            "Description": "This section contains classification/categfory information from various sources",
+            "DisplayControls": {
+              "CreateTable": {
+                "FromInformationIn": "ThisSection",
+                "NumberOfColumns": 2,
+                "ColumnContents": [
+                  "Name",
+                  "Value"
+                ]
+              }
+            },
+            "Information": [
+              {
+                "ReferenceNumber": 14,
+                "Name": "Lipid Maps Classification",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "Category: Prenol Lipids [PR] -> Main Class: Isoprenoids [PR01] -> Sub Class: C15 isoprenoids (sesquiterpenes) [PR0103]"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "TOCHeading": "Uses",
+            "Description": "This section presents the major uses of the chemical in the United States today. In addition, past uses of the chemical are summarized.",
+            "Information": [
+              {
+                "ReferenceNumber": 8,
+                "Name": "EPA CPDat Chemical and Product Categories",
+                "Value": {
+                  "ExternalTableName": "cpdat"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "TOCHeading": "Safety and Hazards",
+        "Description": "Safety and hazards information, properties, management techniques, reactivities and incompatibilities, first aid treatments, and more.",
+        "Section": [
+          {
+            "TOCHeading": "Hazards Identification",
+            "Description": "Hazards Identification includes all hazards regarding the chemical; required label elements",
+            "Section": [
+              {
+                "TOCHeading": "GHS Classification",
+                "Description": "GHS (Globally Harmonized System of Classification and Labelling of Chemicals) is a United Nations system to identify hazardous chemicals and to inform users about these hazards. GHS has been adopted by many countries around the world and is now also used as the basis for international and national transport regulations for dangerous goods. The GHS hazard statements, class categories, pictograms, signal words, and the precautionary statements can be found on the PubChem GHS page.",
+                "URL": "https://pubchem.ncbi.nlm.nih.gov/ghs/",
+                "DisplayControls": {
+                  "CreateTable": {
+                    "FromInformationIn": "ThisSection",
+                    "NumberOfColumns": 2,
+                    "ColumnContents": [
+                      "Name",
+                      "Value"
+                    ]
+                  },
+                  "ShowAtMost": 1
+                },
+                "Information": [
+                  {
+                    "ReferenceNumber": 10,
+                    "Name": "Pictogram(s)",
+                    "Value": {
+                      "StringWithMarkup": [
+                        {
+                          "String": "          ",
+                          "Markup": [
+                            {
+                              "Start": 0,
+                              "Length": 1,
+                              "URL": "https://pubchem.ncbi.nlm.nih.gov/images/ghs/GHS02.svg",
+                              "Type": "Icon",
+                              "Extra": "Flammable"
+                            },
+                            {
+                              "Start": 1,
+                              "Length": 1,
+                              "URL": "https://pubchem.ncbi.nlm.nih.gov/images/ghs/GHS09.svg",
+                              "Type": "Icon",
+                              "Extra": "Environmental Hazard"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "ReferenceNumber": 10,
+                    "Name": "Signal",
+                    "Value": {
+                      "StringWithMarkup": [
+                        {
+                          "String": "Warning",
+                          "Markup": [
+                            {
+                              "Start": 0,
+                              "Length": 7,
+                              "Type": "Color",
+                              "Extra": "GHSWarning"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "ReferenceNumber": 10,
+                    "Name": "GHS Hazard Statements",
+                    "Value": {
+                      "StringWithMarkup": [
+                        {
+                          "String": "Aggregated GHS information provided by 52 companies from  5  notifications to the ECHA C&L Inventory. Each notification may be associated with multiple companies."
+                        },
+                        {
+                          "String": "Reported as not meeting GHS hazard criteria by 1 of 52 companies. For more detailed information, please visit  ECHA C&L website",
+                          "Markup": [
+                            {
+                              "Start": 111,
+                              "Length": 20,
+                              "URL": "https://echa.europa.eu/information-on-chemicals/cl-inventory-database/-/discli/details/20605"
+                            }
+                          ]
+                        },
+                        {
+                          "String": "Of the 4 notification(s) provided by 51 of 52 companies with hazard statement code(s):"
+                        },
+                        {
+                          "String": "H242 (100%): Heating may cause a fire [Danger Self-reactive substances and mixtures; Organic peroxides]",
+                          "Markup": [
+                            {
+                              "Start": 39,
+                              "Length": 6,
+                              "Type": "Color",
+                              "Extra": "GHSDanger"
+                            }
+                          ]
+                        },
+                        {
+                          "String": "H400 (98.04%): Very toxic to aquatic life [Warning Hazardous to the aquatic environment, acute hazard]",
+                          "Markup": [
+                            {
+                              "Start": 43,
+                              "Length": 7,
+                              "Type": "Color",
+                              "Extra": "GHSWarning"
+                            }
+                          ]
+                        },
+                        {
+                          "String": "H410 (100%): Very toxic to aquatic life with long lasting effects [Warning Hazardous to the aquatic environment, long-term hazard]",
+                          "Markup": [
+                            {
+                              "Start": 67,
+                              "Length": 7,
+                              "Type": "Color",
+                              "Extra": "GHSWarning"
+                            }
+                          ]
+                        },
+                        {
+                          "String": "Information may vary between notifications depending on impurities, additives, and other factors. The percentage value in parenthesis indicates the notified classification ratio from companies that provide hazard codes. Only hazard codes with percentage values above 10% are shown."
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "ReferenceNumber": 10,
+                    "Name": "Precautionary Statement Codes",
+                    "Value": {
+                      "StringWithMarkup": [
+                        {
+                          "String": "P210, P220, P234, P273, P280, P370+P378, P391, P403+P235, P411, P420, and P501"
+                        },
+                        {
+                          "String": "(The corresponding statement to each P-code can be found at the GHS Classification page.)",
+                          "Markup": [
+                            {
+                              "Start": 64,
+                              "Length": 18,
+                              "URL": "https://pubchem.ncbi.nlm.nih.gov/ghs/#_prec"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "TOCHeading": "Toxicity",
+        "Description": "Toxicity information related to this record, includes routes of exposure; related symptoms, acute and chronic effects; numerical measures of toxicity.",
+        "Section": [
+          {
+            "TOCHeading": "Toxicological Information",
+            "Description": "Toxicological Information",
+            "Section": [
+              {
+                "TOCHeading": "Hepatotoxicity",
+                "Description": "This section provides a short description about the hepatotoxicity that associated with the agent, the rate of serum enzyme elevations during use, and the frequency and character of the clinically apparent liver injury associated with the medication.",
+                "URL": "https://livertox.nlm.nih.gov/aboutus.html",
+                "Information": [
+                  {
+                    "ReferenceNumber": 15,
+                    "Name": "Hepatotoxicity",
+                    "Value": {
+                      "StringWithMarkup": [
+                        {
+                          "String": "Artemisinin derivatives have been associated with a low rate of serum aminotransferase elevations (1% to 4%) that are generally asymptomatic, mild-to-moderate and self-limited, often resolving even with continuing therapy. In most studies, the rate of serum ALT elevations during artemisinin therapy was similar to that of patients on comparator agents. Importantly, there have been increasing numbers of reports of idiosyncratic acute liver injury in patients taking artemisinin derivatives. Complicating the interpretation of these reports, however, is that most severe cases of liver injury occurred in patients who were also receiving other antimalarial agents, some of which are known to be hepatotoxic (amodiaquine, sulfamethoxazole, sulfadiazine/pyrimethamine). The onset of injury was usually within a few days to weeks of starting artemisinin, and the pattern of serum enzyme elevations was typically hepatocellular. Features of hypersensitivity such as rash, fever and eosinophilia were uncommon and autoantibodies have not been described. Symptoms can resemble those of acute viral hepatitis and the hepatitis can be severe, and several fatal instances or cases requiring emergency liver transplantation have been reported. Nevertheless, clinically apparent liver injury due to artemisinin derivatives is very rare and was not reported in several large clinical trials of malaria treatment. Most published reports of hepatotoxicity of artemisinin were linked to use of herbal supplements containing artemisinin and with extended treatment.",
+                          "Markup": [
+                            {
+                              "Start": 0,
+                              "Length": 11,
+                              "URL": "https://pubchem.ncbi.nlm.nih.gov/compound/Artemisinin",
+                              "Type": "PubChem Internal Link",
+                              "Extra": "CID-68827"
+                            },
+                            {
+                              "Start": 280,
+                              "Length": 11,
+                              "URL": "https://pubchem.ncbi.nlm.nih.gov/compound/artemisinin",
+                              "Type": "PubChem Internal Link",
+                              "Extra": "CID-68827"
+                            },
+                            {
+                              "Start": 468,
+                              "Length": 11,
+                              "URL": "https://pubchem.ncbi.nlm.nih.gov/compound/artemisinin",
+                              "Type": "PubChem Internal Link",
+                              "Extra": "CID-68827"
+                            },
+                            {
+                              "Start": 709,
+                              "Length": 11,
+                              "URL": "https://pubchem.ncbi.nlm.nih.gov/compound/amodiaquine",
+                              "Type": "PubChem Internal Link",
+                              "Extra": "CID-2165"
+                            },
+                            {
+                              "Start": 722,
+                              "Length": 16,
+                              "URL": "https://pubchem.ncbi.nlm.nih.gov/compound/sulfamethoxazole",
+                              "Type": "PubChem Internal Link",
+                              "Extra": "CID-5329"
+                            },
+                            {
+                              "Start": 740,
+                              "Length": 12,
+                              "URL": "https://pubchem.ncbi.nlm.nih.gov/compound/sulfadiazine",
+                              "Type": "PubChem Internal Link",
+                              "Extra": "CID-5215"
+                            },
+                            {
+                              "Start": 753,
+                              "Length": 13,
+                              "URL": "https://pubchem.ncbi.nlm.nih.gov/compound/pyrimethamine",
+                              "Type": "PubChem Internal Link",
+                              "Extra": "CID-4993"
+                            },
+                            {
+                              "Start": 840,
+                              "Length": 11,
+                              "URL": "https://pubchem.ncbi.nlm.nih.gov/compound/artemisinin",
+                              "Type": "PubChem Internal Link",
+                              "Extra": "CID-68827"
+                            },
+                            {
+                              "Start": 1289,
+                              "Length": 11,
+                              "URL": "https://pubchem.ncbi.nlm.nih.gov/compound/artemisinin",
+                              "Type": "PubChem Internal Link",
+                              "Extra": "CID-68827"
+                            },
+                            {
+                              "Start": 1446,
+                              "Length": 11,
+                              "URL": "https://pubchem.ncbi.nlm.nih.gov/compound/artemisinin",
+                              "Type": "PubChem Internal Link",
+                              "Extra": "CID-68827"
+                            },
+                            {
+                              "Start": 1510,
+                              "Length": 11,
+                              "URL": "https://pubchem.ncbi.nlm.nih.gov/compound/artemisinin",
+                              "Type": "PubChem Internal Link",
+                              "Extra": "CID-68827"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "TOCHeading": "Acute Effects",
+                "Description": "The results from acute animal tests and/or acute human studies are presented in this section. Acute animal studies consist of LD50 and LC50 tests, which present the median lethal dose (or concentration) to the animals. Acute human studies usually consist of case reports from accidental poisonings or industrial accidents. These case reports often help to define the levels at which acute toxic effects are seen in humans.",
+                "Information": [
+                  {
+                    "ReferenceNumber": 3,
+                    "Value": {
+                      "ExternalTableName": "chemidplus",
+                      "ExternalTableNumRows": 7
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "TOCHeading": "Literature",
+        "Description": "Literature citation references mainly refers to regular publications such as journal articles, etc.",
+        "URL": "https://pubchemdocs.ncbi.nlm.nih.gov/literature",
+        "Section": [
+          {
+            "TOCHeading": "Depositor Provided PubMed Citations",
+            "Description": "This section displays a concatenated list of all PubMed records that have been cited by the depositors of all PubChem Substance records that contain the same chemical structure as the compound.",
+            "Information": [
+              {
+                "ReferenceNumber": 33,
+                "Name": "Depositor Provided PubMed Citations",
+                "URL": "https://www.ncbi.nlm.nih.gov/sites/entrez?LinkName=pccompound_pubmed&db=pccompound&cmd=Link&from_uid=68827",
+                "Value": {
+                  "ExternalTableName": "collection=pubmed&pmidsrcs=xref",
+                  "ExternalTableNumRows": 2523
+                }
+              }
+            ]
+          },
+          {
+            "TOCHeading": "NLM Curated PubMed Citations",
+            "Description": "The \"NLM Curated PubMed Citations\" section links to all PubMed records that are tagged with the same MeSH term that has been associated with a particular compound.",
+            "Information": [
+              {
+                "ReferenceNumber": 33,
+                "URL": "https://www.ncbi.nlm.nih.gov/sites/entrez?LinkName=pccompound_pubmed_mesh&db=pccompound&cmd=Link&from_uid=68827",
+                "Value": {
+                  "Boolean": [
+                    true
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "TOCHeading": "Springer Nature References",
+            "Description": "Literature references related to scientific contents from Springer Nature journals and books. These references have been ranked automatically by an algorithm which calculates the relevance for each substance in a Springer Nature document. It is based on: 1. the TF-IDF, adapted to chemical structures, 2. location information in the text (e.g. title, abstract, keywords), and 3. the document size.  Springer Nature aims to provide only high qualitative and relevant content but references of lower relevance aren't withheld as they might contain also very useful information",
+            "URL": "https://group.springernature.com/gp/group/aboutus",
+            "Information": [
+              {
+                "ReferenceNumber": 25,
+                "Name": "Springer Nature References",
+                "Value": {
+                  "ExternalTableName": "springernature"
+                }
+              },
+              {
+                "ReferenceNumber": 26,
+                "Name": "Springer Nature References",
+                "Value": {
+                  "ExternalTableName": "springernature"
+                }
+              },
+              {
+                "ReferenceNumber": 27,
+                "Name": "Springer Nature References",
+                "Value": {
+                  "ExternalTableName": "springernature"
+                }
+              }
+            ]
+          },
+          {
+            "TOCHeading": "Thieme References",
+            "Description": "Literature references related to scientific contents from Thieme Chemistry journals and books.  The Thieme Chemistry content within this section is provided under a CC-BY-NC-ND 4.0 license (https://creativecommons.org/licenses/by-nc-nd/4.0/), unless otherwise stated.",
+            "URL": "https://www.thieme.de/en/thieme-chemistry/home-51399.htm",
+            "Information": [
+              {
+                "ReferenceNumber": 30,
+                "Name": "Thieme References",
+                "Value": {
+                  "ExternalTableName": "ThiemeChemistry"
+                }
+              }
+            ]
+          },
+          {
+            "TOCHeading": "Chemical Co-Occurrences in Literature",
+            "Description": "Chemical co-occurrences in literature highlight chemicals that are found mentioned together in scientific articles.  This may suggest an important relationship exists between the two chemicals.  The lists of chemicals are ordered by count of publications with co-occurrences.  The publications are prioritized such that the most relevant mentions appear at the top.  Please note that this content is generated by text-mining algorithms (i.e., it is not human curated).  It is possible that the algorithms get fooled such that a co-occurrence may be happenstance or a casual mention.",
+            "URL": "https://pubchemdocs.ncbi.nlm.nih.gov/knowledge_panels",
+            "Information": [
+              {
+                "ReferenceNumber": 33,
+                "Name": "Co-Occurrence Panel",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "ChemicalNeighbor"
+                    },
+                    {
+                      "String": "Chemical"
+                    },
+                    {
+                      "String": "ChemicalName_1"
+                    },
+                    {
+                      "String": "ChemicalName_2"
+                    },
+                    {
+                      "String": "SUMMARY_URL.cid"
+                    },
+                    {
+                      "String": "CID"
+                    },
+                    {
+                      "String": "CID"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "TOCHeading": "Chemical-Disease Co-Occurrences in Literature",
+            "Description": "Chemical-disease co-occurrences in literature highlight chemical-disease pairs that are found mentioned together in scientific articles.  This may suggest an important relationship exists between the two.  The lists of diseases are ordered by count of publications with co-occurrences.  The publications are prioritized such that the most relevant mentions appear at the top.  Please note that this content is generated by text-mining algorithms (i.e., it is not human curated).  It is possible that the algorithms get fooled such that a co-occurrence may be happenstance or a casual mention.",
+            "URL": "https://pubchemdocs.ncbi.nlm.nih.gov/knowledge_panels",
+            "Information": [
+              {
+                "ReferenceNumber": 33,
+                "Name": "Co-Occurrence Panel",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "ChemicalDiseaseNeighbor"
+                    },
+                    {
+                      "String": "Disease"
+                    },
+                    {
+                      "String": "ChemicalName"
+                    },
+                    {
+                      "String": "DiseaseName"
+                    },
+                    {
+                      "String": "https://meshb.nlm.nih.gov/record/ui?ui="
+                    },
+                    {
+                      "String": "CID"
+                    },
+                    {
+                      "String": "MeSH"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "TOCHeading": "Chemical-Gene Co-Occurrences in Literature",
+            "Description": "Chemical-gene co-occurrences in literature highlight chemical-gene pairs that are found mentioned together in scientific articles.  This may suggest an important relationship exists between the two.  The lists of genes are ordered by count of publications with co-occurrences.  The publications are prioritized such that the most relevant mentions appear at the top.  Please note that this content is generated by text-mining algorithms (i.e., it is not human curated).  It is possible that the algorithms get fooled such that a co-occurrence may be happenstance or a casual mention.",
+            "URL": "https://pubchemdocs.ncbi.nlm.nih.gov/knowledge_panels",
+            "Information": [
+              {
+                "ReferenceNumber": 33,
+                "Name": "Co-Occurrence Panel",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "ChemicalGeneProteinNeighbor"
+                    },
+                    {
+                      "String": "Gene"
+                    },
+                    {
+                      "String": "ChemicalName"
+                    },
+                    {
+                      "String": "GeneProteinName"
+                    },
+                    {
+                      "String": "SUMMARY_URL.geneid"
+                    },
+                    {
+                      "String": "CID"
+                    },
+                    {
+                      "String": "GeneID"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "TOCHeading": "Patents",
+        "Description": "A PubChem summary page displays Patent information when available for the given molecule.",
+        "URL": "https://pubchemdocs.ncbi.nlm.nih.gov/patents",
+        "DisplayControls": {
+          "ListType": "Columns"
+        },
+        "Section": [
+          {
+            "TOCHeading": "Depositor-Supplied Patent Identifiers",
+            "Description": "Patent identifiers and more information provided by depositors in form of a widget.",
+            "Information": [
+              {
+                "ReferenceNumber": 33,
+                "Value": {
+                  "ExternalTableName": "patent"
+                }
+              },
+              {
+                "ReferenceNumber": 33,
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "Link to all deposited patent identifiers",
+                      "Markup": [
+                        {
+                          "Start": 0,
+                          "Length": 40,
+                          "URL": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/68827/xrefs/PatentID/TXT"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "TOCHeading": "Biomolecular Interactions and Pathways",
+        "Description": "A PubChem summary page displays biomolecular interactions and pathways information when available for the given record.",
+        "Section": [
+          {
+            "TOCHeading": "Pathways",
+            "Description": "Pathways that include the compound as a component.",
+            "Information": [
+              {
+                "ReferenceNumber": 33,
+                "Value": {
+                  "ExternalTableName": "collection=pathway&core=1"
+                }
+              }
+            ]
+          },
+          {
+            "TOCHeading": "DrugBank Interactions",
+            "DisplayControls": {
+              "CreateTable": {
+                "FromInformationIn": "Subsections",
+                "NumberOfColumns": 2,
+                "ColumnContents": [
+                  "Name",
+                  "Value"
+                ]
+              },
+              "ListType": "Numbered",
+              "ShowAtMost": 1
+            },
+            "Section": [
+              {
+                "TOCHeading": "Enzyme",
+                "Description": "A protein which catalyzes chemical reactions involving the a given drug (substrate).",
+                "Information": [
+                  {
+                    "ReferenceNumber": 5,
+                    "URL": "http://www.drugbank.ca/biodb/bio_entities/BE0003549",
+                    "Value": {
+                      "StringWithMarkup": [
+                        {
+                          "String": "Cytochrome P450 2B6"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "TOCHeading": "Action",
+                "Description": "Action",
+                "Information": [
+                  {
+                    "ReferenceNumber": 5,
+                    "Value": {
+                      "StringWithMarkup": [
+                        {
+                          "String": "substrate"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "TOCHeading": "PubChem Protein Target",
+                "Description": "Mapped protein target in PubChem",
+                "Information": [
+                  {
+                    "ReferenceNumber": 5,
+                    "URL": "https://pubchem.ncbi.nlm.nih.gov/protein/P20813",
+                    "Value": {
+                      "StringWithMarkup": [
+                        {
+                          "String": "P20813"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "TOCHeading": "PubChem Gene Target",
+                "Description": "Mapped gene target in PubChem",
+                "Information": [
+                  {
+                    "ReferenceNumber": 5,
+                    "URL": "https://pubchem.ncbi.nlm.nih.gov/gene/1555",
+                    "Value": {
+                      "StringWithMarkup": [
+                        {
+                          "String": "CYP2B6"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "TOCHeading": "General Function",
+                "Description": "Short 3-4 word summary of the primary functions",
+                "Information": [
+                  {
+                    "ReferenceNumber": 5,
+                    "Value": {
+                      "StringWithMarkup": [
+                        {
+                          "String": "Steroid hydroxylase activity"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "TOCHeading": "Specific Function",
+                "Description": "Detailed 30-40 word summary of the specific functions",
+                "Information": [
+                  {
+                    "ReferenceNumber": 5,
+                    "Value": {
+                      "StringWithMarkup": [
+                        {
+                          "String": "Cytochromes P450 are a group of heme-thiolate monooxygenases. In liver microsomes, this enzyme is involved in an NADPH-dependent electron transport pathway. It oxidizes a variety of structurally unrelated compounds, including steroids, fatty acids, and xenobiotics. Acts as a 1,4-cineole 2-exo-monooxygenase.",
+                          "Markup": [
+                            {
+                              "Start": 113,
+                              "Length": 5,
+                              "URL": "https://pubchem.ncbi.nlm.nih.gov/compound/NADPH",
+                              "Type": "PubChem Internal Link",
+                              "Extra": "CID-5884"
+                            },
+                            {
+                              "Start": 276,
+                              "Length": 11,
+                              "URL": "https://pubchem.ncbi.nlm.nih.gov/compound/1%2C4-cineole",
+                              "Type": "PubChem Internal Link",
+                              "Extra": "CID-10106"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "TOCHeading": "Interaction References",
+                "Description": "Interaction References",
+                "Information": [
+                  {
+                    "ReferenceNumber": 5,
+                    "Value": {
+                      "StringWithMarkup": [
+                        {
+                          "String": "Hedrich WD, Hassan HE, Wang H: Insights into CYP2B6-mediated drug-drug interactions. Acta Pharm Sin B. 2016 Sep;6(5):413-425. doi: 10.1016/j.apsb.2016.07.016. Epub 2016 Aug 9. [PMID: 27709010]",
+                          "Markup": [
+                            {
+                              "Start": 177,
+                              "Length": 14,
+                              "URL": "https://www.ncbi.nlm.nih.gov/pubmed/27709010"
+                            }
+                          ]
+                        },
+                        {
+                          "String": "Flockhart Table - Indiana University",
+                          "Markup": [
+                            {
+                              "Start": 0,
+                              "Length": 36,
+                              "URL": "http://medicine.iupui.edu/clinpharm/ddis/clinical-table/"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "TOCHeading": "Biological Test Results",
+        "Description": "A PubChem substance or compound summary page displays biological test results from the PubChem BioAssay database, if/as available, for the chemical structure currently displayed. (Note that you can embed biological test results displays within your own web pages, for a PubChem Compound or Substance of interest, by using theBioActivity Widget.)",
+        "URL": "https://pubchemdocs.ncbi.nlm.nih.gov/bioassays",
+        "Section": [
+          {
+            "TOCHeading": "BioAssay Results",
+            "Description": "BioActivity information showed in tabular widget.",
+            "Information": [
+              {
+                "ReferenceNumber": 33,
+                "Value": {
+                  "ExternalTableName": "bioactivity"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "TOCHeading": "Classification",
+        "Description": "Classification systems from MeSH, ChEBI, Kegg, etc.",
+        "URL": "https://pubchem.ncbi.nlm.nih.gov/classification",
+        "Section": [
+          {
+            "TOCHeading": "Ontologies",
+            "Description": "Ontologies",
+            "Section": [
+              {
+                "TOCHeading": "MeSH Tree",
+                "Description": "MeSH tree",
+                "Information": [
+                  {
+                    "ReferenceNumber": 35,
+                    "Name": "HID",
+                    "URL": "https://pubchem.ncbi.nlm.nih.gov/classification/#hid=1",
+                    "Value": {
+                      "Number": [
+                        1
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "TOCHeading": "ChEBI Ontology",
+                "Description": "ChEBI Ontology tree",
+                "Information": [
+                  {
+                    "ReferenceNumber": 36,
+                    "Name": "HID",
+                    "URL": "https://pubchem.ncbi.nlm.nih.gov/classification/#hid=2",
+                    "Value": {
+                      "Number": [
+                        2
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "TOCHeading": "LIPID MAPS Classification",
+                "Description": "LIPID MAPS Classification tree",
+                "Information": [
+                  {
+                    "ReferenceNumber": 37,
+                    "Name": "HID",
+                    "URL": "https://pubchem.ncbi.nlm.nih.gov/classification/#hid=54",
+                    "Value": {
+                      "Number": [
+                        54
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "TOCHeading": "WHO ATC Classification System",
+                "Description": "The Anatomical Therapeutic Chemical (ATC) Classification System is used for the classification of drugs. This pharmaceutical coding system divides drugs into different groups according to the organ or system on which they act and/or their therapeutic and chemical characteristics. Each bottom-level ATC code stands for a pharmaceutically used substance, or a combination of substances, in a single indication (or use). This means that one drug can have more than one code: acetylsalicylic acid (aspirin), for example, has A01AD05 as a drug for local oral treatment, B01AC06 as a platelet inhibitor, and N02BA01 as an analgesic and antipyretic. On the other hand, several different brands share the same code if they have the same active substance and indications.",
+                "URL": "http://www.whocc.no/atc/",
+                "Information": [
+                  {
+                    "ReferenceNumber": 39,
+                    "Name": "HID",
+                    "URL": "https://pubchem.ncbi.nlm.nih.gov/classification/#hid=79",
+                    "Value": {
+                      "Number": [
+                        79
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "TOCHeading": "WIPO IPC",
+                "Description": "WIPO IPC tree",
+                "Information": [
+                  {
+                    "ReferenceNumber": 38,
+                    "Name": "HID",
+                    "URL": "https://pubchem.ncbi.nlm.nih.gov/classification/#hid=58",
+                    "Value": {
+                      "Number": [
+                        58
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "TOCHeading": "ChemIDplus",
+                "Description": "ChemIDplus tree",
+                "Information": [
+                  {
+                    "ReferenceNumber": 41,
+                    "Name": "HID",
+                    "URL": "https://pubchem.ncbi.nlm.nih.gov/classification/#hid=84",
+                    "Value": {
+                      "Number": [
+                        84
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "TOCHeading": "ChEMBL Target Tree",
+                "Description": "Protein target tree from ChEMBL",
+                "URL": "https://www.ebi.ac.uk/chembl/target/browser",
+                "Information": [
+                  {
+                    "ReferenceNumber": 42,
+                    "Name": "HID",
+                    "URL": "https://pubchem.ncbi.nlm.nih.gov/classification/#hid=87",
+                    "Value": {
+                      "Number": [
+                        87
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "TOCHeading": "UN GHS Classification",
+                "Description": "The United Nations' Globally Harmonised System of Classification and Labelling of Chemicals (GHS) provides a harmonised basis for globally uniform physical, environmental, and health and safety information on hazardous chemical substances and mixtures.",
+                "Information": [
+                  {
+                    "ReferenceNumber": 40,
+                    "Name": "HID",
+                    "URL": "https://pubchem.ncbi.nlm.nih.gov/classification/#hid=83",
+                    "Value": {
+                      "Number": [
+                        83
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "TOCHeading": "EPA CPDat Classification",
+                "Description": "CPDat (Chemical and Products Database) is a database containing information mapping more than 49,000 chemicals to a set of terms categorizing their usage or function in 16,000 consumer products (e.g. shampoo, soap) types based on what chemicals they contain.",
+                "Information": [
+                  {
+                    "ReferenceNumber": 43,
+                    "Name": "HID",
+                    "URL": "https://pubchem.ncbi.nlm.nih.gov/classification/#hid=99",
+                    "Value": {
+                      "Number": [
+                        99
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "Reference": [
+      {
+        "ReferenceNumber": 1,
+        "SourceName": "ChEBI",
+        "SourceID": "CHEBI:OBO:68827",
+        "Name": "(+)-artemisinin",
+        "URL": "http://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:223316",
+        "ANID": 2491465
+      },
+      {
+        "ReferenceNumber": 6,
+        "SourceName": "DrugBank",
+        "SourceID": "DB13132",
+        "Name": "Artemisinin",
+        "Description": "The DrugBank database is a unique bioinformatics and cheminformatics resource that combines detailed drug (i.e. chemical, pharmacological and pharmaceutical) data with comprehensive drug target (i.e. sequence, structure, and pathway) information.",
+        "URL": "http://www.drugbank.ca/drugs/DB13132",
+        "ANID": 3630490
+      },
+      {
+        "ReferenceNumber": 15,
+        "SourceName": "LiverTox",
+        "SourceID": "ArtemisininDerivatives.htm",
+        "Name": "Artemisinin",
+        "Description": "LIVERTOX provides up-to-date, accurate, and easily accessed information on the diagnosis, cause, frequency, patterns, and management of liver injury attributable to prescription and nonprescription medications, herbals and dietary supplements. Read more: https://livertox.nlm.nih.gov/",
+        "URL": "https://livertox.nlm.nih.gov/ArtemisininDerivatives.htm",
+        "IsToxnet": true,
+        "ANID": 2261660
+      },
+      {
+        "ReferenceNumber": 2,
+        "SourceName": "ChemIDplus",
+        "SourceID": "0063968649",
+        "Name": "Artemisinin [INN]",
+        "Description": "ChemIDplus is a free, web search system that provides access to the structure and nomenclature authority files used for the identification of chemical substances cited in National Library of Medicine (NLM) databases, including the TOXNET® system.",
+        "URL": "https://chem.nlm.nih.gov/chemidplus/sid/0063968649",
+        "IsToxnet": true,
+        "ANID": 943245
+      },
+      {
+        "ReferenceNumber": 7,
+        "SourceName": "DTP/NCI",
+        "SourceID": "NSC 758216",
+        "Name": "artemisinin",
+        "Description": "The NCI Development Therapeutics Program (DTP) provides services and resources to the academic and private-sector research communities worldwide to facilitate the discovery and development of new cancer therapeutic agents.",
+        "URL": "https://dtp.cancer.gov/dtpstandard/servlet/dwindex?searchtype=NSC&outputformat=html&searchlist=758216",
+        "ANID": 6608273
+      },
+      {
+        "ReferenceNumber": 9,
+        "SourceName": "EPA DSSTox",
+        "SourceID": "DTXSID2040652",
+        "Name": "Artemisinin",
+        "Description": "DSSTox provides a high quality public chemistry resource for supporting improved predictive toxicology.",
+        "URL": "https://comptox.epa.gov/dashboard/DTXSID2040652",
+        "ANID": 1157510
+      },
+      {
+        "ReferenceNumber": 11,
+        "SourceName": "European Chemicals Agency (ECHA)",
+        "SourceID": "700-290-5",
+        "Name": "(3R,5aS,6R,8aS,9R,12S,12aR)-3,6,9-trimethyloctahydro-3,12-epoxypyrano[4,3-j][1,2]benzodioxepin-10(3H)-one",
+        "Description": "The European Chemicals Agency (ECHA) is an agency of the European Union which is the driving force among regulatory authorities in implementing the EU's groundbreaking chemicals legislation for the benefit of human health and the environment as well as for innovation and competitiveness.",
+        "URL": "https://echa.europa.eu/substance-information/-/substanceinfo/100.110.458",
+        "LicenseNote": "Use of the information, documents and data from the ECHA website is subject to the terms and conditions of this Legal Notice, and subject to other binding limitations provided for under applicable law, the information, documents and data made available on the ECHA website may be reproduced, distributed and/or used, totally or in part, for non-commercial purposes provided that ECHA is acknowledged as the source: \"Source: European Chemicals Agency, http://echa.europa.eu/\". Such acknowledgement must be included in each copy of the material. ECHA permits and encourages organisations and individuals to create links to the ECHA website under the following cumulative conditions: Links can only be made to webpages that provide a link to the Legal Notice page.",
+        "LicenseURL": "https://echa.europa.eu/web/guest/legal-notice",
+        "ANID": 1991821
+      },
+      {
+        "ReferenceNumber": 12,
+        "SourceName": "European Chemicals Agency (ECHA)",
+        "SourceID": "613-408-4",
+        "Name": "3,12-Epoxy-12H-pyrano[4,3-j]-1,2-benzodioxepin-10(3H)-one, octahydro-3,6,9-trimethyl-, (3R,5aS,6R,8aS,9R,12S,12aR)",
+        "Description": "The European Chemicals Agency (ECHA) is an agency of the European Union which is the driving force among regulatory authorities in implementing the EU's groundbreaking chemicals legislation for the benefit of human health and the environment as well as for innovation and competitiveness.",
+        "URL": "https://echa.europa.eu/information-on-chemicals",
+        "LicenseNote": "Use of the information, documents and data from the ECHA website is subject to the terms and conditions of this Legal Notice, and subject to other binding limitations provided for under applicable law, the information, documents and data made available on the ECHA website may be reproduced, distributed and/or used, totally or in part, for non-commercial purposes provided that ECHA is acknowledged as the source: \"Source: European Chemicals Agency, http://echa.europa.eu/\". Such acknowledgement must be included in each copy of the material. ECHA permits and encourages organisations and individuals to create links to the ECHA website under the following cumulative conditions: Links can only be made to webpages that provide a link to the Legal Notice page.",
+        "LicenseURL": "https://echa.europa.eu/web/guest/legal-notice",
+        "ANID": 2098455
+      },
+      {
+        "ReferenceNumber": 3,
+        "SourceName": "ChemIDplus",
+        "SourceID": "r_68827",
+        "Description": "The toxicity data was from the legacy RTECS data set in ChemIDplus.",
+        "URL": "https://chem.nlm.nih.gov/chemidplus/sid/0063968649",
+        "IsToxnet": true,
+        "ANID": 3734648
+      },
+      {
+        "ReferenceNumber": 4,
+        "SourceName": "ClinicalTrials.gov",
+        "SourceID": "cid68827",
+        "Name": "Artemisinin",
+        "Description": "ClinicalTrials.gov is an NIH registry and results database of publicly and privately supported clinical studies of human participants conducted around the world.",
+        "URL": "https://clinicaltrials.gov/",
+        "LicenseNote": "The ClinicalTrials.gov data carry an international copyright outside the United States and its Territories or Possessions. Some ClinicalTrials.gov data may be subject to the copyright of third parties; you should consult these entities for any additional terms of use.",
+        "LicenseURL": "https://clinicaltrials.gov/ct2/about-site/terms-conditions#Use",
+        "ANID": 5190897
+      },
+      {
+        "ReferenceNumber": 5,
+        "SourceName": "DrugBank",
+        "SourceID": "DB13132 interaction #1",
+        "Description": "The DrugBank database is a unique bioinformatics and cheminformatics resource that combines detailed drug (i.e. chemical, pharmacological and pharmaceutical) data with comprehensive drug target (i.e. sequence, structure, and pathway) information.",
+        "URL": "http://www.drugbank.ca/drugs/DB13132#enzymes",
+        "ANID": 3630489
+      },
+      {
+        "ReferenceNumber": 8,
+        "SourceName": "EPA Chemical and Products Database (CPDat)",
+        "SourceID": "3933_DTXSID2040652",
+        "Name": "artemisinine",
+        "Description": "Chemical, products, and use category from EPA CPDat",
+        "URL": "https://comptox.epa.gov/dashboard/DTXSID2040652#exposure",
+        "LicenseURL": "https://www.epa.gov/privacy/privacy-act-laws-policies-and-resources",
+        "ANID": 7764179
+      },
+      {
+        "ReferenceNumber": 10,
+        "SourceName": "European Chemicals Agency (ECHA)",
+        "SourceID": "20605",
+        "Name": "(3R,5aS,6R,8aS,9R,12S,12aR)-3,6,9-trimethyloctahydro-3,12-epoxypyrano[4,3-j][1,2]benzodioxepin-10(3H)-one",
+        "Description": "The information provided here is aggregated from the \"Notified classification and labelling\" from ECHA's C&L Inventory. Read more: https://echa.europa.eu/information-on-chemicals/cl-inventory-database",
+        "URL": "https://echa.europa.eu/information-on-chemicals/cl-inventory-database/-/discli/details/20605",
+        "LicenseNote": "Use of the information, documents and data from the ECHA website is subject to the terms and conditions of this Legal Notice, and subject to other binding limitations provided for under applicable law, the information, documents and data made available on the ECHA website may be reproduced, distributed and/or used, totally or in part, for non-commercial purposes provided that ECHA is acknowledged as the source: \"Source: European Chemicals Agency, http://echa.europa.eu/\". Such acknowledgement must be included in each copy of the material. ECHA permits and encourages organisations and individuals to create links to the ECHA website under the following cumulative conditions: Links can only be made to webpages that provide a link to the Legal Notice page.",
+        "LicenseURL": "https://echa.europa.eu/web/guest/legal-notice",
+        "ANID": 1857090
+      },
+      {
+        "ReferenceNumber": 13,
+        "SourceName": "FDA/SPL Indexing Data",
+        "SourceID": "9RMU91N5K2",
+        "Name": "9RMU91N5K2",
+        "Description": "The UNique Ingredient Identifier (UNII) is an alphanumeric substance identifier from the joint FDA/USP Substance Registration System (SRS).",
+        "URL": "https://www.fda.gov/ForIndustry/DataStandards/SubstanceRegistrationSystem-UniqueIngredientIdentifierUNII/",
+        "ANID": 5834780
+      },
+      {
+        "ReferenceNumber": 14,
+        "SourceName": "LIPID MAPS",
+        "SourceID": "LMPR0103190003",
+        "Name": "Artemisin",
+        "URL": "https://www.lipidmaps.org/data/LMSDRecord.php?LMID=LMPR0103190003",
+        "ANID": 5167476
+      },
+      {
+        "ReferenceNumber": 16,
+        "SourceName": "MassBank of North America (MoNA)",
+        "SourceID": "CCMSLIB00000080460",
+        "Name": "MLS001097650",
+        "Description": "MassBank of North America (MoNA) is a metadata-centric, auto-curating repository designed for efficient storage and querying of mass spectral records. CLick the link above to see all spectral information from this compound.",
+        "URL": "http://mona.fiehnlab.ucdavis.edu/spectra/browse?inchikey=BLUAFEHZUWYNDE-NNWCWBAJSA-N",
+        "ANID": 3429893
+      },
+      {
+        "ReferenceNumber": 17,
+        "SourceName": "MassBank of North America (MoNA)",
+        "SourceID": "FIO00415",
+        "Name": "Artemisinin",
+        "Description": "MassBank of North America (MoNA) is a metadata-centric, auto-curating repository designed for efficient storage and querying of mass spectral records. CLick the link above to see all spectral information from this compound.",
+        "URL": "http://mona.fiehnlab.ucdavis.edu/spectra/browse?inchikey=BLUAFEHZUWYNDE-NNWCWBAJSA-N",
+        "ANID": 3447365
+      },
+      {
+        "ReferenceNumber": 18,
+        "SourceName": "MassBank of North America (MoNA)",
+        "SourceID": "FIO00416",
+        "Name": "Artemisinin",
+        "Description": "MassBank of North America (MoNA) is a metadata-centric, auto-curating repository designed for efficient storage and querying of mass spectral records. CLick the link above to see all spectral information from this compound.",
+        "URL": "http://mona.fiehnlab.ucdavis.edu/spectra/browse?inchikey=BLUAFEHZUWYNDE-NNWCWBAJSA-N",
+        "ANID": 3447366
+      },
+      {
+        "ReferenceNumber": 19,
+        "SourceName": "MassBank of North America (MoNA)",
+        "SourceID": "FIO00417",
+        "Name": "Artemisinin",
+        "Description": "MassBank of North America (MoNA) is a metadata-centric, auto-curating repository designed for efficient storage and querying of mass spectral records. CLick the link above to see all spectral information from this compound.",
+        "URL": "http://mona.fiehnlab.ucdavis.edu/spectra/browse?inchikey=BLUAFEHZUWYNDE-NNWCWBAJSA-N",
+        "ANID": 3447367
+      },
+      {
+        "ReferenceNumber": 20,
+        "SourceName": "MassBank of North America (MoNA)",
+        "SourceID": "FIO00418",
+        "Name": "Artemisinin",
+        "Description": "MassBank of North America (MoNA) is a metadata-centric, auto-curating repository designed for efficient storage and querying of mass spectral records. CLick the link above to see all spectral information from this compound.",
+        "URL": "http://mona.fiehnlab.ucdavis.edu/spectra/browse?inchikey=BLUAFEHZUWYNDE-NNWCWBAJSA-N",
+        "ANID": 3447368
+      },
+      {
+        "ReferenceNumber": 21,
+        "SourceName": "SpectraBase",
+        "SourceID": "HAiuq3EBf2G",
+        "Name": "",
+        "URL": "https://spectrabase.com/spectrum/HAiuq3EBf2G",
+        "ANID": 4550984
+      },
+      {
+        "ReferenceNumber": 22,
+        "SourceName": "SpectraBase",
+        "SourceID": "CyaGCVfUyZ1",
+        "Name": "",
+        "URL": "https://spectrabase.com/spectrum/CyaGCVfUyZ1",
+        "ANID": 4550985
+      },
+      {
+        "ReferenceNumber": 23,
+        "SourceName": "SpectraBase",
+        "SourceID": "Etmz8q4aQI3",
+        "Name": "",
+        "URL": "https://spectrabase.com/spectrum/Etmz8q4aQI3",
+        "ANID": 4550986
+      },
+      {
+        "ReferenceNumber": 24,
+        "SourceName": "SpectraBase",
+        "SourceID": "6yo4umbFjUo",
+        "Name": "",
+        "URL": "https://spectrabase.com/spectrum/6yo4umbFjUo",
+        "ANID": 4550987
+      },
+      {
+        "ReferenceNumber": 25,
+        "SourceName": "Springer Nature",
+        "SourceID": "20051322-821764938",
+        "Description": "Literature references related to scientific contents from Springer Nature journals and books. Read more: https://link.springer.com/",
+        "ANID": 3847492
+      },
+      {
+        "ReferenceNumber": 26,
+        "SourceName": "Springer Nature",
+        "SourceID": "20051322-821736018",
+        "Description": "Literature references related to scientific contents from Springer Nature journals and books. Read more: https://link.springer.com/",
+        "ANID": 3864608
+      },
+      {
+        "ReferenceNumber": 27,
+        "SourceName": "Springer Nature",
+        "SourceID": "20051327-670040490",
+        "Description": "Literature references related to scientific contents from Springer Nature journals and books. https://link.springer.com/",
+        "URL": "https://pubchem.ncbi.nlm.nih.gov/substance/341731652",
+        "ANID": 4357898
+      },
+      {
+        "ReferenceNumber": 28,
+        "SourceName": "The Cambridge Structural Database",
+        "SourceID": "CCDC 691593",
+        "Description": "The Cambridge Structural Database provides access to 3D structures of molecules determined experimentally using diffraction techniques.",
+        "URL": "https://www.ccdc.cam.ac.uk/structures/Search?Ccdcid=691593",
+        "ANID": 3359502
+      },
+      {
+        "ReferenceNumber": 29,
+        "SourceName": "The Cambridge Structural Database",
+        "SourceID": "CCDC 754897",
+        "Description": "The Cambridge Structural Database provides access to 3D structures of molecules determined experimentally using diffraction techniques.",
+        "URL": "https://www.ccdc.cam.ac.uk/structures/Search?Ccdcid=754897",
+        "ANID": 3371506
+      },
+      {
+        "ReferenceNumber": 30,
+        "SourceName": "Thieme Chemistry",
+        "SourceID": "20051322-821764938",
+        "Description": "Literature references related to scientific contents from Thieme journals and books. Read more: http://www.thieme-chemistry.com",
+        "ANID": 5498144
+      },
+      {
+        "ReferenceNumber": 31,
+        "SourceName": "WHO ATC",
+        "SourceID": "3688",
+        "Description": "The Anatomical Therapeutic Chemical (ATC) Classification System is a classification of active ingredients of drugs according to the organ or system on which they act and their therapeutic, pharmacological and chemical properties.",
+        "URL": "https://www.whocc.no/atc/",
+        "ANID": 755949
+      },
+      {
+        "ReferenceNumber": 32,
+        "SourceName": "Wikipedia",
+        "SourceID": "Q426921",
+        "Name": "artemisinin",
+        "Description": "Link to the compound information in Wikipedia.",
+        "URL": "https://en.wikipedia.org/wiki/Artemisinin",
+        "ANID": 2309161
+      },
+      {
+        "ReferenceNumber": 33,
+        "SourceName": "PubChem",
+        "SourceID": "PubChem",
+        "Description": "Data deposited in or computed by PubChem",
+        "URL": "https://pubchem.ncbi.nlm.nih.gov"
+      },
+      {
+        "ReferenceNumber": 34,
+        "SourceName": "MeSH",
+        "SourceID": "67031327",
+        "Name": "artemisinine",
+        "URL": "https://www.ncbi.nlm.nih.gov/mesh/67031327"
+      },
+      {
+        "ReferenceNumber": 35,
+        "SourceName": "MeSH",
+        "SourceID": "DescTree",
+        "Name": "MeSH Tree",
+        "Description": "MeSH (Medical Subject Headings) is the NLM controlled vocabulary thesaurus used for indexing articles for PubMed.",
+        "URL": "http://www.nlm.nih.gov/mesh/meshhome.html"
+      },
+      {
+        "ReferenceNumber": 36,
+        "SourceName": "ChEBI",
+        "SourceID": "OBO",
+        "Name": "ChEBI Ontology",
+        "Description": "The ChEBI Ontology is a structured classification of the entities contained within ChEBI.",
+        "URL": "http://www.ebi.ac.uk/chebi/userManualForward.do#ChEBI%20Ontology"
+      },
+      {
+        "ReferenceNumber": 37,
+        "SourceName": "LIPID MAPS",
+        "SourceID": "LM",
+        "Name": "Lipid Classification",
+        "Description": "The LIPID MAPS comprehensive classification system for lipids is comprised of eight lipid categories: Fatty acyls (FA), Glycerolipids (GL), Glycerophospholipids (GP), Sphingolipids (SP), Sterol lipids (ST), Prenol lipids (PR), Saccharolipids (SL) and Polyketides (PK). Each lipid category has its own sublassification hierarchy.",
+        "URL": "https://www.lipidmaps.org/"
+      },
+      {
+        "ReferenceNumber": 38,
+        "SourceName": "WIPO",
+        "SourceID": "IPC",
+        "Name": "International Patent Classification",
+        "Description": "The World Intellectual Property Organization (WIPO) International Patent Classification (IPC), established by the Strasbourg Agreement 1971, provides for a hierarchical system of language independent symbols for the classification of patents and utility models according to the different areas of technology to which they pertain.",
+        "URL": "http://www.wipo.int/classifications/ipc/"
+      },
+      {
+        "ReferenceNumber": 39,
+        "SourceName": "WHO ATC",
+        "SourceID": "ATCTree",
+        "Name": "ATC Code",
+        "Description": "In the World Health Organization (WHO) Anatomical Therapeutic Chemical (ATC) classification system, the active substances are divided into different groups according to the organ or system on which they act and their therapeutic, pharmacological and chemical properties.",
+        "URL": "https://www.whocc.no/atc_ddd_index/"
+      },
+      {
+        "ReferenceNumber": 40,
+        "SourceName": "UN Globally Harmonized System of Classification and Labelling of Chemicals (GHS)",
+        "SourceID": "UN_GHS_tree",
+        "Name": "GHS Classification Tree",
+        "Description": "The United Nations' Globally Harmonised System of Classification and Labelling of Chemicals (GHS) provides a harmonised basis for globally uniform physical, environmental, and health and safety information on hazardous chemical substances and mixtures. It sets up criteria for the classification of chemicals for physical-chemical, health, and environmental hazards of chemical substances and mixtures and sets up standardised hazard information to facilitate global trade of chemicals.",
+        "URL": "http://www.unece.org/trans/danger/publi/ghs/ghs_welcome_e.html"
+      },
+      {
+        "ReferenceNumber": 41,
+        "SourceName": "ChemIDplus",
+        "SourceID": "ChemIDplus_tree",
+        "Name": "ChemIDplus Chemical Information Classification",
+        "Description": "ChemIDplus is a TOXNET (TOXicology Data NETwork) databases that contain chemicals and drugs related information. It is managed by the Toxicology and Environmental Health Information Program (TEHIP) in the Division of Specialized Information Services (SIS) of the National Library of Medicine (NLM).",
+        "URL": "https://chem.sis.nlm.nih.gov/chemidplus/",
+        "IsToxnet": true
+      },
+      {
+        "ReferenceNumber": 42,
+        "SourceName": "ChEMBL",
+        "SourceID": "Target Tree",
+        "Name": "Target Tree",
+        "Description": "The ChEMBL Protein Target Tree is a structured classification of the protein target entities contained with the ChEMBL resource.",
+        "URL": "https://www.ebi.ac.uk/chembl/target/browser"
+      },
+      {
+        "ReferenceNumber": 43,
+        "SourceName": "EPA Chemical and Products Database (CPDat)",
+        "SourceID": "cpdat_tree",
+        "Name": "EPA CPDat Classification",
+        "Description": "CPDat (Chemical and Products Database) is a database containing information mapping more than 49,000 chemicals to a set of terms categorizing their usage or function in 16,000 consumer products. Ref: The Chemical and Products Database, a resource for exposure-relevant data on chemicals in consumer products, Scientific Data, volume 5, Article number: 180125 (2018), DOI:10.1038/sdata.2018.125",
+        "URL": "https://www.epa.gov/chemical-research/chemical-and-products-database-cpdat"
+      },
+      {
+        "ReferenceNumber": 44,
+        "SourceName": "MeSH",
+        "SourceID": "68000890",
+        "Name": "Anti-Infective Agents",
+        "URL": "https://www.ncbi.nlm.nih.gov/mesh/68000890"
+      }
+    ]
+  }
+}
