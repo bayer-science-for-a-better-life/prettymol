@@ -246,7 +246,7 @@ class MorganFingerprintScene(MovingCameraScene):
                                     replace_mobject_with_target_in_scene=True))
                 self.play(Transform(highlighted_molecule.submol_graph(),
                                     submol,
-                                    replace_mobject_with_target_in_scene=False),
+                                    replace_mobject_with_target_in_scene=True),
                           GrowFromCenter(subsmiles))
 
                 submol_hash = hash(highlighted_molecule.sub_smiles) % len(current_matrix.get_entries())
@@ -259,6 +259,8 @@ class MorganFingerprintScene(MovingCameraScene):
                 self.play(FadeOut(arrow),
                           FadeOut(submol),
                           FadeOut(subsmiles))
+
+            self.remove(current_molecule)
 
 
 class Malaria(Scene):
