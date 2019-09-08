@@ -1,9 +1,10 @@
 from typing import Dict, Union
 
 import numpy as np
+from manimlib.animation.fading import FadeOut
 from manimlib.imports import Scene, Circle, ShowCreation, Transform, \
     COLOR_MAP, Line, Matrix, Write, MovingCameraScene, VMobject, RIGHT, VGroup, LEFT, LEFT_SIDE, RIGHT_SIDE, \
-    GrowFromCenter, DOWN
+    GrowFromCenter, DOWN, IntegerMatrix, Arrow
 from manimlib.mobject.svg.tex_mobject import TextMobject
 from rdkit.Chem import AllChem
 
@@ -202,8 +203,8 @@ class ExampleScene(MovingCameraScene):
                   GrowFromCenter(subsmiles))
 
         # Create fingerprint vectors
-        matrices = [Matrix(np.zeros((num_columns, 1), dtype=int))
-                    for num_columns in (2, 4, 8, 16)]  # 16, 32, 64, 128, 256
+        matrices = [IntegerMatrix(np.zeros((num_columns, 1), dtype=int))
+                    for num_columns in (2, 4, 8)]  # 16, 32, 64, 128, 256
         for matrix in matrices:
             matrix.next_to(RIGHT_SIDE, 5*LEFT)
 
@@ -218,6 +219,14 @@ class ExampleScene(MovingCameraScene):
                 self.camera_frame.set_height, height
             )
             current_matrix = matrix
+
+        submol_hash = hash(submol.sub_smiles) % len(current_matrix.get_entries())
+        entry = current_matrix.get_entries()[submol_hash]
+        arrow = Arrow(submol, entry)
+        self.play(entry.set_color, COLOR_MAP['GREEN_E'],
+                  entry.set_value, 1,
+                  Write(arrow))
+        self.play(FadeOut(arrow))
 
         # Some other fancy things we can do
         # self.play(GrowFromCenter(molecule))
