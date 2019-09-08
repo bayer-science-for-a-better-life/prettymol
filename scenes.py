@@ -1,3 +1,4 @@
+from copy import copy, deepcopy
 from typing import Dict, Union
 
 import numpy as np
@@ -87,7 +88,7 @@ class Molecule(VMobject):
         self.atom_center = sub_center
         self.radius = sub_radius
         if self.atom_center is not None:
-            self.sub_atom_map, self.submol, self.sub_smiles = self.atom_environment(atom_idx=self.atom_center,
+            self.sub_atom_map, self.submol, self.sub_smiles = self.atom_environment(atom_index=self.atom_center,
                                                                                     radius=self.radius)
         else:
             self.sub_atom_map, self.submol, self.sub_smiles = {}, None, ''
@@ -142,12 +143,12 @@ class Molecule(VMobject):
         # noinspection PyArgumentList
         return self.atom_in_submol(bond.GetBeginAtom()) and self.atom_in_submol(bond.GetEndAtom())
 
-    def atom_environment(self, atom_idx: int, radius: int):
+    def atom_environment(self, atom_index: int, radius: int):
         # https://www.rdkit.org/docs/GettingStartedInPython.html#explaining-bits-from-morgan-fingerprints
-        atom_environment = AllChem.FindAtomEnvironmentOfRadiusN(self.molecule, radius, atom_idx, False)
+        atom_environment = AllChem.FindAtomEnvironmentOfRadiusN(self.molecule, radius, atom_index, False)
         atom_map = {}  # atom_index_molecule -> atom_index_submolecule
         submol = AllChem.PathToSubmol(self.molecule, atom_environment, atomMap=atom_map)
-        smiles = AllChem.MolToSmiles(submol, rootedAtAtom=atom_map[atom_idx], canonical=False)
+        smiles = AllChem.MolToSmiles(submol, rootedAtAtom=atom_map[atom_index], canonical=False)
         return atom_map, submol, smiles
 
     def sub_molecule(self):
@@ -161,8 +162,12 @@ class Molecule(VMobject):
                         sub_radius=self.radius)
 
     def submol_graph(self):
-        nodes = [node for atom_index, node in self._atom_index_to_node.items() if self.atom_in_submol(atom_index)]
-        edges = [edge for bond_index, edge in self._bond_index_to_edge.items() if self.bond_in_submol(bond_index)]
+        nodes = [deepcopy(node)
+                 for atom_index, node in self._atom_index_to_node.items()
+                 if self.atom_in_submol(atom_index)]
+        edges = [deepcopy(edge)
+                 for bond_index, edge in self._bond_index_to_edge.items()
+                 if self.bond_in_submol(bond_index)]
         return VGroup(*nodes+edges)
 
     @property
@@ -170,37 +175,18 @@ class Molecule(VMobject):
         return AllChem.MolToSmiles(self.molecule)
 
 
-class ExampleScene(MovingCameraScene):
+class MorganFingerprintScene(MovingCameraScene):
+
+    def __init__(self, molecule=None, centers=(5, 3), radii=(1, 2), conformer=0, **kwargs):
+        if molecule is None:
+            molecule = next(AllChem.SDMolSupplier('data/artemisinin/Structure2D_CID_68827.sdf'))
+        self.molecule = molecule
+        self.conformer = conformer
+        self.centers = centers
+        self.radii = radii
+        super().__init__(**kwargs)
 
     def construct(self):
-
-        # Read in the molecule
-        molecule0 = Molecule(next(AllChem.SDMolSupplier('data/artemisinin/Structure2D_CID_68827.sdf')),
-                             conformer=0,
-                             node_repr=Circle,
-                             edge_repr=Line,
-                             sub_center=None,
-                             sub_radius=0)
-        molecule0.next_to(LEFT_SIDE, RIGHT)
-        molecule1 = Molecule(next(AllChem.SDMolSupplier('data/artemisinin/Structure2D_CID_68827.sdf')),
-                             conformer=0,
-                             node_repr=Circle,
-                             edge_repr=Line,
-                             sub_center=5,
-                             sub_radius=1)
-        molecule1.next_to(LEFT_SIDE, RIGHT)
-        submol = molecule1.sub_molecule()
-        submol.next_to(molecule1, 5 * RIGHT)
-        subsmiles = TextMobject(molecule1.sub_smiles)
-        subsmiles.next_to(submol, DOWN)
-
-        # Show it in the center of the scene
-        # self.camera.set_frame_center(molecule0.get_center())
-        self.play(ShowCreation(molecule0))
-        self.play(Transform(molecule0, molecule1, replace_mobject_with_target_in_scene=True))
-        self.play(Transform(molecule1.submol_graph().copy(), submol,
-                            replace_mobject_with_target_in_scene=False),
-                  GrowFromCenter(subsmiles))
 
         # Create fingerprint vectors
         matrices = [IntegerMatrix(np.zeros((num_columns, 1), dtype=int))
@@ -220,24 +206,59 @@ class ExampleScene(MovingCameraScene):
             )
             current_matrix = matrix
 
-        submol_hash = hash(submol.sub_smiles) % len(current_matrix.get_entries())
-        entry = current_matrix.get_entries()[submol_hash]
-        arrow = Arrow(submol, entry)
-        self.play(entry.set_color, COLOR_MAP['GREEN_E'],
-                  entry.set_value, 1,
-                  Write(arrow))
-        self.play(FadeOut(arrow))
+        matrix = IntegerMatrix(np.zeros((8, 1), dtype=int))
+        matrix.next_to(RIGHT_SIDE, 5*LEFT)
+        self.play(Transform(current_matrix, matrix, replace_mobject_with_target_in_scene=True),)
+        current_matrix = matrix
 
-        # Some other fancy things we can do
-        # self.play(GrowFromCenter(molecule))
-        # self.play(ApplyMethod(molecule.shift, 3 * DOWN))
-        # self.play(FadeOut(molecule))
+        original_molecule = Molecule(self.molecule,
+                                     conformer=self.conformer,
+                                     node_repr=Circle,
+                                     edge_repr=Line,
+                                     sub_center=None,
+                                     sub_radius=0)
 
-        # Move camera in scene 3D
-        # self.move_camera(0.8*np.pi/2, -0.45*np.pi)
-        # self.begin_ambient_camera_rotation()
+        original_molecule.next_to(LEFT_SIDE, RIGHT)
 
-        self.wait(3)
+        self.play(ShowCreation(original_molecule))
+
+        for center in self.centers:
+
+            current_molecule = copy(original_molecule)
+
+            for radius in self.radii:
+
+                highlighted_molecule = Molecule(self.molecule,
+                                                conformer=self.conformer,
+                                                node_repr=Circle,
+                                                edge_repr=Line,
+                                                sub_center=center,
+                                                sub_radius=radius)
+                highlighted_molecule.next_to(LEFT_SIDE, RIGHT)
+
+                submol = highlighted_molecule.submol_graph()
+                submol.next_to(highlighted_molecule, 5 * RIGHT)
+                subsmiles = TextMobject(highlighted_molecule.sub_smiles)
+                subsmiles.next_to(submol, DOWN)
+
+                self.play(Transform(current_molecule,
+                                    highlighted_molecule,
+                                    replace_mobject_with_target_in_scene=True))
+                self.play(Transform(highlighted_molecule.submol_graph(),
+                                    submol,
+                                    replace_mobject_with_target_in_scene=False),
+                          GrowFromCenter(subsmiles))
+
+                submol_hash = hash(highlighted_molecule.sub_smiles) % len(current_matrix.get_entries())
+                entry = current_matrix.get_entries()[submol_hash]
+                arrow = Arrow(submol, entry)
+                self.play(entry.set_color, COLOR_MAP['GREEN_E'],
+                          entry.set_value, 1,
+                          Write(arrow))
+
+                self.play(FadeOut(arrow),
+                          FadeOut(submol),
+                          FadeOut(subsmiles))
 
 
 class Malaria(Scene):
@@ -298,10 +319,19 @@ if __name__ == "__main__":
                     '--video_dir', str(video_dir),
                     '--tex_dir', str(tex_dir),
                     __file__,
-                    ExampleScene.__name__]
+                    MorganFingerprintScene.__name__]
         main()
     finally:
         sys.argv = argv
 
 
 # TODO: maybe translate the substructure instead of making it appear
+
+# Some other fancy things we can do
+# self.play(GrowFromCenter(molecule))
+# self.play(ApplyMethod(molecule.shift, 3 * DOWN))
+# self.play(FadeOut(molecule))
+
+# Move camera in scene 3D
+# self.move_camera(0.8*np.pi/2, -0.45*np.pi)
+# self.begin_ambient_camera_rotation()
