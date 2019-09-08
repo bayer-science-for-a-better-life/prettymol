@@ -211,20 +211,26 @@ class MorganFingerprintScene(MovingCameraScene):
         self.play(Transform(current_matrix, matrix, replace_mobject_with_target_in_scene=True),)
         current_matrix = matrix
 
-        original_molecule = Molecule(self.molecule,
-                                     conformer=self.conformer,
-                                     node_repr=Circle,
-                                     edge_repr=Line,
-                                     sub_center=None,
-                                     sub_radius=0)
-
-        original_molecule.next_to(LEFT_SIDE, RIGHT)
-
-        self.play(ShowCreation(original_molecule))
+        created = False
 
         for center in self.centers:
 
-            current_molecule = copy(original_molecule)
+            original_molecule = Molecule(self.molecule,
+                                         conformer=self.conformer,
+                                         node_repr=Circle,
+                                         edge_repr=Line,
+                                         sub_center=None,
+                                         sub_radius=0)
+
+            original_molecule.next_to(LEFT_SIDE, RIGHT)
+
+            if not created:
+                self.play(ShowCreation(original_molecule))
+                created = True
+            else:
+                self.play(Transform(current_molecule, original_molecule))
+
+            current_molecule = original_molecule
 
             for radius in self.radii:
 
