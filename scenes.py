@@ -4,7 +4,8 @@ from typing import Dict, Union
 import hashlib
 
 import numpy as np
-from manimlib.animation.fading import FadeOut
+from manimlib.animation.fading import FadeOut, VFadeOut
+from manimlib.animation.transform import ApplyFunction
 from manimlib.imports import Scene, Circle, ShowCreation, Transform, \
     COLOR_MAP, Line, Write, MovingCameraScene, VMobject, RIGHT, VGroup, LEFT, LEFT_SIDE, RIGHT_SIDE, \
     GrowFromCenter, DOWN, IntegerMatrix, Arrow, ReplacementTransform, UP
@@ -124,8 +125,8 @@ class Molecule(VMobject):
                 # node.set_width(1.0)
                 node.set_opacity(1)
             if atom_index == self.atom_center:
-                node.set_width(0.8)
-                node.set_color(COLOR_MAP['YELLOW_E'])
+                node.scale(2)
+                # node.set_color(COLOR_MAP['YELLOW_E'])
             self._atom_index_to_node[atom_index] = node
         return self._atom_index_to_node[atom_index]
 
@@ -237,6 +238,7 @@ class MorganFingerprintScene(MovingCameraScene):
                                          edge_repr=Line,
                                          sub_center=None,
                                          sub_radius=0)
+            original_molecule.scale(0.8)
             original_molecule.next_to(LEFT_SIDE, RIGHT)
             if current_molecule is None:
                 self.play(ShowCreation(original_molecule))
@@ -253,6 +255,7 @@ class MorganFingerprintScene(MovingCameraScene):
                                                 edge_repr=Line,
                                                 sub_center=center,
                                                 sub_radius=radius)
+                highlighted_molecule.scale(0.8)
                 highlighted_molecule.next_to(LEFT_SIDE, RIGHT)
                 radius_text = TextMobject(f'radius={radius}')
                 radius_text.next_to(highlighted_molecule, UP)
@@ -263,25 +266,34 @@ class MorganFingerprintScene(MovingCameraScene):
                 # Animate extracting the submol
                 submol_origin = highlighted_molecule.submol_graph(copy=True)
                 submol_target = highlighted_molecule.submol_graph(copy=True)
-                submol_target.next_to(highlighted_molecule, 5 * RIGHT)
-                subsmiles = TextMobject(highlighted_molecule.sub_smiles)
-                subsmiles.next_to(submol_target, DOWN)
-                self.play(ReplacementTransform(submol_origin, submol_target),
-                          GrowFromCenter(subsmiles))
+                submol_target.scale(0.8)
+                submol_target.next_to(highlighted_molecule, 6 * RIGHT)
+                self.play(ReplacementTransform(submol_origin, submol_target))
 
                 submol_hash = stable_hash(highlighted_molecule.sub_smiles,
                                           fold_to=len(current_matrix.get_entries()))
                 entry = current_matrix.get_entries()[submol_hash]
+                seen_substructures[submol_hash].add(highlighted_molecule.sub_smiles)
+                is_collision = len(seen_substructures[submol_hash]) > 1
+                color = COLOR_MAP['GREEN_E'] if not is_collision else COLOR_MAP['RED_E']
+                if is_collision:
+                    collision_text = TextMobject('Collision!', color=COLOR_MAP['RED_E'])
+                else:
+                    collision_text = TextMobject('No collision', color=COLOR_MAP['GREEN_E'])
+                collision_text.next_to(current_matrix, UP)
+
                 arrow = Arrow(submol_target, entry)
-                self.play(entry.set_color, COLOR_MAP['GREEN_E'],
+                self.play(entry.set_color, color,
                           entry.set_value, 1,
-                          Write(arrow))
+                          Write(arrow),
+                          Write(collision_text)
+                          )
 
                 self.play(FadeOut(arrow),
                           FadeOut(submol_origin),
                           FadeOut(submol_target),
-                          FadeOut(subsmiles),
-                          FadeOut(radius_text))
+                          FadeOut(radius_text),
+                          FadeOut(collision_text))
 
 
 class Malaria(Scene):
