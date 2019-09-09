@@ -205,6 +205,23 @@ class MorganFingerprintScene(MovingCameraScene):
         # Keep track of substructures
         seen_substructures = defaultdict(set)
 
+        # Display the original molecule
+        original_molecule = Molecule(self.molecule,
+                                     conformer=self.conformer,
+                                     node_repr=Circle,
+                                     edge_repr=Line,
+                                     sub_center=None,
+                                     sub_radius=0)
+        original_molecule.scale(0.8)
+        original_molecule.next_to(LEFT_SIDE, RIGHT)
+        molecule_name = TextMobject('Artemisinin')
+        molecule_name.next_to(original_molecule, UP)
+        self.play(
+            ShowCreation(original_molecule),
+            Write(molecule_name)
+        )
+        self.wait(6)
+
         # Create fingerprint vectors
         matrices = [IntegerMatrix(np.zeros((num_columns, 1), dtype=int))
                     for num_columns in (8,)]  # 2, 4, 8, 16, 32, 64, 128, 256
@@ -222,28 +239,29 @@ class MorganFingerprintScene(MovingCameraScene):
                 self.camera_frame.set_height, height
             )
             current_matrix = matrix
-
         matrix = IntegerMatrix(np.zeros((8, 1), dtype=int))
         matrix.next_to(RIGHT_SIDE, 5*LEFT)
         self.play(ReplacementTransform(current_matrix, matrix))
-        current_matrix = matrix
+        self.wait(6)
 
+        current_matrix = matrix
         current_molecule = None
 
         for center in self.centers:
 
-            original_molecule = Molecule(self.molecule,
-                                         conformer=self.conformer,
-                                         node_repr=Circle,
-                                         edge_repr=Line,
-                                         sub_center=None,
-                                         sub_radius=0)
-            original_molecule.scale(0.8)
-            original_molecule.next_to(LEFT_SIDE, RIGHT)
             if current_molecule is None:
-                self.play(ShowCreation(original_molecule))
+                self.play(FadeOut(molecule_name))
             else:
+                original_molecule = Molecule(self.molecule,
+                                             conformer=self.conformer,
+                                             node_repr=Circle,
+                                             edge_repr=Line,
+                                             sub_center=None,
+                                             sub_radius=0)
+                original_molecule.scale(0.8)
+                original_molecule.next_to(LEFT_SIDE, RIGHT)
                 self.play(ReplacementTransform(current_molecule, original_molecule))
+
             current_molecule = original_molecule
 
             for radius in self.radii:
