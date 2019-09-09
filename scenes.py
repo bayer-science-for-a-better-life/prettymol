@@ -5,10 +5,10 @@ import hashlib
 
 import numpy as np
 from manimlib.animation.fading import FadeOut, VFadeOut
-from manimlib.animation.transform import ApplyFunction
+from manimlib.animation.transform import ApplyFunction, TransformFromCopy
 from manimlib.imports import Scene, Circle, ShowCreation, Transform, \
     COLOR_MAP, Line, Write, MovingCameraScene, VMobject, RIGHT, VGroup, LEFT, LEFT_SIDE, RIGHT_SIDE, \
-    GrowFromCenter, DOWN, IntegerMatrix, Arrow, ReplacementTransform, UP
+    GrowFromCenter, DOWN, IntegerMatrix, Arrow, ReplacementTransform, UP, ThreeDScene
 from manimlib.mobject.svg.tex_mobject import TextMobject
 from rdkit.Chem import AllChem
 
@@ -191,7 +191,7 @@ class Molecule(VMobject):
 
 class MorganFingerprintScene(MovingCameraScene):
 
-    def __init__(self, molecule=None, centers=(1, 3, 5), radii=(1, 2, 3), conformer=0, **kwargs):
+    def __init__(self, molecule=None, centers=(1, 3, 5, 7), radii=(1, 2, 3), conformer=0, **kwargs):
         if molecule is None:
             molecule = next(AllChem.SDMolSupplier('data/artemisinin/Structure2D_CID_68827.sdf'))
         self.molecule = molecule
@@ -270,30 +270,44 @@ class MorganFingerprintScene(MovingCameraScene):
                 submol_target.next_to(highlighted_molecule, 6 * RIGHT)
                 self.play(ReplacementTransform(submol_origin, submol_target))
 
+                # Animate assigning the submol to a fingerprint bucket
                 submol_hash = stable_hash(highlighted_molecule.sub_smiles,
                                           fold_to=len(current_matrix.get_entries()))
+                bucket_set = seen_substructures[submol_hash]
                 entry = current_matrix.get_entries()[submol_hash]
+                is_new_collision = len(bucket_set) and (highlighted_molecule.sub_smiles not in bucket_set)
                 seen_substructures[submol_hash].add(highlighted_molecule.sub_smiles)
-                is_collision = len(seen_substructures[submol_hash]) > 1
-                color = COLOR_MAP['GREEN_E'] if not is_collision else COLOR_MAP['RED_E']
-                if is_collision:
+                color = COLOR_MAP['GREEN_E'] if not is_new_collision else COLOR_MAP['RED_E']
+                if is_new_collision:
                     collision_text = TextMobject('Collision!', color=COLOR_MAP['RED_E'])
                 else:
                     collision_text = TextMobject('No collision', color=COLOR_MAP['GREEN_E'])
                 collision_text.next_to(current_matrix, UP)
-
                 arrow = Arrow(submol_target, entry)
-                self.play(entry.set_color, color,
-                          entry.set_value, 1,
-                          Write(arrow),
-                          Write(collision_text)
-                          )
+                entry.set_value(1)
+                entry.set_color(color)
+                self.play(
+                    entry.set_value, 1,
+                    entry.set_color, color,
+                    Write(arrow),
+                    Write(collision_text),
+                    ReplacementTransform(submol_target.copy(), entry)
+                )
 
+                # Get rid of all this "bit"
                 self.play(FadeOut(arrow),
                           FadeOut(submol_origin),
                           FadeOut(submol_target),
                           FadeOut(radius_text),
                           FadeOut(collision_text))
+
+
+class FeatureMatrix(Scene):
+    ...
+
+
+class Molecule3D(ThreeDScene):
+    ...
 
 
 class Malaria(Scene):
