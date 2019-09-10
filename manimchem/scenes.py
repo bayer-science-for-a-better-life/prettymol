@@ -9,7 +9,7 @@ import pandas as pd
 from manimlib.animation.fading import FadeOut, FadeIn
 from manimlib.imports import Scene, Circle, ShowCreation, COLOR_MAP, Line, Write, MovingCameraScene, VMobject, RIGHT, \
     VGroup, LEFT, LEFT_SIDE, RIGHT_SIDE, \
-    GrowFromCenter, DOWN, IntegerMatrix, Arrow, ReplacementTransform, UP, ThreeDScene, Transform, ApplyMethod, Matrix
+    GrowFromCenter, DOWN, IntegerMatrix, Arrow, ReplacementTransform, UP, ThreeDScene, Transform, ApplyMethod
 from manimlib.mobject.svg.tex_mobject import TextMobject
 from rdkit.Chem import AllChem
 
@@ -635,9 +635,9 @@ class Molecule(VMobject):
 
 # --- Scenes
 
-# Good scene from https://talkingphysics.wordpress.com/2018/06/14/creating-text-manim-series-part-4/
 # noinspection PyShadowingNames
 def einstein_quotes(scene):
+    # Inspiring scene from https://talkingphysics.wordpress.com/2018/06/14/creating-text-manim-series-part-4/
     quote = TextMobject("Imagination is more important than knowledge")
     quote.set_color(COLOR_MAP['RED_B'])
     quote.to_edge(UP)
@@ -659,7 +659,7 @@ def einstein_quotes(scene):
 
 class MorganFingerprint(MovingCameraScene):
 
-    def __init__(self, molecule=None, centers=(1, 3, 5, 7), radii=(1, 2, 3), conformer=0, **kwargs):
+    def __init__(self, molecule=None, centers=(1, 3, 5), radii=(1, 2, 3), conformer=0, **kwargs):
         if molecule is None:
             molecule = next(AllChem.SDMolSupplier(str(ARTEMISININ_PUBCHEM_2D)))
         self.molecule = molecule
@@ -688,7 +688,7 @@ class MorganFingerprint(MovingCameraScene):
             ShowCreation(original_molecule),
             Write(molecule_name)
         )
-        self.wait(7)
+        self.wait(4)
 
         # Display fingerprint
         matrix = IntegerMatrix(np.zeros((8, 1), dtype=int))
@@ -696,7 +696,7 @@ class MorganFingerprint(MovingCameraScene):
         matrix_name = TextMobject('Fingerprint (size=8)')
         matrix_name.next_to(matrix, DOWN)
         self.play(Write(matrix), Write(matrix_name))
-        self.wait(7)
+        self.wait(1)
 
         # Animate fingerprinting algorithm
         current_molecule = None
@@ -774,46 +774,7 @@ class MorganFingerprint(MovingCameraScene):
                           FadeOut(collision_text))
 
 
-def transpose_vector(vector: Matrix):
-    # FIXME: Nasty in a hurry
-    clazz = Matrix.__class__
-    config = Matrix.CONFIG
-    array = np.vectorize(lambda x: x.value)
-
-    if vector.get_mob_matrix().ndim == 2:
-        vector.mob_matrix = vector.get_mob_matrix().flatten()
-    else:
-        vector.mob_matrix = np.atleast_2d(vector.mob_matrix)
-
-    return vector
-
-
-# Create fingerprint vectors
-def growing_fingerprints():
-    matrices = [IntegerMatrix(np.zeros((num_columns, 1), dtype=int))
-                for num_columns in (8,)]  # 2, 4, 8, 16, 32, 64, 128, 256
-    for matrix in matrices:
-        matrix.next_to(RIGHT_SIDE, 5*LEFT)
-
-    # Transform vectors to make a point of number of Collisions
-    current_matrix = matrices[0]
-    self.play(Write(current_matrix))
-    for matrix in matrices[1:]:
-        height = (matrix.get_height() if matrix.get_height() > self.camera_frame.get_height()
-                  else self.camera_frame.get_height())
-        self.play(
-            ReplacementTransform(current_matrix, matrix),
-            self.camera_frame.set_height, height
-        )
-        current_matrix = matrix
-
-        # transpose_vector(matrix)
-        # matrix.flip()
-        # matrix.get_image()
-        # matrix.get_mob_matrix()
-
-
-class FeatureMatrix(MovingCameraScene):
+class FeatureMatrix(Scene):
 
     def construct(self):
 
@@ -843,81 +804,109 @@ class FeatureMatrix(MovingCameraScene):
         )
 
         corner_molecule = original_molecule.copy()
-        corner_molecule.scale(0.2)
+        corner_molecule.scale(0.3)
         corner_molecule.to_corner(UP + LEFT)
-        corner_molecule_activity = TextMobject('A', color=ACTIVE_COLOR)
-        corner_molecule_activity.scale(0.6)
-        corner_molecule_activity.next_to(corner_molecule, RIGHT)
-        # FIXME: implement transpose for manim matrices
         corner_molecule_fingerprint = IntegerMatrix(np.array([0, 1, 1, 0, 1, 0, 1, 1], dtype=int).reshape(1, -1))
-        corner_molecule_fingerprint.set_height(0.7 * corner_molecule.get_height())
-        corner_molecule_fingerprint.next_to(corner_molecule_activity, 2 * RIGHT)
+        corner_molecule_fingerprint.set_color(ACTIVE_COLOR)
+        corner_molecule_fingerprint.set_height(0.6 * corner_molecule.get_height())
+        corner_molecule_fingerprint.next_to(corner_molecule, 4 * RIGHT)
 
         self.play(
             ReplacementTransform(original_molecule, corner_molecule),
-            ReplacementTransform(original_molecule_name, corner_molecule_activity),
             ReplacementTransform(original_matrix, corner_molecule_fingerprint),
+            FadeOut(original_molecule_name),
             FadeOut(original_matrix_name),
         )
-
-        # Exercising matrix transpose
-
-        # self.play(original_molecule.scale, 0.2,
-        #           original_molecule.to_corner, LEFT + UP)
         self.wait(1)
 
         # We will generate some random fingerprints
         rng = np.random.RandomState(0)
 
-        # Add many other molecules
+        # Add many other molecules, first show
         mols = [corner_molecule]
-        mol_activities = [corner_molecule_activity]
-        mol_fingerprints = [corner_molecule_fingerprint]
-        for smiles, active in SMILES_ACTIVITIES[:10]:
-
+        fingerprints = [corner_molecule_fingerprint]
+        activities = [True]
+        for smiles, active in SMILES_ACTIVITIES[:30]:
             mol = Molecule(to_rdkit_mol(smiles, to2D=True))
             mol.set_width(corner_molecule.get_width(), stretch=False)
+            # mol.set_height(corner_molecule.get_height(), stretch=True)  # ugly, instead leave space for fpts
             mol.next_to(mols[-1], DOWN)
-
-            mol_activity = TextMobject('A' if active else 'I',
-                                       color=ACTIVE_COLOR if active else INACTIVE_COLOR)
-            mol_activity.scale(0.6)
-            mol_activity.next_to(mol, RIGHT)
-
             mol_fingerprint = IntegerMatrix(rng.choice((0, 1), (1, 8)))
-            mol_fingerprint.set_height(corner_molecule_fingerprint.get_height())
-            mol_fingerprint.next_to(mol_fingerprints[-1], DOWN)
-
+            mol_fingerprint.set_color(ACTIVE_COLOR if active else INACTIVE_COLOR)
+            mol_fingerprint.set_height(fingerprints[-1].get_height())
+            mol_fingerprint.next_to(fingerprints[-1], DOWN)
             mols.append(mol)
-            mol_activities.append(mol_activity)
-            mol_fingerprints.append(mol_fingerprint)
-        # noinspection PyTypeChecker
+            fingerprints.append(mol_fingerprint)
+            activities.append(active)
 
         # Make the whole dataset appear at once
-        self.play(FadeIn(VGroup(*(mols[1:] + mol_activities[1:] + mol_fingerprints[1:]))))
+        new_group = VGroup(*mols[1:], *fingerprints[1:])
+        self.play(FadeIn(new_group))
+        self.wait(1)
 
-        # Grow the fingerprints
+        # Rebuild the matrix growing the fingerprints
         fingerprint_sizes = (16, 32, 128)
         for fingerprint_size in fingerprint_sizes:
             new_fingerprints = []
-            for activity in mol_activities:
-                mol_fingerprint = IntegerMatrix(rng.choice((0, 1), (1, fingerprint_size)))
-                mol_fingerprint.set_height(corner_molecule_fingerprint.get_height())
-                new_fingerprints.append(mol_fingerprint)
-            new_width = (self.camera_frame.get_width()
-                         + new_fingerprints[0].get_width()
-                         - mol_fingerprints[0].get_width())
-            for activity, mol_fingerprint in zip(mol_activities, new_fingerprints):
-                mol_fingerprint.next_to(activity, 2 * RIGHT)
-            group = VGroup(*(mols + mol_activities + new_fingerprints))
-            group.to_corner(UP + LEFT)
+            new_mols = []
+            for old_mol, old_fingerprint, active in zip(mols, fingerprints, activities):
+                # New stuff, resized
+                new_fingerprint = IntegerMatrix(rng.choice((0, 1), (1, fingerprint_size)))
+                new_fingerprint.set_color(ACTIVE_COLOR if active else INACTIVE_COLOR)
+                new_fingerprint.set_width(old_fingerprint.get_width())
+                new_mol = old_mol.copy()
+                new_mol.set_height(new_fingerprint.get_height())
+                # Position
+                if not new_mols:
+                    new_mol.to_corner(UP + LEFT)
+                    new_fingerprint.next_to(new_mol, 4*RIGHT)
+                else:
+                    new_mol.next_to(new_mols[-1], DOWN)
+                    new_fingerprint.next_to(new_fingerprints[-1], DOWN)
+
+                new_mols.append(new_mol)
+                new_fingerprints.append(new_fingerprint)
+
             self.play(
-                self.camera_frame.set_width, new_width,
-                *[ReplacementTransform(src, dst) for src, dst in zip(mol_fingerprints, new_fingerprints)],
+                *[ReplacementTransform(src, dst) for src, dst in zip(mols, new_mols)],
+                *[ReplacementTransform(src, dst) for src, dst in zip(fingerprints, new_fingerprints)],
             )
 
+            mols = new_mols
+            fingerprints = new_fingerprints
 
-            mol_fingerprints = new_fingerprints
+            self.wait(6)
+
+            # TODO: activity in the color of the fingerprint is confusing, put also the label
+
+
+class UnseenStructure(Scene):
+    def construct(self):
+        smiles = 'Fc1ccc(cc1)N2CCN(CC2)C(=O)c3ccc4NC(CS(=O)(=O)Cc5ccccc5Cl)C(=O)Nc4c3'
+        molecule = to_rdkit_mol(smiles, to2D=True)
+        original_mol = Molecule(molecule)
+        original_mol.scale(0.3)
+        original_mol.next_to(LEFT_SIDE, RIGHT)
+        molecule_name = TextMobject('An unseen molecule...')
+        molecule_name.next_to(original_mol, DOWN)
+        self.play(ShowCreation(original_mol), Write(molecule_name))
+        self.wait(3)
+
+        # Animate extracting the submol
+        highlighted_molecule = Molecule(molecule, sub_center=9, sub_radius=6)
+        highlighted_molecule.scale(0.3)
+        highlighted_molecule.next_to(LEFT_SIDE, RIGHT)
+        submol_origin = highlighted_molecule.submol_graph(copy=True)
+        submol_target = highlighted_molecule.submol_graph(copy=True)
+        submol_target.scale(0.8)
+        submol_target.next_to(highlighted_molecule, 4 * RIGHT)
+        submol_name = TextMobject('...an unseen feature')
+        submol_name.next_to(submol_target, DOWN)
+        self.play(ReplacementTransform(original_mol, highlighted_molecule),
+                  ReplacementTransform(submol_origin, submol_target),
+                  Write(submol_name))
+
+        self.wait(3)
 
 
 class LogisticRegression(Scene):
@@ -990,9 +979,9 @@ if __name__ == "__main__":
         video_dir = media_dir / 'video'
         tex_dir = media_dir / 'tex'
         scenes = (
-            # AddingMoreText,
-            # MorganFingerprint,
+            MorganFingerprint,
             FeatureMatrix,
+            UnseenStructure,
         )
         low_quality = True
         for scene in scenes:
