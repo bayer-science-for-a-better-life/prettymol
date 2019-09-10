@@ -909,11 +909,14 @@ class FeatureMatrix(MovingCameraScene):
                          - mol_fingerprints[0].get_width())
             for activity, mol_fingerprint in zip(mol_activities, new_fingerprints):
                 mol_fingerprint.next_to(activity, 2 * RIGHT)
+            group = VGroup(*(mols + mol_activities + new_fingerprints))
+            group.to_corner(UP + LEFT)
             self.play(
                 self.camera_frame.set_width, new_width,
-                ApplyMethod(VGroup(*(mols + mol_activities + new_fingerprints)).to_corner, UP + LEFT),
                 *[ReplacementTransform(src, dst) for src, dst in zip(mol_fingerprints, new_fingerprints)],
             )
+
+
             mol_fingerprints = new_fingerprints
 
 
