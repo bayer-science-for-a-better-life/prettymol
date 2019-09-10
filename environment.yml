@@ -3,6 +3,9 @@
 #   https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=python-manimlib
 # specially the skipbuild part, I guess to disallow checking for dependencies
 #
+# FIXME: we need some things to happen in conda-forge for this to work properly
+#        maybe I will do sometime
+#
 
 name: manim
 channels:
