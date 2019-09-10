@@ -894,14 +894,13 @@ class FeatureMatrix(MovingCameraScene):
         # noinspection PyTypeChecker
 
         # Make the whole dataset appear at once
-        mols = VGroup(*(mols[1:] + mol_activities[1:] + mol_fingerprints[1:]))
-        self.play(FadeIn(mols))
+        self.play(FadeIn(VGroup(*(mols[1:] + mol_activities[1:] + mol_fingerprints[1:]))))
 
         # Grow the fingerprints
         fingerprint_sizes = (16, 32, 128)
         for fingerprint_size in fingerprint_sizes:
             new_fingerprints = []
-            for activity in mol_fingerprints:
+            for activity in mol_activities:
                 mol_fingerprint = IntegerMatrix(rng.choice((0, 1), (1, fingerprint_size)))
                 mol_fingerprint.set_height(corner_molecule_fingerprint.get_height())
                 new_fingerprints.append(mol_fingerprint)
@@ -912,6 +911,7 @@ class FeatureMatrix(MovingCameraScene):
                 mol_fingerprint.next_to(activity, 2 * RIGHT)
             self.play(
                 self.camera_frame.set_width, new_width,
+                ApplyMethod(VGroup(*(mols + mol_activities + new_fingerprints)).to_corner, UP + LEFT),
                 *[ReplacementTransform(src, dst) for src, dst in zip(mol_fingerprints, new_fingerprints)],
             )
             mol_fingerprints = new_fingerprints
