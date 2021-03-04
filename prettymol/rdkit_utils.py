@@ -1,5 +1,10 @@
 # coding=utf-8
-"""Molecule manipulation using rdkit (self plagiarism from ccl-malaria)."""
+"""
+Molecule manipulation using rdkit.
+
+Self plagiarism from ccl-malaria):
+  https://github.com/sdvillal/ccl-malaria/blob/master/src/ccl_malaria/rdkit_utils.py
+"""
 from itertools import combinations
 from functools import partial
 from collections import Iterable, defaultdict

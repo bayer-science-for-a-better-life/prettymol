@@ -1,16 +1,8 @@
-import hashlib
 from collections import defaultdict
-from copy import deepcopy
-from pathlib import Path
 from typing import Dict, Union
 
-import numpy as np
 import pandas as pd
-from manimlib.animation.fading import FadeOut, FadeIn
-from manimlib.imports import Scene, Circle, ShowCreation, COLOR_MAP, Line, Write, MovingCameraScene, VMobject, RIGHT, \
-    VGroup, LEFT, LEFT_SIDE, RIGHT_SIDE, \
-    GrowFromCenter, DOWN, IntegerMatrix, Arrow, ReplacementTransform, UP, ThreeDScene, Transform, ApplyMethod
-from manimlib.mobject.svg.tex_mobject import TextMobject
+from manimlib import *
 from rdkit.Chem import AllChem
 
 from prettymol.rdkit_utils import to_rdkit_mol
@@ -345,18 +337,18 @@ SMILES_ACTIVITIES = (
 
 # --- Aesthetics
 
-NO_COLLISION_COLOR = COLOR_MAP['BLUE_E']
-COLLISION_COLOR = COLOR_MAP['RED_E']
-SELECTED_SUBSTRUCTURE_COLOR = COLOR_MAP['YELLOW_E']
-ACTIVE_COLOR = COLOR_MAP['GREEN_E']
-INACTIVE_COLOR = COLOR_MAP['RED_E']
+NO_COLLISION_COLOR = BLUE_E
+COLLISION_COLOR = RED_E
+SELECTED_SUBSTRUCTURE_COLOR = YELLOW_E
+ACTIVE_COLOR = GREEN_E
+INACTIVE_COLOR = RED_E
 
 
 def rgb2hex(r, g, b, percentage=True):
     if percentage:
         r, g, b = int(round(r * 255)), int(round(g * 255)), int(round(b * 255))
     r, g, b = max(0, min(r, 255)), max(0, min(g, 255)), max(0, min(b, 255))
-    return "#{0:02x}{1:02x}{2:02x}".format(r, g, b)
+    return '#{0:02x}{1:02x}{2:02x}'.format(r, g, b)
 
 
 #
@@ -638,12 +630,12 @@ class Molecule(VMobject):
 # noinspection PyShadowingNames
 def einstein_quotes(scene):
     # Inspiring scene from https://talkingphysics.wordpress.com/2018/06/14/creating-text-manim-series-part-4/
-    quote = TextMobject("Imagination is more important than knowledge")
-    quote.set_color(COLOR_MAP['RED_B'])
+    quote = Text('Imagination is more important than knowledge')
+    quote.set_color(RED_B)
     quote.to_edge(UP)
-    quote2 = TextMobject("A person who never made a mistake never tried anything new")
-    quote2.set_color(COLOR_MAP['YELLOW_E'])
-    author = TextMobject("-Albert Einstein")
+    quote2 = Text('A person who never made a mistake never tried anything new')
+    quote2.set_color(YELLOW_E)
+    author = Text('-Albert Einstein')
     author.scale(0.75)
     author.next_to(quote.get_corner(DOWN + RIGHT), DOWN)
 
@@ -657,7 +649,7 @@ def einstein_quotes(scene):
     scene.play(FadeOut(quote), FadeOut(author))
 
 
-class MorganFingerprint(MovingCameraScene):
+class MorganFingerprint(Scene):
 
     def __init__(self, molecule=None, centers=(1, 3, 5), radii=(1, 2, 3), conformer=0, **kwargs):
         if molecule is None:
@@ -682,7 +674,7 @@ class MorganFingerprint(MovingCameraScene):
                                      sub_radius=0)
         original_molecule.scale(0.8)
         original_molecule.next_to(LEFT_SIDE, RIGHT)
-        molecule_name = TextMobject('Artemisinin(active)', tex_to_color_map={'(active)': ACTIVE_COLOR})
+        molecule_name = Text('Artemisinin(active)', tex_to_color_map={'(active)': ACTIVE_COLOR})
         molecule_name.next_to(original_molecule, DOWN)
         self.play(
             ShowCreation(original_molecule),
@@ -693,7 +685,7 @@ class MorganFingerprint(MovingCameraScene):
         # Display fingerprint
         matrix = IntegerMatrix(np.zeros((8, 1), dtype=int))
         matrix.next_to(RIGHT_SIDE, 7 * LEFT)
-        matrix_name = TextMobject('Fingerprint (size=8)')
+        matrix_name = Text('Fingerprint (size=8)')
         matrix_name.next_to(matrix, DOWN)
         self.play(Write(matrix), Write(matrix_name))
         self.wait(1)
@@ -728,7 +720,7 @@ class MorganFingerprint(MovingCameraScene):
                                                 sub_radius=radius)
                 highlighted_molecule.scale(0.8)
                 highlighted_molecule.next_to(LEFT_SIDE, RIGHT)
-                radius_text = TextMobject(f'atom {center}, radius {radius}')
+                radius_text = Text(f'atom {center}, radius {radius}')
                 radius_text.next_to(highlighted_molecule, UP)
                 self.play(ReplacementTransform(current_molecule, highlighted_molecule),
                           GrowFromCenter(radius_text))
@@ -751,9 +743,9 @@ class MorganFingerprint(MovingCameraScene):
                 seen_substructures[submol_hash].add(highlighted_molecule.sub_smiles)
                 color = NO_COLLISION_COLOR if not is_new_collision else COLLISION_COLOR
                 if is_new_collision:
-                    collision_text = TextMobject('Collision!', color=COLLISION_COLOR)
+                    collision_text = Text('Collision!', color=COLLISION_COLOR)
                 else:
-                    collision_text = TextMobject('No collision', color=NO_COLLISION_COLOR)
+                    collision_text = Text('No collision', color=NO_COLLISION_COLOR)
                 collision_text.next_to(matrix, UP)
                 submol_to_bucket_arrow = Arrow(submol_target, entry)
                 entry.set_value(1)
@@ -790,11 +782,11 @@ class FeatureMatrix(Scene):
                                      sub_radius=0)
         original_molecule.scale(0.8)
         original_molecule.next_to(LEFT_SIDE, RIGHT)
-        original_molecule_name = TextMobject('Artemisinin(active)', tex_to_color_map={'(active)': ACTIVE_COLOR})
+        original_molecule_name = Text('Artemisinin(active)', tex_to_color_map={'(active)': ACTIVE_COLOR})
         original_molecule_name.next_to(original_molecule, DOWN)
         original_matrix = IntegerMatrix(np.array([0, 1, 1, 0, 1, 0, 1, 1], dtype=int))
         original_matrix.next_to(RIGHT_SIDE, 7 * LEFT)
-        original_matrix_name = TextMobject('Fingerprint (size=8)')
+        original_matrix_name = Text('Fingerprint (size=8)')
         original_matrix_name.next_to(original_matrix, DOWN)
         self.play(
             ShowCreation(original_molecule),
@@ -887,7 +879,7 @@ class UnseenStructure(Scene):
         original_mol = Molecule(molecule)
         original_mol.scale(0.3)
         original_mol.next_to(LEFT_SIDE, RIGHT)
-        molecule_name = TextMobject('An unseen molecule...')
+        molecule_name = Text('An unseen molecule...')
         molecule_name.next_to(original_mol, DOWN)
         self.play(ShowCreation(original_mol), Write(molecule_name))
         self.wait(3)
@@ -900,7 +892,7 @@ class UnseenStructure(Scene):
         submol_target = highlighted_molecule.submol_graph(copy=True)
         submol_target.scale(0.8)
         submol_target.next_to(highlighted_molecule, 4 * RIGHT)
-        submol_name = TextMobject('...an unseen feature')
+        submol_name = Text('...an unseen feature')
         submol_name.next_to(submol_target, DOWN)
         self.play(ReplacementTransform(original_mol, highlighted_molecule),
                   ReplacementTransform(submol_origin, submol_target),
@@ -971,8 +963,6 @@ class Eroom(Scene):
         pass
 
 
-# --- Entry point
-
 if __name__ == "__main__":
 
     #
@@ -982,7 +972,7 @@ if __name__ == "__main__":
     #
 
     import sys
-    from manimlib import main
+    from manimlib.__main__ import main
     from pathlib import Path
 
     argv = sys.argv
@@ -992,17 +982,17 @@ if __name__ == "__main__":
         tex_dir = media_dir / 'tex'
         scenes = (
             # MorganFingerprint,
-            # FeatureMatrix,
+            FeatureMatrix,
             # UnseenStructure,
-            PSO,
+            # PSO,
         )
         low_quality = True
+        import inspect
         for scene in scenes:
-            sys.argv = ['manim',
-                        '-pl' if low_quality else '-p',
+            sys.argv = ['manimgl',
+                        '-w',
                         '--video_dir', str(video_dir),
-                        '--tex_dir', str(tex_dir),
-                        __file__,
+                        inspect.getfile(scene),
                         scene.__name__]
             main()
     finally:
