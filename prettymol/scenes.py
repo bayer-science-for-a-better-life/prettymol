@@ -13,7 +13,7 @@ from manimlib.imports import Scene, Circle, ShowCreation, COLOR_MAP, Line, Write
 from manimlib.mobject.svg.tex_mobject import TextMobject
 from rdkit.Chem import AllChem
 
-from manimchem.rdkit_utils import to_rdkit_mol
+from prettymol.rdkit_utils import to_rdkit_mol
 
 # --- Data
 #
@@ -909,6 +909,18 @@ class UnseenStructure(Scene):
         self.wait(3)
 
 
+class PSO(Scene):
+
+    # PCA of latent space + map to 2D/3D
+    # Morph molecules (if possible) from previous to new
+
+    def construct(self):
+        molecules = [Molecule(to_rdkit_mol(smiles, to2D=True)) for smiles, _ in SMILES_ACTIVITIES[:20]]
+        self.play(*[ShowCreation(molecule) for molecule in molecules])
+        self.wait(2)
+        # self.play(ReplacementTransform(molecule1, molecule2))
+
+
 class LogisticRegression(Scene):
     # State what is learned weights, and the strong, simple, linear bias
     # (use swedish example from "How not to be wrong")
@@ -916,7 +928,7 @@ class LogisticRegression(Scene):
 
 
 class RepresentationLearning(Scene):
-    # Mapping real world objects to Riemannian manifold...
+    # Mapping real world objects to Riemannian manifolds...
     ...
 
 
@@ -979,9 +991,10 @@ if __name__ == "__main__":
         video_dir = media_dir / 'video'
         tex_dir = media_dir / 'tex'
         scenes = (
-            MorganFingerprint,
-            FeatureMatrix,
-            UnseenStructure,
+            # MorganFingerprint,
+            # FeatureMatrix,
+            # UnseenStructure,
+            PSO,
         )
         low_quality = True
         for scene in scenes:
