@@ -1,0 +1,67 @@
+#
+# Master conda environment for prettymol.
+#
+# You can create and update the environment with conda devenv
+#   conda devenv
+# Or with mamba (recommended)
+#   conda devenv --print >environment.yml && mamba env update -f environment.yml --prune
+#
+# This is an experiment & develop environment.
+# Various environment requisites can be activated / deactivated using environment variables, like:
+#   WITH_MANIMGL="" WITH_MANIM_COMMUNITY=TRUE conda devenv
+# See the includes section below for more info.
+#
+# Usage depends on conda-devenv:
+#   https://github.com/ESSS/conda-devenv
+# So run once:
+#   conda install conda-devenv -c conda-forge -n base
+#
+# We also recommend using mamba as a drop-in replacement to conda:
+#   https://github.com/mamba-org/mamba
+# So run once:
+#   conda install mamba -c conda-forge -n base
+#
+{% set PRETTYMOL_DEVEL = os.environ.get('PRETTYMOL_DEVEL', False) %}
+
+name: prettymol
+
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python>=3.8
+  - pip
+  - pip:
+    - "-e ."  # [ PRETTYMOL_DEVEL ]
+
+includes:
+
+#
+# manim's little mess. See:
+# https://3b1b.github.io/manim/development/about.html
+#
+
+{% set with_manimgl = os.environ.get('WITH_MANIMGL', True) %}
+  - {{ root }}/conda/units/manimgl.devenv.yaml             # [with_manimgl]
+{% set with_manim_community = os.environ.get('WITH_MANIM_COMMUNITY', True) %}
+  - {{ root }}/conda/units/manim-community.devenv.yaml             # [with_manim_community]
+
+#
+# programmatic video editing batteries
+#
+
+{% set with_video_utils = os.environ.get('WITH_VIDEO_UTILS', True) %}
+  - {{ root }}/conda/units/video.devenv.yaml             # [with_video_utilsy]
+
+
+#
+# TODO: currently installed by pip in my mac:
+# Cython-0.29.22 appnope-0.1.2 argparse-1.4.0 backcall-0.2.0
+# ipython-7.21.0 ipython-genutils-0.2.0 jedi-0.18.0
+# manim-0.4.0 manimgl-1.0.0 manimpango-0.2.4
+# moderngl-window-2.3.0 multipledispatch-0.6.0 parso-0.8.1
+# pexpect-4.8.0 pickleshare-0.7.5 progressbar-2.5 prompt-toolkit-3.0.16
+# ptyprocess-0.7.0 pyglet-1.5.15 pyobjc-core-7.1 pyobjc-framework-Cocoa-7.1
+# pyrr-0.10.3 rich-6.2.0 screeninfo-0.6.7 traitlets-5.0.5 wcwidth-0.2.5
+#

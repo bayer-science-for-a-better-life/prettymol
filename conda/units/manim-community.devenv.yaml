@@ -1,0 +1,40 @@
+name: manimgl
+
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python>=3.8
+  - pip
+
+  - tqdm
+
+  - numpy
+  - scipy
+
+  - matplotlib
+  - colour
+  - pillow
+  - pydub
+  - pygments
+
+  - pycairo
+
+  # webgl renderer
+  - grpcio
+  - grpcio-tools
+  - watchdog
+
+  - networkx
+
+  - importlib-metadata
+  - rich
+
+  # system dependencies (we assume opengl and LaTex provided systemwide)
+  # see also: https://docs.manim.community/en/latest/installation.html
+  - ffmpeg
+
+  - pip:
+    - manim
+    - manimpango>=0.2.0

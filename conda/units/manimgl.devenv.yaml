@@ -1,0 +1,38 @@
+name: manimgl
+
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python>=3.8
+  - pip
+
+  - tqdm
+
+  - numpy
+  - scipy
+  - sympy
+
+  - matplotlib
+  - colour
+  - pillow
+  - mapbox_earcut
+  - moderngl
+  - pyopengl
+  - pydub
+
+  - pyyaml
+  - validators
+  - pbr
+  - pyreadline  # [win]
+
+  # system dependencies (we assume opengl and LaTex provided systemwide)
+  # see also: https://3b1b.github.io/manim/getting_started/installation.html
+  - ffmpeg
+
+  - pip:
+    - manimgl
+    - screeninfo
+    - moderngl_window
+    - manimpango>=0.2.0
