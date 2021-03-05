@@ -962,43 +962,6 @@ class Eroom(Scene):
     def construct(self):
         pass
 
-
-if __name__ == "__main__":
-
-    #
-    # We should refactor manim "main" this to accept args
-    #   https://stackoverflow.com/questions/18160078/how-do-you-write-tests-for-the-argparse-portion-of-a-python-module
-    # In the meantime, we trick it via sys.argv hijacking so we can debug with no problem...
-    #
-
-    import sys
-    from manimlib.__main__ import main
-    from pathlib import Path
-
-    argv = sys.argv
-    try:
-        media_dir = Path(__file__).parent.parent / 'media'
-        video_dir = media_dir / 'video'
-        tex_dir = media_dir / 'tex'
-        scenes = (
-            # MorganFingerprint,
-            FeatureMatrix,
-            # UnseenStructure,
-            # PSO,
-        )
-        low_quality = True
-        import inspect
-        for scene in scenes:
-            sys.argv = ['manimgl',
-                        '-w',
-                        '--video_dir', str(video_dir),
-                        inspect.getfile(scene),
-                        scene.__name__]
-            main()
-    finally:
-        sys.argv = argv
-
-
 # --- Braindump
 
 # Move camera in scene 3D
