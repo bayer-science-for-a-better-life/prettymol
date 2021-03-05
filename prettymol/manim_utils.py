@@ -187,8 +187,3 @@ def manim_community(*scenes):
     for py_file_path, scene_names in path2scenes:
         with sys_argv('manimgl', *(arguments + [py_file_path] + scene_names)):
             manimce_main()
-
-
-if __name__ == '__main__':
-    from prettymol.scenes.language_of_life import LoLCommonsIntro
-    manim_community(LoLCommonsIntro)
