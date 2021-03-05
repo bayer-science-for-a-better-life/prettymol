@@ -1,0 +1,25 @@
+name: cheminformatics
+
+channels:
+  - conda-forge
+
+dependencies:
+  - rdkit
+#  - ase
+#  - dscribe
+
+# People around like deepchem
+# But it would install the jungle and, oh well...
+
+# We have openeye licenses
+
+#
+# See also libatoms (original SOAP package with a lot of other goodies)
+#   http://libatoms.github.io/
+#   https://libatoms.github.io/GAP/index.html
+#
+# This would likely warrant building a conda package, if we want to use something not in dscribe
+# Random finding, see also the related "protein SOAP notebooks" from someone PhD effort:
+#   https://github.com/ProteinNetworks/protein-soap
+#   https://github.com/ProteinNetworks/protein-networks
+#

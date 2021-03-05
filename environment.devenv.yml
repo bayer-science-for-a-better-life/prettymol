@@ -27,7 +27,6 @@ name: prettymol
 
 channels:
   - conda-forge
-  - defaults
 
 dependencies:
   - python>=3.8
@@ -52,7 +51,11 @@ includes:
 #
 
 {% set with_video_utils = os.environ.get('WITH_VIDEO_UTILS', True) %}
-  - {{ root }}/conda/units/video.devenv.yaml             # [with_video_utilsy]
+  - {{ root }}/conda/units/video.devenv.yaml             # [with_video_utils]
+
+
+{% set with_cheminformatics = os.environ.get('WITH_CHEMINFORMATICS', True) %}
+  - {{ root }}/conda/units/cheminformatics.devenv.yaml             # [with_cheminformatics]
 
 
 #
