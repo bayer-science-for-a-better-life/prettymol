@@ -3,7 +3,14 @@ import numpy as np
 from pathlib import Path
 
 DNA_SVG = "..\..\media\images\dna.svg"
-TOOLS = "toolbox.png"
+#TOOLS = "toolbox.png"
+DNASTRUCT_SVG = "..\..\media\images\DNA_pymol.svg"
+RNASTRUCT_SVG = "..\..\media\images\RNA.svg"
+PEPSTRUCT_SVG = "..\..\media\images\Peptide.svg"
+
+BLOGO_SVG = "..\..\media\images\Logo.svg"
+
+
 class TexTransformExample(Scene):
     def construct(self):
 
@@ -27,10 +34,6 @@ class TexTransformExample(Scene):
         double_helix_right = double_helix_left.copy().set_color_by_gradient(BLUE, GREEN)
         double_helix_right.next_to(commons, RIGHT)
 
-            
-        #self.play(Write(commons), FadeIn(double_helix_left), FadeIn(double_helix_right))
-        #self.wait()
-
         logo = VMobject()
         logo.add(lol, double_helix_left, double_helix_right, commons)
         mini_logo = logo.copy()
@@ -47,4 +50,31 @@ class TexTransformExample(Scene):
         kw = {"run_time": 3, "path_arc": PI / 2}
         self.play(TransformMatchingShapes(source, target, **kw))
         self.wait()
-    
+
+        rnastr= (SVGMobject(RNASTRUCT_SVG).
+                             scale(3).
+                             set_color_by_gradient(GREEN, BLUE).
+                             set_stroke(width=0.5))
+        
+        self.play(ReplacementTransform(target, rnastr))
+        
+        dnastr= (SVGMobject(DNASTRUCT_SVG).
+                             scale(3).
+                             set_color_by_gradient(GREEN, BLUE).
+                             set_stroke(width=0.5))
+        
+        self.play(ReplacementTransform(rnastr, dnastr))
+        
+        pepstr= (SVGMobject(PEPSTRUCT_SVG).
+                             scale(2).
+                             set_color_by_gradient(GREEN, BLUE).
+                             set_stroke(width=0.1))
+        
+        self.play(ReplacementTransform(dnastr,pepstr))
+        
+        blogo = (SVGMobject(BLOGO_SVG).
+                             scale(5).
+                             set_color_by_gradient(GREEN, BLUE).
+                             set_stroke(width=0.1))
+        
+        self.play(ReplacementTransform(pepstr,blogo))
