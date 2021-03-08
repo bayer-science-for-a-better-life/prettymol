@@ -34,7 +34,7 @@ class LoLCommonsIntro(Scene):
         commons = Text('commons')
         commons.next_to(lol, DOWN)
 
-        double_helix_left = (SVGMobject(DNA_SVG).
+        double_helix_left = (SVGMobject(str(DNA_SVG)).
                              scale(0.4).
                              set_color_by_gradient(GREEN, BLUE).
                              set_stroke(width=0.5))
