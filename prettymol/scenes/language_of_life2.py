@@ -8,7 +8,7 @@ DNASTRUCT_SVG = "..\..\media\images\DNA_pymol.svg"
 RNASTRUCT_SVG = "..\..\media\images\RNA.svg"
 PEPSTRUCT_SVG = "..\..\media\images\Peptide.svg"
 BCIRCLE_SVG = "..\..\media\images\CircleLogo.svg"
-
+MACHINE_SVG = "..\..\media\images\machine3.svg"
 BLOGO_SVG = "..\..\media\images\Logo.svg"
 dnastr= (SVGMobject(DNASTRUCT_SVG).
                              scale(3).
@@ -18,13 +18,6 @@ dnastr= (SVGMobject(DNASTRUCT_SVG).
 class Info1(Scene):
     def construct(self):
 
-        # Alternatively, if you don't want to think about breaking up
-        # the tex strings deliberately, you can TransformMatchingShapes,
-        # which will try to line up all pieces of a source mobject with
-        # those of a target, regardless of the submobject hierarchy in
-        # each one, according to whether those pieces have the same
-        # shape (as best it can).
-        
         
         lol = Text('Language of Life')
         lol[1].set_color(BLUE)
@@ -32,7 +25,8 @@ class Info1(Scene):
         
         commons = Text('commons')
         commons.next_to(lol, DOWN)
-        double_helix_left = (SVGMobject(DNA_SVG).
+        double_h
+        elix_left = (SVGMobject(DNA_SVG).
                              scale(0.4).
                              set_color_by_gradient(GREEN, BLUE).
                              set_stroke(width=0.5))
@@ -132,6 +126,7 @@ class Info2(Scene):
         self.play(Write(peptext)) 
         self.play(FadeOut(peptext))
         self.play(FadeOut(pepstr))
+##### Peptide doesn't look right - make new figure ###################
         
         prottext = Text("Proteins", font="Consolas", font_size=90)
 #        VGroup(peptext, pepstr).arrange(DOWN, buff=1)
@@ -139,19 +134,12 @@ class Info2(Scene):
       #  self.play(FadeIn(pepstr))
         self.play(Write(prottext)) 
         self.play(FadeOut(prottext))
-    #    self.play(FadeOut(pepstr))
+  ######  Add in protein picture ##############
     
     
 class Info3(Scene):
     def construct(self):
 
-        # Alternatively, if you don't want to think about breaking up
-        # the tex strings deliberately, you can TransformMatchingShapes,
-        # which will try to line up all pieces of a source mobject with
-        # those of a target, regardless of the submobject hierarchy in
-        # each one, according to whether those pieces have the same
-        # shape (as best it can).
-        
         
         lol = Text('Language of Life')
         lol[1].set_color(BLUE)
@@ -175,11 +163,19 @@ class Info3(Scene):
         self.play(Transform(mini_logo, mini_logo))
         
         self.play(FadeIn(dnastr))
-        grid = Tex("01").get_grid(10, 10, height=4)
+        grid = Tex("01").get_grid(10, 10, height=7)
         #self.add(grid)
         self.play(ReplacementTransform(dnastr,grid))
-        # You can animate the application of mobject methods with the
-        # ".animate" syntax:
-        #self.play(grid.animate.shift(LEFT))
 
- 
+        self.play(grid.animate.apply_complex_function(np.exp), run_time=5)
+        self.wait()
+        
+        machine = (SVGMobject(MACHINE_SVG).
+                             scale(0.5).
+                             set_color_by_gradient(GREEN, BLUE).
+                             set_stroke(width=0.5))
+        self.play(FadeIn(machine))
+        self.play(machine.scale, 6.0)
+        self.play(FadeOut(grid))
+        ############  Add in  ####################
+        #Add in products for Crop Science and Pharam (maybe call them disruptive?)
