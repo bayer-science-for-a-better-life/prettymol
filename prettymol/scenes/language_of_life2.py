@@ -1,11 +1,12 @@
 from manimlib import *
-import numpy as np
-from pathlib import Path
 
-IMAGES_PATH = Path(__file__).parent.parent.parent / 'media' / 'images'
+from prettymol.config import Config
+
+IMAGES_PATH = Config.DEFAULT_IMAGES_PATH
+
+# TODO: likely we should provide a "media library"
 
 DNA_SVG = str(IMAGES_PATH / 'dna.svg')
-# TOOLS = "toolbox.png"
 DNASTRUCT_SVG = str(IMAGES_PATH / 'DNA_pymol.svg')
 RNASTRUCT_SVG = str(IMAGES_PATH / 'RNA.svg')
 PEPSTRUCT_SVG = str(IMAGES_PATH / 'Peptide.svg')
@@ -150,4 +151,4 @@ class Info3(Scene):
 
 if __name__ == '__main__':
     from prettymol.manim_utils import manimgl
-    manimgl(Info1, Info2, Info3)
+    manimgl(Info1, Info2, Info3, write=True)
