@@ -1,6 +1,5 @@
 from logomaker.src.colors import get_color_dict
 from matplotlib.colors import to_hex
-from pathlib import Path
 
 from prettymol.config import Config
 
@@ -22,7 +21,7 @@ def get_hex_color_dict(name, chars):
 
 XARELTO_SMILES = 'C1COCC(=O)N1C2=CC=C(C=C2)N3CC(OC3=O)CNC(=O)C4=CC=C(S4)Cl'
 ADENINE_SMILES = 'C1=NC2=NC=NC(=C2N1)N'
-DNA_SVG = Path(__file__).parent.parent.parent / 'media' / 'images' / 'dna.svg'
+DNA_SVG = str(Config.DEFAULT_IMAGES_PATH / 'dna.svg')
 
 
 class LoLCommonsIntro(Scene):
@@ -47,7 +46,7 @@ class LoLCommonsIntro(Scene):
         commons = Text('commons')
         commons.next_to(lol, DOWN)
 
-        double_helix_left = (SVGMobject(str(DNA_SVG)).
+        double_helix_left = (SVGMobject(DNA_SVG).
                              scale(0.4).
                              set_color_by_gradient(GREEN, BLUE).
                              set_stroke(width=0.5))

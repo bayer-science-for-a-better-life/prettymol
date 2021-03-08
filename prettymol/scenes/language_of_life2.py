@@ -20,6 +20,7 @@ dnastr = (SVGMobject(DNASTRUCT_SVG).
 
 
 def lol_commons_minilogo(scene):
+    # TODO: make a little library of logos, use everywhere
     lol = Text('Language of Life')
     lol[1].set_color(BLUE)
     lol[13].set_color(GREEN)
