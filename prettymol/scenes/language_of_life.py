@@ -1,7 +1,19 @@
 from logomaker.src.colors import get_color_dict
-from manim import *
 from matplotlib.colors import to_hex
 from pathlib import Path
+
+from prettymol.config import Config
+
+if Config.prefer_manimgl():
+    from manimlib import (Scene,
+                          Text, SVGMobject, VMobject,
+                          RED, BLUE, GREEN, PURPLE, LEFT, RIGHT, DOWN,
+                          Write, ReplacementTransform, Transform, FadeIn)
+else:
+    from manim import (Scene,
+                       Text, SVGMobject, VMobject,
+                       RED, BLUE, GREEN, PURPLE, LEFT, RIGHT, DOWN,
+                       Write, ReplacementTransform, Transform, FadeIn)
 
 
 def get_hex_color_dict(name, chars):
@@ -14,6 +26,7 @@ DNA_SVG = Path(__file__).parent.parent.parent / 'media' / 'images' / 'dna.svg'
 
 
 class LoLCommonsIntro(Scene):
+
     def construct(self):
 
         # Atom level
@@ -75,5 +88,10 @@ class LoLCommonsIntro(Scene):
 
 
 if __name__ == '__main__':
-    from prettymol.manim_utils import manim_community
-    manim_community(LoLCommonsIntro)
+    if Config.prefer_manimgl():
+        from prettymol.manim_utils import manimgl
+        manimgl(LoLCommonsIntro, write=False)
+    else:
+        from prettymol.manim_utils import manimce
+        manimce(LoLCommonsIntro)
+    # TODO: convenience to route depending on the actual type of the scene in manim_utils
