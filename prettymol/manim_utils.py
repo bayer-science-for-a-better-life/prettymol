@@ -5,9 +5,8 @@ from contextlib import contextmanager
 from itertools import groupby
 from pathlib import Path
 
-from manimlib.__main__ import main as manimgl_main
-from manim.__main__ import main as manimce_main
 
+# --- utils
 
 @contextmanager
 def sys_argv(program_name: str, *args: str):
@@ -23,8 +22,34 @@ def sys_argv(program_name: str, *args: str):
     sys.argv = old_argv
 
 
+# --- manimgl
+
+def _patch_osx_window_screeninfo_get_monitors():
+
+    # This is so that screeninfo does not chokes in OSX when XRandr is also installed
+    # Should instead open a PR for upstream
+
+    def get_monitors_osx():
+        """Returns a list of :class:`Monitor` objects based on active monitors."""
+        # noinspection PyUnresolvedReferences,PyProtectedMember
+        from screeninfo.screeninfo import Enumerator, _get_monitors, ScreenInfoError
+        # noinspection TryExceptPass,PyBroadException
+        try:
+            return _get_monitors(Enumerator.OSX)
+        except Exception:
+            pass
+        raise ScreenInfoError("No enumerators available")
+
+    if sys.platform == 'darwin':
+        import manimlib
+        manimlib.get_monitors = get_monitors_osx
+        manimlib.window.get_monitors = get_monitors_osx
+        # noinspection PyUnresolvedReferences
+        manimlib.config.get_monitors = get_monitors_osx
+
+
 def manimgl(*scenes,
-            write: bool = False):
+            write: bool = True):
     """
     Python friendly manimgl caller.
 
@@ -78,6 +103,10 @@ def manimgl(*scenes,
     -----------------------------------
     """
 
+    _patch_osx_window_screeninfo_get_monitors()
+
+    from manimlib.__main__ import main as manimgl_main
+
     arguments = []
 
     if write:
@@ -93,6 +122,8 @@ def manimgl(*scenes,
         with sys_argv('manimgl', *(arguments + [py_file_path] + scene_names)):
             manimgl_main()
 
+
+# --- manim.community
 
 def manim_community(*scenes):
     """
@@ -178,6 +209,8 @@ def manim_community(*scenes):
 
     """
 
+    from manim.__main__ import main as manimce_main
+
     arguments = []
 
     path2scenes = sorted((py_file_path, sorted(set(scene.__name__ for scene in scenes_in_file)))
@@ -185,5 +218,5 @@ def manim_community(*scenes):
                          groupby(sorted(scenes, key=inspect.getfile), inspect.getfile))
 
     for py_file_path, scene_names in path2scenes:
-        with sys_argv('manimgl', *(arguments + [py_file_path] + scene_names)):
+        with sys_argv('manim', *(arguments + [py_file_path] + scene_names)):
             manimce_main()
