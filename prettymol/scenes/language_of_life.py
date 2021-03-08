@@ -42,6 +42,8 @@ class LoLCommonsIntro(Scene):
         lol = Text('Language of Life')
         lol[1].set_color(BLUE)
         lol[13].set_color(GREEN)
+        # Beware: currently semantics seem to have changed in manim ce and this should be 11
+        #         are they not counting spaces?
 
         commons = Text('commons')
         commons.next_to(lol, DOWN)
@@ -89,7 +91,7 @@ class LoLCommonsIntro(Scene):
 if __name__ == '__main__':
     if Config.prefer_manimgl():
         from prettymol.manim_utils import manimgl
-        manimgl(LoLCommonsIntro, write=False)
+        manimgl(LoLCommonsIntro, write=True)
     else:
         from prettymol.manim_utils import manimce
         manimce(LoLCommonsIntro)
