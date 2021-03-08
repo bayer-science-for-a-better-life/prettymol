@@ -225,7 +225,7 @@ def manimce(*scenes,
     if media_dir is None:
         media_dir = Config.DEFAULT_MEDIA_PATH
 
-    arguments += ['--media-dir', str(media_dir)]
+    arguments += ['--media_dir', str(media_dir)]
 
     path2scenes = sorted((py_file_path, sorted(set(scene.__name__ for scene in scenes_in_file)))
                          for py_file_path, scenes_in_file in
