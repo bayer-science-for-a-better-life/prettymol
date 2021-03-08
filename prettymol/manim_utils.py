@@ -5,6 +5,10 @@ from contextlib import contextmanager
 from itertools import groupby
 from pathlib import Path
 
+from typing import Union, Optional
+
+from prettymol.config import Config
+
 
 # --- utils
 
@@ -49,7 +53,8 @@ def _patch_osx_window_screeninfo_get_monitors():
 
 
 def manimgl(*scenes,
-            write: bool = True):
+            write: bool = True,
+            video_dir: Optional[Union[str, Path]] = None):
     """
     Python friendly manimgl caller.
 
@@ -112,7 +117,10 @@ def manimgl(*scenes,
     if write:
         arguments += ['--write_file']
 
-    media_dir = Path(__file__).parent.parent / 'media'
+    if video_dir is None:
+        video_dir = Config.DEFAULT_MEDIA_PATH
+
+    arguments += ['--video_dir', str(video_dir)]
 
     path2scenes = sorted((py_file_path, sorted(set(scene.__name__ for scene in scenes_in_file)))
                          for py_file_path, scenes_in_file in
@@ -125,7 +133,8 @@ def manimgl(*scenes,
 
 # --- manim.community
 
-def manimce(*scenes):
+def manimce(*scenes,
+            media_dir: Optional[Union[str, Path]] = None):
     """
     Python friendly manim caller.
 
@@ -212,6 +221,11 @@ def manimce(*scenes):
     from manim.__main__ import main as manimce_main
 
     arguments = []
+
+    if media_dir is None:
+        media_dir = Config.DEFAULT_MEDIA_PATH
+
+    arguments += ['--media-dir', str(media_dir)]
 
     path2scenes = sorted((py_file_path, sorted(set(scene.__name__ for scene in scenes_in_file)))
                          for py_file_path, scenes_in_file in
