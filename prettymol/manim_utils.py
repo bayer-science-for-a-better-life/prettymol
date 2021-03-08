@@ -125,7 +125,7 @@ def manimgl(*scenes,
 
 # --- manim.community
 
-def manim_community(*scenes):
+def manimce(*scenes):
     """
     Python friendly manim caller.
 
