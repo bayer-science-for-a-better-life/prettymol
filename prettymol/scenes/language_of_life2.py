@@ -12,7 +12,9 @@ RNASTRUCT_SVG = str(IMAGES_PATH / 'RNA.svg')
 PEPSTRUCT_SVG = str(IMAGES_PATH / 'Peptide.svg')
 BCIRCLE_SVG = str(IMAGES_PATH / 'CircleLogo.svg')
 MACHINE_SVG = str(IMAGES_PATH / 'machine3.svg')
-BLOGO_SVG = str(IMAGES_PATH / 'Logo.svg')
+PILLS_SVG = str(IMAGES_PATH / 'Pills.svg')
+CORN_SVG = str(IMAGES_PATH / 'Corn.svg')
+
 dnastr = (SVGMobject(DNASTRUCT_SVG).
           scale(3).
           set_color_by_gradient(GREEN, BLUE).
@@ -143,12 +145,29 @@ class Info3(Scene):
                    scale(0.5).
                    set_color_by_gradient(GREEN, BLUE).
                    set_stroke(width=0.5))
+        cornstr = (SVGMobject(CORN_SVG).
+                  scale(1).
+                  set_color_by_gradient(GREEN, BLUE).
+                  set_stroke(width=0.5))
+        pillsstr = (SVGMobject(PILLS_SVG).
+                  scale(1).
+                  set_color_by_gradient(GREEN, BLUE).
+                  set_stroke(width=0.5))
+        
         self.play(FadeIn(machine))
-        self.play(machine.scale, 6.0)
         self.play(FadeOut(grid))
+        self.play(machine.scale, 4.0)
+        
+        
+        cornstr_left=cornstr.next_to(machine, LEFT)
+        cornstr_left_up=cornstr_left.shift(UP)
+        pillsstr.next_to(machine, RIGHT)
+        self.play(FadeIn(cornstr_left_up))
+        self.play(FadeIn(pillsstr))
+       
 
         # TODO: Add in products for Crop Science and Pharam (maybe call them disruptive?)
-
+        #  These svg figures look bad.  Need to change.  Add in ideas as text?
 
 if __name__ == '__main__':
     from prettymol.manim_utils import manimgl
