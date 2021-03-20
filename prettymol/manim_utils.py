@@ -53,7 +53,8 @@ def _patch_osx_window_screeninfo_get_monitors():
 
 
 def manimgl(*scenes,
-            write: bool = True,
+            write: bool = False,
+            save_as=None,
             video_dir: Optional[Union[str, Path]] = None):
     """
     Python friendly manimgl caller.
@@ -234,3 +235,32 @@ def manimce(*scenes,
     for py_file_path, scene_names in path2scenes:
         with sys_argv('manim', *(arguments + [py_file_path] + scene_names)):
             manimce_main()
+
+
+# --- Conveniences
+
+def is_manimgl(scene):
+    try:
+        from manimlib import Scene
+        return issubclass(scene, Scene)
+    except ImportError:
+        return False
+
+
+def is_manimce(scene):
+    try:
+        from manim import Scene
+        return issubclass(scene, Scene)
+    except ImportError:
+        return False
+
+
+def manim(*scenes, **kwargs):
+
+    manim_ce_scenes = [scene for scene in scenes if is_manimce(scene)]
+    if manim_ce_scenes:
+        manimce(*manim_ce_scenes, **kwargs)
+
+    manim_gl_scenes = [scene for scene in scenes if is_manimgl(scene)]
+    if manim_gl_scenes:
+        manimgl(*manim_gl_scenes, **kwargs)
