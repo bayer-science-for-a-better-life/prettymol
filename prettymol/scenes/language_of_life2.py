@@ -29,6 +29,8 @@ TOXIN_PNG = str(IMAGES_PATH / 'toxin.png')
 MACHINE_PNG = str(IMAGES_PATH / 'machine.png')
 CROSS_PNG = str(IMAGES_PATH / 'Corp-Logo_BG_Bayer-Cross_Basic_150dpi_on-screen_RGB.png')
 AI_PNG = str(IMAGES_PATH / 'Ai-image-deep-net-v3-690px.jpg')
+VIP_PNG = str(IMAGES_PATH / 'VIP2.png')
+CRY_PNG = str(IMAGES_PATH / 'Cry2.png')
 
 dnastr = (SVGMobject(DNASTRUCT_SVG).
           scale(3).
@@ -191,29 +193,30 @@ class CS_Use(Scene):
         source = Text("imagine...", height=1)
         source[2].set_color(BLUE)
         source[4].set_color(GREEN)
-        target = Text("a toolbox that...", height=1)
+        target = Text("a toolbox that...", height=0.5)
         target[2:10].set_color(BLUE)
-        target2a = Text("takes sequence", height=1)
+        target2a = Text("turns sequence", height=0.5)
 
         aas = Text("VQGGAAVQQEVLA", height=1)
+        aas.next_to(target2a, DOWN)
 
-        target2b= Text("and structure", height=1)        
+        target2b= Text("and structure", height=0.5)        
         ### Protein structure
         
-        target2c= Text("to use", height=1) 
-        target2d= Text("machine learning", height=1) 
+        target2c= Text("into a form for", height=0.5) 
+        target2d= Text("machine learning", height=0.5) 
 
         
-        target2 = Text("to discover", height=1)
+        target2 = Text("to discover", height=0.5)
         target2[3:15].set_color(GREEN)
-        target3 = Text("and design", height=1)
+        target3 = Text("and design", height=0.5)
         target3[4:10].set_color(GREEN)
-        target4 = Text("new insect control", height=1)    
+        target4 = Text("new insect control", height=0.5)    
         target5 = Text("toxins", height=1)
         
-        corona= ImageMobject(TOXIN_PNG)
+        corona= ImageMobject(VIP_PNG)
         corona.scale(1.2)
-        corona.to_edge(RIGHT, buff=1)
+        #corona.next_to(target2b, DOWN)
         #aas2=aas.next_to(corona)
 
 
@@ -232,22 +235,34 @@ class CS_Use(Scene):
         self.wait()
         self.play(TransformMatchingShapes(target, target2a, **kw))
         self.wait()
+        self.add(aas)
+        self.wait()
+        self.play(FadeOut(aas))
         self.play(TransformMatchingShapes(target2a, target2b, **kw))
+        self.wait()
+        self.add(corona)
+        self.bring_to_back(corona)
+        self.wait()
+        self.play(FadeOut(corona))
         self.wait()
         self.play(TransformMatchingShapes(target2b, target2c, **kw))
         self.wait()
+
         self.play(TransformMatchingShapes(target2c, target2d, **kw))
         self.wait()
         self.play(FadeOut(target2d))
-        
-        aas2=aas
-        aas3=aas2.next_to(corona, LEFT)
-        self.add(aas3)
-        self.wait()
 
         grid = Tex("01").get_grid(10, 10, height=7)
         # self.add(grid)
-        self.play(ReplacementTransform(aas2, grid))
+        #self.play(corona)
+        #self.play(aas)
+        seqstruct = VMobject()
+        corona.next_to(aas,LEFT)
+        seqstruct.add(aas,corona)
+        
+        #scene.play(Transform(corona,corona))
+        #scene.play(Transform(corona,aas))
+        scene.play(seqstruct)
 
         self.wait()
         self.play(FadeOut(grid))
