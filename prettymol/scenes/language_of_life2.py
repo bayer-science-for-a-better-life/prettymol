@@ -32,6 +32,10 @@ AI_PNG = str(IMAGES_PATH / 'Ai-image-deep-net-v3-690px.jpg')
 VIP_PNG = str(IMAGES_PATH / 'VIP2.png')
 CRY_PNG = str(IMAGES_PATH / 'Cry2.png')
 
+WCR = str(IMAGES_PATH / 'WCR.jpg')
+STINK = str(IMAGES_PATH / 'StinkBug.jpg')
+FAW = str(IMAGES_PATH / 'FAW.jpg')
+
 dnastr = (SVGMobject(DNASTRUCT_SVG).
           scale(3).
           set_color_by_gradient(GREEN, BLUE).
@@ -196,16 +200,21 @@ class CS_Use(Scene):
         target = Text("a toolbox that...", height=0.5)
         target[2:10].set_color(BLUE)
         target2a = Text("turns sequence", height=0.5)
+        target2a[6:14].set_color(GREEN)
 
-        aas = Text("VQGGAAVQQEVLA", height=1)
+        aas = Text("VQGGAAVQQEVLA", height=0.5)
         aas.next_to(target2a, DOWN)
 
-        target2b= Text("and structure", height=0.5)        
+        target2b= Text("and structure", height=0.5) 
+        target2b[4:13].set_color(BLUE)
         ### Protein structure
         
         target2c= Text("into a form for", height=0.5) 
         target2d= Text("machine learning", height=0.5) 
-
+        target2d[1].set_color(BLUE)
+        target2d[4].set_color(GREEN)
+        target2d[10].set_color(BLUE)
+        target2d[13].set_color(GREEN)
         
         target2 = Text("to discover", height=0.5)
         target2[3:15].set_color(GREEN)
@@ -213,13 +222,10 @@ class CS_Use(Scene):
         target3[4:10].set_color(GREEN)
         target4 = Text("new insect control", height=0.5)    
         target5 = Text("toxins", height=1)
+        target6 = Text("to combat insect pests", height=0.5)
         
         corona= ImageMobject(VIP_PNG)
         corona.scale(1.2)
-        #corona.next_to(target2b, DOWN)
-        #aas2=aas.next_to(corona)
-
-
         
         ai = ImageMobject(AI_PNG)
         ai.scale(1.2)
@@ -253,33 +259,43 @@ class CS_Use(Scene):
         self.play(FadeOut(target2d))
 
         grid = Tex("01").get_grid(10, 10, height=7)
-        # self.add(grid)
-        #self.play(corona)
-        #self.play(aas)
-        seqstruct = VMobject()
-        corona.next_to(aas,LEFT)
-        seqstruct.add(aas,corona)
-        
-        #scene.play(Transform(corona,corona))
-        #scene.play(Transform(corona,aas))
-        scene.play(seqstruct)
 
+        self.add(aas)
+        self.play(aas.move_to, UP*3, run_time=2)
+        self.add(corona)
         self.wait()
+        self.play(FadeOut(corona))
+        self.play(TransformMatchingShapes(aas, grid, **kw))
+        self.play(grid.animate.apply_complex_function(np.exp), run_time=5)
+
         self.play(FadeOut(grid))
-        
-        self.add(ai) 
+        self.play(FadeIn(ai))
         self.wait()
         self.play(FadeOut(ai)) 
-        
-        
+               
         self.play(TransformMatchingShapes(target2, target3, **kw))
         self.wait()
         self.play(TransformMatchingShapes(target3, target4, **kw))
         self.wait()
         self.play(TransformMatchingShapes(target4, target5, **kw))
-        self.play(FadeOut(target5))
-
-
+        self.play(TransformMatchingShapes(target5, target6, **kw))
+        self.play(target6.move_to, UP*3, run_time=2)
+        faw = ImageMobject(FAW)
+        self.play(faw.scale, 0.6)
+        self.add(faw)
+        self.play(faw.move_to, LEFT*3, run_time=2)
+        stink = ImageMobject(STINK)
+        self.play(stink.scale, 0.6)
+        self.add(stink)
+        self.play(stink.move_to, RIGHT*3, run_time=2)
+        wcr = ImageMobject(WCR)
+        self.play(wcr.scale, 0.6)
+        self.add(wcr)
+        
+        
+        
+        
+        
 class Info4(Scene):
     def construct(self):
 
