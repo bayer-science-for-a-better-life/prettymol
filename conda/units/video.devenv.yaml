@@ -9,7 +9,9 @@ dependencies:
 
   # N.B. a tad outdated in conda atm, and seems to only have 1 inactive maintainer
   # should maybe take the lead
-  - moviepy
+  # note also that this pins-down many dependencies (reflecting the original requirements)
+  # should ask if these pins are really needed (e.g., the one for "decorator")
+  # - moviepy
 
   # bewegung
   # brings many dependencies (numba, datashader...), but I like them all (except ipython)

@@ -1,4 +1,4 @@
-name: manimgl
+name: manimce
 
 channels:
   - conda-forge
@@ -20,15 +20,24 @@ dependencies:
 
   - pycairo
 
+  - pydub
+  - moderngl
+  - mapbox_earcut
+
   # webgl renderer
   - grpcio
   - grpcio-tools
   - watchdog
 
   - networkx
+  - decorator>=5.0.5
 
   - importlib-metadata
   - rich
+  - click
+  - click-default-group
+
+  - pygments
 
   # system dependencies (we assume opengl and LaTex provided systemwide)
   # see also: https://docs.manim.community/en/latest/installation.html
@@ -36,4 +45,4 @@ dependencies:
 
   - pip:
     - manim
-    - manimpango>=0.2.0
+    - manimpango>=0.2.4
