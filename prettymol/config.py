@@ -16,7 +16,7 @@ class Config:
     DEFAULT_IMAGES_PATH = DEFAULT_MEDIA_PATH / 'images'
 
     @staticmethod
-    def prefer_manimgl(preferred_manim='manimgl') -> bool:
+    def prefer_manimgl(preferred_manim='manimce') -> bool:
         if preferred_manim is None:
             preferred_manim = os.environ.get('PRETTYMOL_PREFERRED_MANIM', ManimImplementation.manimgl.name).lower()
         possible_manims = [item.value for item in ManimImplementation]
