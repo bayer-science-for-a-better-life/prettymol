@@ -30,7 +30,7 @@ def sys_argv(program_name: str, *args: str):
 
 def _patch_osx_window_screeninfo_get_monitors():
 
-    # This is so that screeninfo does not chokes in OSX when XRandr is also installed
+    # This is so that screeninfo does not choke in OSX when XRandr is also installed
     # Should instead open a PR for upstream
 
     def get_monitors_osx():
@@ -53,9 +53,26 @@ def _patch_osx_window_screeninfo_get_monitors():
 
 
 def manimgl(*scenes,
-            write: bool = False,
-            save_as=None,
-            video_dir: Optional[Union[str, Path]] = None):
+            write_file=False,
+            skip_animations=False,
+            quality=None,
+            full_screen=False,
+            save_pngs=False,
+            gif=False,
+            transparent=False,
+            quiet=False,
+            write_all=False,
+            open_file=False,
+            finder=False,
+            config=None,
+            file_name=None,
+            start_at_animation_number=None,
+            resolution=None,
+            frame_rate=None,
+            color=None,
+            leave_progress_bars=False,
+            video_dir: Optional[Union[str, Path]] = None,
+            show_help=False):
     """
     Python friendly manimgl caller.
 
@@ -115,13 +132,79 @@ def manimgl(*scenes,
 
     arguments = []
 
-    if write:
+    # --- Options
+
+    if write_file:
         arguments += ['--write_file']
+
+    if skip_animations:
+        arguments += ['--skip_animations']
+
+    if quality is not None:
+        if quality in ('l', 'low'):
+            arguments += ['--low_quality']
+        elif quality in ('m', 'medium'):
+            arguments += ['--medium_quality']
+        elif quality in ('h', 'hd', 'high'):
+            arguments += ['--hd']
+        elif quality in ('u', 'uhd', 'ultra'):
+            arguments += ['--uhd']
+        else:
+            raise ValueError(f'quality must be one of ["l", "m", "h", "u"]')
+
+    if full_screen:
+        arguments += ['--full_screen']
+
+    if save_pngs:
+        arguments += ['--save_pngs']
+
+    if gif:
+        arguments += ['--gif']
+
+    if transparent:
+        arguments += ['--transparent']
+
+    if quiet:
+        arguments += ['--quiet']
+
+    if write_all:
+        arguments += ['--write_all']
+
+    if open_file:
+        arguments += ['--open']
+
+    if finder:
+        arguments += ['--finder']
+
+    if config:
+        arguments += ['--config']
+
+    if file_name is not None:
+        arguments += ['--file_name', str(file_name)]
+
+    if start_at_animation_number is not None:
+        arguments += ['--start_at_animation_number', str(start_at_animation_number)]
+
+    if resolution is not None:
+        arguments += ['--resolution', str(resolution)]
+
+    if frame_rate is not None:
+        arguments += ['--frame_rate', str(frame_rate)]
+
+    if color is not None:
+        arguments += ['--color', str(color)]
+
+    if leave_progress_bars:
+        arguments += ['--leave_progress_bars']
 
     if video_dir is None:
         video_dir = Config.DEFAULT_MEDIA_PATH
-
     arguments += ['--video_dir', str(video_dir)]
+
+    if show_help:
+        arguments += ['--help']
+
+    # --- Run!
 
     path2scenes = sorted((py_file_path, sorted(set(scene.__name__ for scene in scenes_in_file)))
                          for py_file_path, scenes_in_file in
@@ -135,98 +218,229 @@ def manimgl(*scenes,
 # --- manim.community
 
 def manimce(*scenes,
-            media_dir: Optional[Union[str, Path]] = None):
+            # Global options
+            config_file=None,
+            custom_folders=False,
+            disable_caching=False,
+            flush_cache=False,
+            tex_template=None,
+            verbosity='INFO',
+            notify_outdated_version=False,
+            # Output options
+            output_file=None,
+            write_to_movie=False,
+            media_dir = None,
+            log_dir=None,
+            log_to_file=False,
+            # Render options
+            from_animation_number=None,
+            write_all=False,
+            output_format='mp4',
+            save_last_frame=False,
+            quality=None,
+            resolution=None,
+            frame_rate=None,
+            renderer='cairo',
+            webgl_renderer_path=None,
+            transparent=False,
+            # Ease of access options
+            progress_bar='display',
+            preview=False,
+            show_in_file_browser=False,
+            jupyter=False,
+            # Other options
+            show_help=False):
     """
-    Python friendly manim caller.
+    Python friendly manim community caller.
 
-    This currently has been tested with manim.community version 1.0.
-
-    From manim --help
+    From manim render --help
     -----------------------------------
-    Manim Community v0.4.0
-    usage: manim file [flags] [scene [scene ...]]
-           manim {cfg,init,plugins} [opts]
+    Manim Community v0.7.0
 
-    Animation engine for explanatory math videos
+    Usage: manim render [OPTIONS] FILE [SCENE_NAMES]...
 
-    positional arguments:
-      file                  Path to file holding the python code for the scene
-      scene_names           Name of the Scene class you want to see
+      Render SCENE(S) from the input FILE.
 
-    optional arguments:
-      -h, --help            show this help message and exit
-      -o OUTPUT_FILE, --output_file OUTPUT_FILE
-                            Specify the name of the output file, if it should be different from the scene class name
-      -p, --preview         Automatically open the saved file once its done
-      -f, --show_in_file_browser
-                            Show the output file in the File Browser
-      --sound               Play a success/failure sound
-      --leave_progress_bars
-                            Leave progress bars displayed in terminal
-      -a, --write_all       Write all the scenes from a file
-      -w, --write_to_movie  Render the scene as a movie file (this is on by default)
+      FILE is the file path of the script.
+
+      SCENES is an optional list of scenes in the file.
+
+    Global options:
+      -c, --config_file TEXT          Specify the configuration file to use for
+                                      render settings.
+
+      --custom_folders                Use the folders defined in the
+                                      [custom_folders] section of the config file
+                                      to define the output folder structure.
+
+      --disable_caching               Disable the use of the cache (still
+                                      generates cache files).
+
+      --flush_cache                   Remove cached partial movie files.
+      --tex_template TEXT             Specify a custom TeX template file.
+      -v, --verbosity [DEBUG|INFO|WARNING|ERROR|CRITICAL]
+                                      Verbosity of CLI output. Changes ffmpeg log
+                                      level unless 5+.
+
+      --notify_outdated_version / --silent
+                                      Display warnings for outdated installation.
+
+    Output options:
+      -o, --output_file TEXT          Specify the filename(s) of the rendered
+                                      scene(s).
+
+      --write_to_movie                Write to a file.
+      --media_dir PATH                Path to store rendered videos and latex.
+      --log_dir PATH                  Path to store render logs.
+      --log_to_file                   Log terminal output to file.
+
+    Render Options:
+      -n, --from_animation_number TEXT
+                                      Start rendering from n_0 until n_1. If n_1
+                                      is left unspecified, renders all scenes
+                                      after n_0.
+
+      -a, --write_all                 Render all scenes in the input file.
+      --format [png|gif|mp4]
       -s, --save_last_frame
-                            Save the last frame only (no movie file is generated)
-      -g, --save_pngs       Save each frame as a png
-      -i, --save_as_gif     Save the video as gif
-      --disable_caching     Disable caching (will generate partial-movie-files anyway)
-      --flush_cache         Remove all cached partial-movie-files
-      --log_to_file         Log terminal output to file
-      -c BACKGROUND_COLOR, --background_color BACKGROUND_COLOR
-                            Specify background color
-      --media_dir MEDIA_DIR
-                            Directory to store media (including video files)
-      --log_dir LOG_DIR     Directory to store log files
-      --tex_template TEX_TEMPLATE
-                            Specify a custom TeX template file
-      --dry_run             Do a dry run (render scenes but generate no output files)
-      -t, --transparent     Render a scene with an alpha channel
-      -q {k,p,h,m,l}, --quality {k,p,h,m,l}
-                            Render at specific quality, short form of the --*_quality flags
-      --low_quality         Render at low quality
-      --medium_quality      Render at medium quality
-      --high_quality        Render at high quality
-      --production_quality  Render at default production quality
-      --fourk_quality       Render at 4K quality
-      -l                    DEPRECATED: USE -ql or --quality l
-      -m                    DEPRECATED: USE -qm or --quality m
-      -e                    DEPRECATED: USE -qh or --quality h
-      -k                    DEPRECATED: USE -qk or --quality k
-      -r RESOLUTION, --resolution RESOLUTION
-                            Resolution, passed as "height,width". Overrides the -l, -m, -e, and -k flags, if present
-      -n FROM_ANIMATION_NUMBER, --from_animation_number FROM_ANIMATION_NUMBER
-                            Start rendering at the specified animation index, instead of the first animation.
-                            If you pass in two comma separated values, e.g. '3,6', it will end the rendering
-                            at the second value
-      --use_webgl_renderer  Render animations using the WebGL frontend
-      --webgl_renderer_path WEBGL_RENDERER_PATH
-                            Path to the WebGL frontend
-      --webgl_updater_fps WEBGL_UPDATER_FPS
-                            Frame rate to use when generating keyframe data for animations that use updaters
-                            while using the WebGL frontend
-      --config_file CONFIG_FILE
-                            Specify the configuration file
-      --custom_folders      Use the folders defined in the [custom_folders] section of the config file to define
-                            the output folder structure
-      -v {DEBUG,INFO,WARNING,ERROR,CRITICAL}, --verbosity {DEBUG,INFO,WARNING,ERROR,CRITICAL}
-                            Verbosity level. Also changes the ffmpeg log level unless the latter is specified
-                            in the config
-      --version             Print the current version of Manim you are using
-      --progress_bar True/False
-                            Display the progress bar
+      -q, --quality [l|m|h|p|k]       Render quality at the follow resolution
+                                      framerates, respectively: 854x480 30FPS,
+                                      1280x720 30FPS, 1920x1080 60FPS, 2560x1440
+                                      60FPS, 3840x2160 60FPS
 
-    Made with <3 by the ManimCommunity devs
+      -r, --resolution TEXT           Resolution in (W,H) for when 16:9 aspect
+                                      ratio isn't possible.
 
+      --fps, --frame_rate FLOAT       Render at this frame rate.
+      --renderer [cairo|opengl|webgl]
+                                      Select a renderer for your Scene.
+      --use_opengl_renderer           Render scenes using OpenGL (Deprecated).
+      --use_webgl_renderer            Render scenes using the WebGL frontend
+                                      (Deprecated).
+
+      --webgl_renderer_path PATH      The path to the WebGL frontend.
+      -g, --save_pngs                 Save each frame as png (Deprecated).
+      -i, --save_as_gif               Save as a gif (Deprecated).
+      -s, --save_last_frame           Save last frame as png (Deprecated).
+      -t, --transparent               Render scenes with alpha channel.
+
+    Ease of access options:
+      --progress_bar [display|leave|none]
+                                      Display progress bars and/or keep them
+                                      displayed.  [default: display]
+
+      -p, --preview                   Preview the Scene's animation. OpenGL does a
+                                      live preview in a popup window. Cairo opens
+                                      the rendered video file in the system
+                                      default media player.
+
+      -f, --show_in_file_browser      Show the output file in the file browser.
+      --jupyter                       Using jupyter notebook magic.
+
+    Other options:
+      --help                          Show this message and exit.
+
+      Made with <3 by Manim Community developers.
+    -----------------------------------
     """
 
     from manim.__main__ import main as manimce_main
 
-    arguments = []
+    arguments = ['render']
+
+    # --- Global options
+
+    if config_file is not None:
+        arguments += ['--config_file', str(config_file)]
+
+    if custom_folders:
+        arguments += ['--custom_folders']
+
+    if disable_caching:
+        arguments += ['--disable_caching']
+
+    if flush_cache:
+        arguments += ['--flush_cache']
+
+    if tex_template is not None:
+        arguments += ['--tex_template', str(tex_template)]
+
+    if verbosity is not None:
+        arguments += ['--verbosity', verbosity]
+
+    if notify_outdated_version:
+        arguments += ['--notify_outdated_version']
+
+    # --- Output options
+
+    if output_file is not None:
+        arguments += ['--output_file', str(output_file)]
+
+    if write_to_movie:
+        arguments += ['write_to_movie']
 
     if media_dir is None:
         media_dir = Config.DEFAULT_MEDIA_PATH
-
     arguments += ['--media_dir', str(media_dir)]
+
+    if log_dir is not None:
+        arguments += ['--log_dir', str(log_dir)]
+
+    if log_to_file:
+        arguments += ['--log_to_file']
+
+    # --- Render options
+
+    if from_animation_number is not None:
+        arguments += ['--from_animation_number', str(from_animation_number)]
+
+    if write_all:
+        arguments += ['--write_all']
+
+    if output_format is not None:
+        arguments += ['--format', str(output_format)]
+
+    if save_last_frame:
+        arguments += ['--save_last_frame']
+
+    if quality is not None:
+        arguments += ['--quality', str(quality)]
+
+    if resolution is not None:
+        arguments += ['--resolution', str(resolution)]
+
+    if frame_rate is not None:
+        arguments += ['--frame_rate', str(frame_rate)]
+
+    if renderer is not None:
+        arguments += ['--renderer', str(renderer)]
+
+    if webgl_renderer_path is not None:
+        arguments += ['--webgl_renderer_path', str(webgl_renderer_path)]
+
+    if transparent:
+        arguments += ['--transparent']
+
+    # --- Ease of access options
+
+    if progress_bar is not None:
+        arguments += ['--progress_bar', str(progress_bar)]
+
+    if preview:
+        arguments += ['--preview']
+
+    if show_in_file_browser:
+        arguments += ['--show_in_file_browser']
+
+    if jupyter:
+        arguments += ['--jupyter']
+
+    # --- Other options
+
+    if show_help:
+        arguments += ['--help']
+
+    # --- Run!
 
     path2scenes = sorted((py_file_path, sorted(set(scene.__name__ for scene in scenes_in_file)))
                          for py_file_path, scenes_in_file in
