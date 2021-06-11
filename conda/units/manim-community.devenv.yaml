@@ -30,19 +30,28 @@ dependencies:
   - watchdog
 
   - networkx
-  - decorator>=5.0.5
+  - decorator>=5.0.7
 
   - importlib-metadata
   - rich
   - click
   - click-default-group
+  - cloup=0.7.1
 
   - pygments
+
+  - requests
 
   # system dependencies (we assume opengl and LaTex provided systemwide)
   # see also: https://docs.manim.community/en/latest/installation.html
   - ffmpeg
 
+  # transitive pip
+  - multipledispatch
+  - pyglet
+  - pyrr
+
   - pip:
     - manim
-    - manimpango>=0.2.4
+    - manimpango>=0.3.0
+    - moderngl-window
