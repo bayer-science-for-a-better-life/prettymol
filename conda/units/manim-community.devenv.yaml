@@ -30,6 +30,7 @@ dependencies:
   - watchdog
 
   - networkx
+
   - decorator>=5.0.7
 
   - importlib-metadata

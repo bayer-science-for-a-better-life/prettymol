@@ -456,7 +456,10 @@ def manimce(*scenes,
 def is_manimgl(scene):
     try:
         from manimlib import Scene
-        return issubclass(scene, Scene)
+        try:
+            return issubclass(scene, Scene)
+        except TypeError:
+            return issubclass(scene.__class__, Scene)
     except ImportError:
         return False
 
@@ -464,7 +467,10 @@ def is_manimgl(scene):
 def is_manimce(scene):
     try:
         from manim import Scene
-        return issubclass(scene, Scene)
+        try:
+            return issubclass(scene, Scene)
+        except TypeError:
+            return issubclass(scene.__class__, Scene)
     except ImportError:
         return False
 
