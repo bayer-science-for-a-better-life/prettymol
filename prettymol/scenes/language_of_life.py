@@ -3,21 +3,39 @@ from matplotlib.colors import to_hex
 
 from manim import (Scene,
                    Text, SVGMobject, RED, BLUE, GREEN, PURPLE, LEFT, RIGHT, DOWN,
-                   Write, ReplacementTransform, Transform, FadeIn, VGroup)
+                   Write, ReplacementTransform, Transform, FadeIn, VGroup, BarChart, TAU, OUT, UP)
 
 from prettymol.config import Config
 from prettymol.manim_utils import manimce, is_manimce
 
 
+# --- Utils
+
 def get_hex_color_dict(name, chars):
     return {char: to_hex(color) for char, color in get_color_dict(name, chars).items()}
 
 
+# --- Media library
+
 XARELTO_SMILES = 'C1COCC(=O)N1C2=CC=C(C=C2)N3CC(OC3=O)CNC(=O)C4=CC=C(S4)Cl'
 ADENINE_SMILES = 'C1=NC2=NC=NC(=C2N1)N'
-DNA_SVG = str(Config.DEFAULT_IMAGES_PATH / 'dna.svg')
-PROTEIN_SVG = str(Config.DEFAULT_IMAGES_PATH / 'protein.svg')
 
+
+class LoLSVGS:
+    DNA = str(Config.DEFAULT_IMAGES_PATH / 'dna.svg')
+    PROTEIN = str(Config.DEFAULT_IMAGES_PATH / 'protein.svg')
+    PROTEIN_SMOOTH = str(Config.DEFAULT_IMAGES_PATH / 'protein-smooth.svg')
+    PROTEIN_SUGAR = str(Config.DEFAULT_IMAGES_PATH / 'sugar-protein.svg')
+    ANTIBODY = str(Config.DEFAULT_IMAGES_PATH / 'antibody-normalized.svg')
+    PACMAN = str(Config.DEFAULT_IMAGES_PATH / 'pacman.svg')
+    CYCLIC_PEPTIDE = str(Config.DEFAULT_IMAGES_PATH / 'peptide-normalized.svg')
+    PATIENT = str(Config.DEFAULT_IMAGES_PATH / 'patient.svg')
+
+
+SVGS = LoLSVGS
+
+
+# --- MObjects
 
 # noinspection PyAbstractClass
 class LoLLogo(VGroup):
@@ -36,7 +54,7 @@ class LoLLogo(VGroup):
         commons = Text('commons')
         commons.next_to(lol, DOWN)
 
-        double_helix_left = (SVGMobject(DNA_SVG).
+        double_helix_left = (SVGMobject(SVGS.DNA).
                              scale(0.4).
                              set_color_by_gradient(GREEN, BLUE).
                              set_stroke(width=0.5))
@@ -59,6 +77,8 @@ class LoLLogo(VGroup):
         scene.play(Write(self.commons), FadeIn(self.dna_left), FadeIn(self.dna_right))
         scene.wait(end_blank_seconds)
 
+
+# --- Scenes
 
 class LoLLogoScene(Scene):
 
