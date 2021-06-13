@@ -135,11 +135,12 @@ class LoLCommonsIntroScene(Scene):
 
     DEFAULT_REPLACER_SEQUENCE = (SVGS.RNA,
                                  SVGS.CYCLIC_PEPTIDE,
-                                 SVGS.PROTEIN2D,
+                                 # SVGS.PROTEIN2D,
+                                 SVGS.PACMAN,
                                  SVGS.PROTEIN3D,
                                  SVGS.CELL,
                                  SVGS.PLANT,
-                                 SVGS.PILL,
+                                 # SVGS.PILL,
                                  SVGS.PATIENT,
                                  SVGS.DNA)
 
