@@ -1,9 +1,11 @@
-from logomaker.src.colors import get_color_dict
-from matplotlib.colors import to_hex
+from pathlib import Path
+from typing import Union, Optional
 
+from logomaker.src.colors import get_color_dict
 from manim import (Scene,
                    Text, SVGMobject, RED, BLUE, GREEN, PURPLE, LEFT, RIGHT, DOWN,
-                   Write, ReplacementTransform, Transform, FadeIn, VGroup, BarChart, TAU, OUT, UP)
+                   Write, ReplacementTransform, Transform, FadeIn, VGroup, BarChart, TAU, OUT, UP, Mobject, VMobject)
+from matplotlib.colors import to_hex
 
 from prettymol.config import Config
 from prettymol.manim_utils import manimce, is_manimce
@@ -21,18 +23,21 @@ XARELTO_SMILES = 'C1COCC(=O)N1C2=CC=C(C=C2)N3CC(OC3=O)CNC(=O)C4=CC=C(S4)Cl'
 ADENINE_SMILES = 'C1=NC2=NC=NC(=C2N1)N'
 
 
-class LoLSVGS:
-    DNA = str(Config.DEFAULT_IMAGES_PATH / 'dna.svg')
-    PROTEIN = str(Config.DEFAULT_IMAGES_PATH / 'protein.svg')
-    PROTEIN_SMOOTH = str(Config.DEFAULT_IMAGES_PATH / 'protein-smooth.svg')
-    PROTEIN_SUGAR = str(Config.DEFAULT_IMAGES_PATH / 'sugar-protein.svg')
-    ANTIBODY = str(Config.DEFAULT_IMAGES_PATH / 'antibody-normalized.svg')
-    PACMAN = str(Config.DEFAULT_IMAGES_PATH / 'pacman.svg')
-    CYCLIC_PEPTIDE = str(Config.DEFAULT_IMAGES_PATH / 'peptide-normalized.svg')
-    PATIENT = str(Config.DEFAULT_IMAGES_PATH / 'patient.svg')
-
-
-SVGS = LoLSVGS
+class SVGS:
+    DNA = str(Config.DEFAULT_IMAGES_PATH / 'lol' / 'dna.svg')
+    RNA = str(Config.DEFAULT_IMAGES_PATH / 'lol' / 'rna.svg')
+    PROTEIN2D = str(Config.DEFAULT_IMAGES_PATH / 'lol' / 'protein2D.svg')
+    PROTEIN3D = str(Config.DEFAULT_IMAGES_PATH / 'lol' / 'protein3D.svg')
+    PROTEIN_AND_SUGAR = str(Config.DEFAULT_IMAGES_PATH / 'lol' / 'protein-sugar.svg')
+    ANTIBODY = str(Config.DEFAULT_IMAGES_PATH / 'lol' / 'antibody-simplified.svg')
+    PACMAN = str(Config.DEFAULT_IMAGES_PATH / 'lol' / 'pacman.svg')
+    CYCLIC_PEPTIDE = str(Config.DEFAULT_IMAGES_PATH / 'lol' / 'peptide-simplified.svg')
+    PILL = str(Config.DEFAULT_IMAGES_PATH / 'lol' / 'pill.svg')
+    PLANT = str(Config.DEFAULT_IMAGES_PATH / 'lol' / 'plant-simplified.svg')
+    CELL = str(Config.DEFAULT_IMAGES_PATH / 'lol' / 'cell-simplified.svg')
+    CELLS = str(Config.DEFAULT_IMAGES_PATH / 'lol' / 'cells.svg')
+    MUTATION = str(Config.DEFAULT_IMAGES_PATH / 'lol' / 'mutation.svg')
+    PATIENT = str(Config.DEFAULT_IMAGES_PATH / 'lol' / 'patient.svg')
 
 
 # --- MObjects
@@ -40,7 +45,7 @@ SVGS = LoLSVGS
 # noinspection PyAbstractClass
 class LoLLogo(VGroup):
 
-    def __init__(self, **kwargs):
+    def __init__(self, commons_left=SVGS.DNA, commons_right=None, **kwargs):
         # Logo level
         lol = Text('Language of Life')
         lol[1].set_color(BLUE)
@@ -54,28 +59,62 @@ class LoLLogo(VGroup):
         commons = Text('commons')
         commons.next_to(lol, DOWN)
 
-        double_helix_left = (SVGMobject(SVGS.DNA).
-                             scale(0.4).
-                             set_color_by_gradient(GREEN, BLUE).
-                             set_stroke(width=0.5))
-        double_helix_left.next_to(commons, LEFT)
-
-        double_helix_right = double_helix_left.copy().set_color_by_gradient(BLUE, GREEN)
-        double_helix_right.next_to(commons, RIGHT)
-
         self.lol = lol
         self.commons = commons
-        self.dna_left = double_helix_left
-        self.dna_right = double_helix_right
+        super().__init__(self.lol, self.commons, **kwargs)
 
-        super().__init__(self.lol, self.commons, self.dna_left, self.dna_right, **kwargs)
+        self.commons_left = self.commons_right = None
+        self._set_left_right(commons_left, commons_right)
 
     def add_to_scene(self, scene, initial_blank_seconds=0., end_blank_seconds=0.):
         scene.wait(initial_blank_seconds)
         scene.play(FadeIn(self.lol))
         scene.wait()
-        scene.play(Write(self.commons), FadeIn(self.dna_left), FadeIn(self.dna_right))
+        scene.play(Write(self.commons), FadeIn(self.commons_left), FadeIn(self.commons_right))
         scene.wait(end_blank_seconds)
+
+    def _set_left_right(self,
+                        commons_left: Union[VMobject, str, Path],
+                        commons_right: Optional[Union[VMobject, str, Path]] = None,
+                        scale=0.4,
+                        left_colors=(GREEN, BLUE),
+                        right_colors=(BLUE, GREEN),
+                        stroke_width=0.5):
+
+        if self.commons_left is not None:
+            self.remove(self.commons_left, self.commons_right)
+
+        if commons_right is None:
+            commons_right = commons_left
+
+        if not isinstance(commons_left, Mobject):
+            commons_left = (SVGMobject(commons_left).
+                            scale(scale).
+                            set_color_by_gradient(*left_colors).
+                            set_stroke(width=stroke_width))
+        commons_left.next_to(self.commons, LEFT)
+
+        if not isinstance(commons_right, Mobject):
+            commons_right = (SVGMobject(commons_right).
+                             scale(scale).
+                             set_color_by_gradient(*right_colors).
+                             set_stroke(width=stroke_width))
+        commons_right.next_to(self.commons, RIGHT)
+
+        self.commons_left = commons_left
+        self.commons_right = commons_right
+
+        self.add(self.commons_left, self.commons_right)
+
+    def replace_left_right(self, scene, commons_left, commons_right=None, run_time_s=1):
+        old_left = self.commons_left
+        old_right = self.commons_right
+        self._set_left_right(commons_left, commons_right)
+        scene.play(
+            ReplacementTransform(old_left, self.commons_left),
+            ReplacementTransform(old_right, self.commons_right),
+            run_time=run_time_s
+        )
 
 
 # --- Scenes
@@ -92,7 +131,21 @@ class LoLLogoScene(Scene):
                                end_blank_seconds=self.initial_blank_seconds)
 
 
-class LoLCommonsIntro(Scene):
+class LoLCommonsIntroScene(Scene):
+
+    DEFAULT_REPLACER_SEQUENCE = (SVGS.RNA,
+                                 SVGS.CYCLIC_PEPTIDE,
+                                 SVGS.PROTEIN2D,
+                                 SVGS.PROTEIN3D,
+                                 SVGS.CELL,
+                                 SVGS.PLANT,
+                                 SVGS.PILL,
+                                 SVGS.PATIENT,
+                                 SVGS.DNA)
+
+    def __init__(self, replacers=DEFAULT_REPLACER_SEQUENCE, **kwargs):
+        super().__init__(**kwargs)
+        self.replacers = replacers
 
     def construct(self):
 
@@ -119,8 +172,11 @@ class LoLCommonsIntro(Scene):
         self.wait()
         self.play(ReplacementTransform(aas, logo.lol))
         self.wait()
-        self.play(Write(logo.commons), FadeIn(logo.dna_left), FadeIn(logo.dna_right))
+        self.play(Write(logo.commons), FadeIn(logo.commons_left), FadeIn(logo.commons_right))
         self.wait()
+        for replacer in self.replacers:
+            logo.replace_left_right(self, replacer)
+            self.wait(1)
 
         # Move logo to left lower corner
         mini_logo = logo.copy()
