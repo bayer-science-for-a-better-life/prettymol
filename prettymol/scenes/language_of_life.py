@@ -143,9 +143,13 @@ class LoLCommonsIntroScene(Scene):
                                  SVGS.PATIENT,
                                  SVGS.DNA)
 
-    def __init__(self, replacers=DEFAULT_REPLACER_SEQUENCE, **kwargs):
+    def __init__(self,
+                 replacers=DEFAULT_REPLACER_SEQUENCE,
+                 add_vector_transform=False,
+                 **kwargs):
         super().__init__(**kwargs)
         self.replacers = replacers
+        self.add_vector_transform = add_vector_transform
 
     def construct(self):
 
@@ -166,12 +170,18 @@ class LoLCommonsIntroScene(Scene):
         self.wait()
         self.play(Write(adenine))
         self.wait()
-        self.play(ReplacementTransform(adenine, dna))
-        self.wait()
-        self.play(ReplacementTransform(dna, aas))
-        self.wait()
-        self.play(ReplacementTransform(aas, logo.lol))
-        self.wait()
+
+        if self.add_vector_transform:
+            # FIXME: This is not quite pretty / useful at the moment
+            numbers = Text('[0.12 0.32 0.01 0.88 0.99 0.22 0.55 0.42 0.13 0.07]')
+            replacements = [adenine, dna, aas, numbers, logo.lol]
+        else:
+            replacements = [adenine, dna, aas, logo.lol]
+
+        for source, target in zip(replacements, replacements[1:]):
+            self.play(ReplacementTransform(source, target))
+            self.wait()
+
         self.play(Write(logo.commons), FadeIn(logo.commons_left), FadeIn(logo.commons_right))
         self.wait()
         for replacer in self.replacers:
