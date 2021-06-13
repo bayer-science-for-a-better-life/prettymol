@@ -466,11 +466,17 @@ def is_manimgl(scene):
 
 def is_manimce(scene):
     try:
+
+        from manim.mobject.opengl_compatibility import ConvertToOpenGL  # FIXME hack
+        if isinstance(scene, ConvertToOpenGL) or isinstance(scene.__class__, ConvertToOpenGL):
+            return True
+
         from manim import Scene
         try:
-            return issubclass(scene, Scene)
+            return issubclass(scene, (Scene, ConvertToOpenGL))
         except TypeError:
-            return issubclass(scene.__class__, Scene)
+            return issubclass(scene.__class__, (Scene, ConvertToOpenGL))
+
     except ImportError:
         return False
 
