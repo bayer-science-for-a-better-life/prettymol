@@ -4,7 +4,7 @@ from typing import Union, Optional
 from logomaker.src.colors import get_color_dict
 from manim import (Scene,
                    Text, SVGMobject, RED, BLUE, GREEN, PURPLE, LEFT, RIGHT, DOWN,
-                   Write, ReplacementTransform, Transform, FadeIn, VGroup, BarChart, TAU, OUT, UP, Mobject, VMobject)
+                   Write, ReplacementTransform, Transform, FadeIn, VGroup, BarChart, UP, Mobject, VMobject)
 from matplotlib.colors import to_hex
 
 from prettymol.config import Config
@@ -206,13 +206,101 @@ class LoLCommonsIntroScene(Scene):
         # FIXME: does it make sense to transform codons into appropriate amino acids?
 
 
+class EroomScene(Scene):
+
+    def construct(self):
+
+        a_million_forks = Text('A million forks in the road to drug development')
+        a_million_forks.to_edge(UP)
+
+        new_drugs_per_billion_RD = [
+            ('1950', 100),
+            ('1960', 50),
+            ('1970', 10),
+            ('1980', 5),
+            ('1990', 3),
+            ('2000', 2),
+            ('2010', 1),
+            ('2020', 1)
+        ]
+        x = [x for x, _ in new_drugs_per_billion_RD]
+        y = [y for _, y in new_drugs_per_billion_RD]
+        colors = ["#003f5c", "#58508d", "#bc5090", "#ff6361", "#ffa600"]
+        chart = BarChart(
+            values=y,
+            max_value=max(y),
+            bar_colors=colors,
+            bar_names=x,
+            bar_label_scale_val=0.5,
+        ).scale(0.8).to_edge(LEFT).shift(DOWN)
+
+        # text_top = (
+        #     Text('EROOM\'s Law: More expensive, slower drug discovery')
+        #     .scale(0.9)
+        #     .next_to(chart, UP, buff=0.1)
+        # )
+
+        # text_left = (
+        #     Text('Number of drugs per billion US$ R&D spending')
+        #     .rotate(angle=TAU / 4, axis=OUT)
+        #     .scale(0.3)
+        #     .next_to(chart, LEFT, buff=0.5)
+        # )
+
+        text_top = (
+            Text('Number of drugs per billion US$ R&D spending')
+            .scale(0.3)
+            .next_to(chart, UP, buff=0.5)
+        )
+
+        self.play(Write(a_million_forks))
+        self.play(FadeIn(text_top))
+        self.play(Write(chart), run_time=4)
+        self.wait(2)
+
+        # --- Examples of forks in the road
+
+        icons = [
+            SVGMobject(SVGS.CYCLIC_PEPTIDE).set_color(BLUE).scale(0.8),
+            SVGMobject(SVGS.ANTIBODY).set_color(BLUE).scale(0.8),
+            SVGMobject(SVGS.PACMAN).set_color(BLUE).scale(0.8),
+            SVGMobject(SVGS.PATIENT).set_color(BLUE).scale(0.8)
+        ]
+
+        for icon1, icon2 in zip(icons, icons[1:]):
+            icon2.next_to(icon1, DOWN, buff=0.5)
+
+        texts = [
+            Text('Find peptides without liabilities'),
+            Text('Find potent antibody binders'),
+            Text('Optimize manufacturing of bioproducts'),
+            Text('Select appropriate candidates for clinical trials'),
+        ]
+
+        for icon, text in zip(icons, texts):
+            text.next_to(icon, RIGHT)
+
+        questions = VGroup(*(icons + texts))
+        questions.scale(0.4)
+        questions.next_to(chart, buff=1).shift(0.5 * UP)
+
+        for icon, text in zip(icons, texts):
+            self.play(FadeIn(icon, text))
+            self.wait(4)
+
+        self.wait(2)
+
+
 if __name__ == '__main__':
 
     quality = 'k'
+    # quality = 'p'
     preview = True
     manimce(
-        LoLLogoScene,
-        LoLCommonsIntro,
+        # LoLLogoScene,
+        # LoLCommonsIntroScene,
+        EroomScene,
         quality=quality,
-        preview=preview
+        preview=preview,
+        save_last_frame=False,
     )
