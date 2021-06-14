@@ -1,3 +1,4 @@
+from itertools import chain
 from pathlib import Path
 from typing import Union, Optional
 
@@ -248,53 +249,88 @@ class EroomScene(Scene):
         # )
 
         text_top = (
-            Text('Number of drugs per billion US$ R&D spending')
+            Text('Number of drugs per billion US$ R&D spending (log-scale)')
             .scale(0.3)
             .next_to(chart, UP, buff=0.5)
         )
 
-        self.play(Write(a_million_forks))
-        self.play(FadeIn(text_top))
-        self.play(Write(chart), run_time=4)
-        self.wait(2)
+        text_bottom = (
+            Text("Eroom's law: a continuous decline in Pharma R&D productivity")
+            .scale(0.3)
+            .next_to(chart, DOWN, buff=0.5)
+        )
 
         # --- Examples of forks in the road
 
-        icons = [
-            SVGMobject(SVGS.CYCLIC_PEPTIDE).set_color(BLUE).scale(0.8),
-            SVGMobject(SVGS.ANTIBODY).set_color(BLUE).scale(0.8),
-            SVGMobject(SVGS.PACMAN).set_color(BLUE).scale(0.8),
-            SVGMobject(SVGS.PATIENT).set_color(BLUE).scale(0.8)
+        icons_text = [
+            (
+                SVGMobject(SVGS.ANTIBODY).set_color(BLUE).scale(0.8),
+                Text('Is my antibody a potent, functional binder?')
+            ),
+            (
+                SVGMobject(SVGS.CYCLIC_PEPTIDE).set_color(BLUE, GREEN).scale(0.8),
+                Text('Can we generate peptides without liabilities?')
+            ),
+            (
+                SVGMobject(SVGS.DNA).set_color(GREEN).scale(0.8),
+                Text('Can we optimize DNA to better express plant traits?')
+            ),
+            (
+                SVGMobject(SVGS.PACMAN).set_color(RED).scale(0.8),
+                Text('What will an enzyme in the human gut do?')
+            ),
+            # (
+            #     SVGMobject(SVGS.PACMAN).set_color_by_gradient(GREEN, BLUE, RED).scale(0.8),
+            #     Text('Can we optimize enzymes to better manufacture bioproducts?')
+            # ),
+            (
+                SVGMobject(SVGS.PROTEIN3D).set_color_by_gradient(GREEN, BLUE, RED).scale(0.8),
+                Text('What is the 3D structure of my biomolecule?')
+            ),
+            (
+                SVGMobject(SVGS.PATIENT).set_color(BLUE).scale(0.8),
+                Text('Will a patient respond to treatment in a clinical trial?')
+            )
         ]
 
-        for icon1, icon2 in zip(icons, icons[1:]):
+        # icons_text = icons_text[:1]
+
+        for (icon1, _), (icon2, _) in zip(icons_text, icons_text[1:]):
             icon2.next_to(icon1, DOWN, buff=0.5)
 
-        texts = [
-            Text('Find peptides without liabilities'),
-            Text('Find potent antibody binders'),
-            Text('Optimize manufacturing of bioproducts'),
-            Text('Select appropriate candidates for clinical trials'),
-        ]
-
-        for icon, text in zip(icons, texts):
+        for icon, text in icons_text:
             text.next_to(icon, RIGHT)
 
-        questions = VGroup(*(icons + texts))
-        questions.scale(0.4)
-        questions.next_to(chart, buff=1).shift(0.5 * UP)
+        questions = VGroup(*chain.from_iterable(icons_text))
+        questions.scale(0.32)
+        questions.next_to(chart, RIGHT, buff=1).shift(0.5 * UP)
 
-        for icon, text in zip(icons, texts):
+        logo = LoLLogo().scale(0.7)
+        # logo.next_to(questions, DOWN, buff=0.5)
+        logo.move_to(questions)
+
+        # --- Animate
+
+        self.play(FadeIn(text_top))
+        self.play(Write(chart), Write(text_bottom), run_time=4)
+        self.wait(2)
+        self.play(Write(a_million_forks))
+        for icon, text in icons_text:
             self.play(FadeIn(icon, text))
-            self.wait(4)
+            self.wait(3)
 
+        # if we have put the logo under the questions...
+        # self.play(FadeIn(logo))
+
+        # if we prefer the logo to morph from the questions
+        self.play(ReplacementTransform(questions, logo))
         self.wait(2)
 
 
 if __name__ == '__main__':
 
-    quality = 'k'
-    # quality = 'p'
+    # quality = 'l'
+    quality = 'h'
     preview = True
     manimce(
         # LoLLogoScene,
