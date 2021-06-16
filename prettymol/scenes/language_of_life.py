@@ -4,8 +4,10 @@ from typing import Union, Optional
 
 from logomaker.src.colors import get_color_dict
 from manim import (Scene,
-                   Text, SVGMobject, RED, BLUE, GREEN, PURPLE, LEFT, RIGHT, DOWN,
-                   Write, ReplacementTransform, Transform, FadeIn, VGroup, BarChart, UP, Mobject, VMobject)
+                   Text, SVGMobject, RED, BLUE, GREEN, PURPLE, LEFT, RIGHT, DOWN, WHITE,
+                   Write, ReplacementTransform, Transform, FadeIn, VGroup, BarChart, UP, Mobject, VMobject,
+                   SurroundingRectangle, SMALL_BUFF, Wiggle, Indicate, Circumscribe,
+                   ApplyWave, FocusOn)
 from matplotlib.colors import to_hex
 
 from prettymol.config import Config
@@ -337,15 +339,159 @@ class EroomScene(Scene):
         self.wait(2)
 
 
-if __name__ == '__main__':
+# noinspection PyAbstractClass
+class UseCase(VGroup):
 
-    # quality = 'l'
-    quality = 'h'
+    def __init__(self, icon=SVGS.ANTIBODY, name='Antibody binding\nprediction', **kwargs):
+        super().__init__(**kwargs)
+        self.icon = icon
+        self.name = name
+        if not isinstance(self.icon, Mobject):
+            self.icon = SVGMobject(self.icon).set_color_by_gradient(BLUE).scale(0.6)
+        if not isinstance(self.name, Mobject):
+            self.name = (VGroup(*(Text(name) for name in self.name.splitlines()))
+                         .scale(0.5)
+                         .arrange(DOWN, center=True, buff=SMALL_BUFF))
+        self.name.next_to(self.icon, DOWN)
+
+        self.icon_name = VGroup(self.icon, self.name)
+        self.frame = SurroundingRectangle(self.icon_name).round_corners(0.5).set_color(WHITE)
+
+        self.add(self.frame, self.icon_name)
+
+
+USE_CASES = (
+
+    UseCase(
+        SVGMobject(SVGS.ANTIBODY).set_color(BLUE).scale(0.6),
+        'Antibody Binding\nPrediction'
+    ),
+    UseCase(
+        SVGMobject(SVGS.PROTEIN3D).set_color(GREEN).scale(0.6),
+        'Toxin\n Design'
+    ),
+    UseCase(
+        SVGMobject(SVGS.PACMAN).set_color_by_gradient(BLUE, GREEN).scale(0.6),
+        'Enzyme\nStabilisation'
+    ),
+    UseCase(
+        SVGMobject(SVGS.DNA).set_color_by_gradient(GREEN, BLUE).scale(0.6),
+        'Codon\nOptimization'
+    ),
+    UseCase(
+        SVGMobject(SVGS.PATIENT).set_color_by_gradient(RED, BLUE).scale(0.6),
+        'Clinical Trial\nSimulation'
+    ),
+
+    UseCase(
+        SVGMobject(SVGS.CYCLIC_PEPTIDE).set_color_by_gradient(GREEN, BLUE).scale(0.6),
+        'Peptides for PPI\nDisruption'
+    ),
+
+    UseCase(
+        SVGMobject(SVGS.CYCLIC_PEPTIDE).set_color_by_gradient(BLUE, GREEN).scale(0.6),
+        'Peptides Solubility\nOptimization'
+    ),
+
+    UseCase(
+        SVGMobject(SVGS.PROTEIN3D).set_color_by_gradient(GREEN, RED, BLUE).scale(0.6),
+        'Microbiome\nScreening'
+    ),
+    UseCase(
+        SVGMobject(SVGS.PROTEIN3D).set_color(GREEN).scale(0.6),
+        'Herbicide\nDetoxification'
+    ),
+    UseCase(
+        SVGMobject(SVGS.DNA).set_color_by_gradient(BLUE, GREEN, RED).scale(0.6),
+        'Mutation Effect\nPrediction'
+    )
+)
+
+
+class UseCasesScene(Scene):
+
+    def __init__(self, all_groups_at_same_time=False, **kwargs):
+        super().__init__(**kwargs)
+        self.all_groups_at_same_time = all_groups_at_same_time
+
+    def construct(self):
+        super().construct()
+
+        # Group first row and second row
+        use_cases = []
+        for use_case1, use_case2 in zip(USE_CASES, USE_CASES[5:]):
+            use_case2.next_to(use_case1, DOWN, buff=0.5)
+            use_cases.append(VGroup(use_case1, use_case2))
+        use_cases = VGroup(*use_cases)
+
+        # Make all use cases same width and height
+        widest = sorted(use_cases, key=lambda x: x.width)[-1]
+        tallest = sorted(chain.from_iterable(use_cases), key=lambda x: x.height)[-1]
+        for use_case_top, use_case_bottom in use_cases:
+            use_case_top.frame.stretch_to_fit_width(widest.width)
+            use_case_top.frame.stretch_to_fit_height(tallest.height)
+            use_case_bottom.frame.stretch_to_fit_width(widest.width)
+            use_case_bottom.frame.stretch_to_fit_height(tallest.height)
+
+        use_cases.arrange().scale(0.8).center()
+
+        # --- Human friendly names for use cases
+
+        antibodies = use_cases[0][0]
+        peptides_ppi = use_cases[0][1]
+
+        toxins = use_cases[1][0]
+        peptides_sol = use_cases[1][1]
+
+        enzyme_stabilisation = use_cases[2][0]
+        microbiome = use_cases[2][1]
+
+        codons = use_cases[3][0]
+        detoxification = use_cases[3][1]
+
+        clinical = use_cases[4][0]
+        mutation = use_cases[4][1]
+
+        # --- Animate!
+
+        self.play(Write(use_cases))
+        self.wait(1)
+
+        # Indications to apply to group visually, temporarily, use cases
+        # https://docs.manim.community/en/stable/reference/manim.animation.indication.html
+
+        # Similar modalities (some of these are a bit of a stretch to group together)
+
+        if self.all_groups_at_same_time:
+            self.play(
+                FocusOn(antibodies),
+                # Peptides
+                Wiggle(peptides_sol), Wiggle(peptides_ppi),
+                # DNA + RNA
+                Indicate(codons), Indicate(mutation), Indicate(clinical),
+                # Proteins
+                Circumscribe(toxins.frame), Circumscribe(detoxification.frame),
+                # Enzyme
+                ApplyWave(enzyme_stabilisation), ApplyWave(microbiome),
+                run_time=4
+            )
+            self.wait(1)
+
+        # Led by divisions
+
+        # Prediction, optimization, preclinical, clinical...
+
+
+if __name__ == '__main__':
+    quality = 'l'
+    # quality = 'h'
     preview = True
     manimce(
         # LoLLogoScene,
         # LoLCommonsIntroScene,
-        EroomScene,
+        # EroomScene,
+        # PretrainingScene,
+        UseCasesScene,
         quality=quality,
         preview=preview,
         save_last_frame=False,
