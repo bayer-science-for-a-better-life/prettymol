@@ -136,7 +136,6 @@ class LoLLogoScene(Scene):
 
 
 class LoLCommonsIntroScene(Scene):
-
     DEFAULT_REPLACER_SEQUENCE = (SVGS.RNA,
                                  SVGS.CYCLIC_PEPTIDE,
                                  # SVGS.PROTEIN2D,
@@ -214,7 +213,7 @@ class EroomScene(Scene):
 
     def construct(self):
 
-        a_million_forks = Text('A million forks in the road to drug development')
+        a_million_forks = Text('A million forks in the road to our products')  # to drug development
         a_million_forks.to_edge(UP)
 
         new_drugs_per_billion_RD = [
@@ -236,7 +235,7 @@ class EroomScene(Scene):
             bar_colors=colors,
             bar_names=x,
             bar_label_scale_val=0.5,
-        ).scale(0.8).to_edge(LEFT).shift(DOWN)
+        ).scale(0.8).to_edge(LEFT).shift(0.5 * DOWN)
 
         # text_top = (
         #     Text('EROOM\'s Law: More expensive, slower drug discovery')
@@ -271,12 +270,12 @@ class EroomScene(Scene):
                 Text('Is my antibody a potent, functional binder?')
             ),
             (
-                SVGMobject(SVGS.CYCLIC_PEPTIDE).set_color(BLUE, GREEN).scale(0.8),
+                SVGMobject(SVGS.CYCLIC_PEPTIDE).set_color_by_gradient(BLUE, GREEN).scale(0.8),
                 Text('Can we generate peptides without liabilities?')
             ),
             (
-                SVGMobject(SVGS.DNA).set_color(GREEN).scale(0.8),
-                Text('Can we optimize DNA to better express plant traits?')
+                SVGMobject(SVGS.DNA).set_color_by_gradient(GREEN, BLUE).scale(0.8),
+                Text('Can we optimize DNA to better express traits in plants or humans?')
             ),
             (
                 SVGMobject(SVGS.PACMAN).set_color(RED).scale(0.8),
@@ -291,8 +290,12 @@ class EroomScene(Scene):
                 Text('What is the 3D structure of my biomolecule?')
             ),
             (
-                SVGMobject(SVGS.PATIENT).set_color(BLUE).scale(0.8),
+                SVGMobject(SVGS.PATIENT).set_color_by_gradient(BLUE, RED).scale(0.8),
                 Text('Will a patient respond to treatment in a clinical trial?')
+            ),
+            (
+                SVGMobject(SVGS.MUTATION).set_color_by_gradient(BLUE, GREEN, RED).scale(0.8),
+                Text('...')
             )
         ]
 
