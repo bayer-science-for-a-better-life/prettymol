@@ -329,7 +329,11 @@ class EroomScene(Scene):
         # self.play(FadeIn(logo))
 
         # if we prefer the logo to morph from the questions
+        actionable_insights = (Text('Getting actionable insights from biological sequences')
+                               .next_to(logo, DOWN, buff=0.5)
+                               .scale(0.4))
         self.play(ReplacementTransform(questions, logo))
+        self.play(Write(actionable_insights))
         self.wait(2)
 
 
