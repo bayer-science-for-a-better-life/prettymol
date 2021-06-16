@@ -2,13 +2,20 @@ from itertools import chain
 from pathlib import Path
 from typing import Union, Optional
 
-from logomaker.src.colors import get_color_dict
-from manim import (Scene,
-                   Text, SVGMobject, RED, BLUE, GREEN, PURPLE, LEFT, RIGHT, DOWN, WHITE,
-                   Write, ReplacementTransform, Transform, FadeIn, VGroup, BarChart, UP, Mobject, VMobject,
-                   SurroundingRectangle, SMALL_BUFF, Wiggle, Indicate, Circumscribe,
-                   ApplyWave, FocusOn)
+import numpy as np
+
 from matplotlib.colors import to_hex
+from logomaker.src.colors import get_color_dict
+
+from manim import (
+    Scene, ZoomedScene,
+    Mobject, VMobject, Text, SVGMobject, VGroup,
+    UP, LEFT, RIGHT, DOWN,
+    RED, BLUE, GREEN,  WHITE, YELLOW, TEAL, GOLD, ORANGE, MAROON, PURPLE, PINK,
+    BarChart,
+    Write, ReplacementTransform, Transform, FadeIn,
+    SurroundingRectangle, SMALL_BUFF, Wiggle, Indicate, Circumscribe, ApplyWave, FocusOn,
+)
 
 from prettymol.config import Config
 from prettymol.manim_utils import manimce, is_manimce
