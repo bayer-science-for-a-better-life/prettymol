@@ -8,10 +8,10 @@ from matplotlib.colors import to_hex
 from logomaker.src.colors import get_color_dict
 
 from manim import (
-    Scene, ZoomedScene,
-    Mobject, VMobject, Text, SVGMobject, VGroup,
-    UP, LEFT, RIGHT, DOWN,
-    RED, BLUE, GREEN,  WHITE, YELLOW, TEAL, GOLD, ORANGE, MAROON, PURPLE, PINK,
+    Scene, ZoomedScene, MovingCameraScene,
+    Mobject, VMobject, SVGMobject, VGroup, Text,
+    UP, LEFT, RIGHT, DOWN, ORIGIN,
+    RED, BLUE, GREEN, WHITE, YELLOW, TEAL, GOLD, ORANGE, MAROON, PURPLE, PINK,
     BarChart,
     Write, ReplacementTransform, Transform, FadeIn,
     SurroundingRectangle, SMALL_BUFF, Wiggle, Indicate, Circumscribe, ApplyWave, FocusOn,
@@ -415,10 +415,14 @@ USE_CASES = (
 )
 
 
-class UseCasesScene(Scene):
+class UseCasesScene(MovingCameraScene):
 
-    def __init__(self, all_groups_at_same_time=False, **kwargs):
+    def __init__(self,
+                 zoom_each_use_case=True,
+                 all_groups_at_same_time=False,
+                 **kwargs):
         super().__init__(**kwargs)
+        self.zoom_each_use_case = zoom_each_use_case
         self.all_groups_at_same_time = all_groups_at_same_time
 
     def construct(self):
@@ -463,6 +467,14 @@ class UseCasesScene(Scene):
 
         self.play(Write(use_cases))
         self.wait(1)
+
+        if self.zoom_each_use_case:
+            for use_case in chain.from_iterable(use_cases):
+                self.play(self.camera.frame.animate.move_to(use_case).set(width=use_case.width * 2))
+                self.wait(2)
+
+        self.play(self.camera.frame.animate.move_to(ORIGIN).set(width=14))
+        self.wait(2)
 
         # Indications to apply to group visually, temporarily, use cases
         # https://docs.manim.community/en/stable/reference/manim.animation.indication.html
