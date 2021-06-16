@@ -506,6 +506,95 @@ class UseCasesScene(MovingCameraScene):
         # Prediction, optimization, preclinical, clinical...
 
 
+class PretrainingScene(ZoomedScene):
+
+    def __init__(self, seed=42, **kwargs):
+        super().__init__(**kwargs)
+        self.seed = seed
+
+    def construct(self):
+
+        rng = np.random.RandomState(self.seed)
+
+        colors = RED, BLUE, GREEN, YELLOW, TEAL, GOLD, ORANGE, MAROON, PURPLE, PINK
+
+        def new_molecule(svs=SVGS.PROTEIN3D):
+            molecule = SVGMobject(svs)
+            molecule.set_color_by_gradient(rng.choice(colors, size=3, replace=True))
+            return molecule
+
+        def antibody_from_protein(protein):
+            antibody = SVGMobject(SVGS.ANTIBODY)
+            antibody.match_width(protein)
+            antibody.match_color(protein)
+            antibody.move_to(protein)
+            return antibody
+
+        def protein_universe(num_proteins: Union[int, Tuple[int, int]] = 5,
+                             in_a_grid=True):
+
+            if not in_a_grid:
+                proteins = [
+                    (SVGMobject(SVGS.PROTEIN3D)
+                     .set_color(colors[i % len(colors)])
+                     .shift(rng.uniform(-1, 1) * 3 * UP, rng.uniform(-1, 1) * 3 * LEFT))
+                    for i in range(num_proteins)
+                ]
+            else:
+                try:
+                    num_rows, num_cols = num_proteins
+                except TypeError:
+                    num_rows = num_cols = num_proteins
+
+                proteins = []
+                prev_row = None
+                for _ in range(num_rows):
+                    protein = new_molecule()
+                    if prev_row is not None:
+                        protein.next_to(prev_row, RIGHT, buff=SMALL_BUFF)
+                    prev_row = protein
+                    proteins.append(protein)
+                    prev_col = protein
+                    for _ in range(num_cols):
+                        protein = new_molecule()
+                        protein.next_to(prev_col, DOWN, buff=SMALL_BUFF)
+                        prev_col = protein
+                        proteins.append(protein)
+
+            return VGroup(*proteins)
+
+        proteins = protein_universe(num_proteins=(5, 8)).scale(0.3).center()  # .to_edge(LEFT)
+        proteins_frame = SurroundingRectangle(proteins, color=WHITE).round_corners(0.5)
+        framed_proteins = VGroup(proteins_frame, proteins)
+
+        self.play(FadeIn(framed_proteins))
+        self.wait(5)
+
+        # Sequence -> Number -> MLM
+
+        # Subsets
+        selected_proteins = [
+            proteins[i].copy() for i in
+            rng.choice(len(proteins), replace=False, size=len(proteins) // 3)
+        ]
+
+        antibodies = VGroup(
+            *[antibody_from_protein(protein) for protein in selected_proteins]
+        )
+        antibodies_frame = (SurroundingRectangle(antibodies)
+                            .match_color(proteins_frame)
+                            .match_width(proteins_frame)
+                            .match_height(proteins_frame)).round_corners(0.5)
+        framed_antibodies = VGroup(antibodies_frame, antibodies)
+
+        framed_antibodies.next_to(proteins, RIGHT, buff=MED_LARGE_BUFF)
+        self.play(*[
+            ReplacementTransform(protein, antibody) for protein, antibody in zip(selected_proteins, antibodies)],
+            Write(antibodies_frame)
+        )
+        self.wait(4)
+
+
 if __name__ == '__main__':
     quality = 'l'
     # quality = 'h'
@@ -514,8 +603,8 @@ if __name__ == '__main__':
         # LoLLogoScene,
         # LoLCommonsIntroScene,
         # EroomScene,
-        # PretrainingScene,
-        UseCasesScene,
+        # UseCasesScene,
+        PretrainingScene,
         quality=quality,
         preview=preview,
         save_last_frame=False,
