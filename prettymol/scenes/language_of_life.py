@@ -47,6 +47,9 @@ class SVGS:
 class LoLLogo(VGroup):
 
     def __init__(self, commons_left=SVGS.DNA, commons_right=None, **kwargs):
+
+        super().__init__(**kwargs)
+
         # Logo level
         lol = Text('Language of Life')
         lol[1].set_color(BLUE)
@@ -62,7 +65,7 @@ class LoLLogo(VGroup):
 
         self.lol = lol
         self.commons = commons
-        super().__init__(self.lol, self.commons, **kwargs)
+        self.add(self.lol, self.commons,)
 
         self.commons_left = self.commons_right = None
         self._set_left_right(commons_left, commons_right)
