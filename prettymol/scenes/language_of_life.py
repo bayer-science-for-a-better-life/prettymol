@@ -1,6 +1,6 @@
 from itertools import chain
 from pathlib import Path
-from typing import Union, Optional
+from typing import Union, Optional, Tuple
 
 import numpy as np
 
@@ -9,12 +9,13 @@ from logomaker.src.colors import get_color_dict
 
 from manim import (
     Scene, ZoomedScene, MovingCameraScene,
-    Mobject, VMobject, SVGMobject, VGroup, Text,
+    Mobject, VMobject, SVGMobject, VGroup, Text, SurroundingRectangle,
     UP, LEFT, RIGHT, DOWN, ORIGIN,
     RED, BLUE, GREEN, WHITE, YELLOW, TEAL, GOLD, ORANGE, MAROON, PURPLE, PINK,
     BarChart,
     Write, ReplacementTransform, Transform, FadeIn,
-    SurroundingRectangle, SMALL_BUFF, Wiggle, Indicate, Circumscribe, ApplyWave, FocusOn,
+    Wiggle, Indicate, Circumscribe, ApplyWave, FocusOn,
+    SMALL_BUFF,  MED_LARGE_BUFF,
 )
 
 from prettymol.config import Config
@@ -419,7 +420,7 @@ class UseCasesScene(MovingCameraScene):
 
     def __init__(self,
                  zoom_each_use_case=True,
-                 all_groups_at_same_time=False,
+                 all_groups_at_same_time=True,
                  **kwargs):
         super().__init__(**kwargs)
         self.zoom_each_use_case = zoom_each_use_case
@@ -446,7 +447,7 @@ class UseCasesScene(MovingCameraScene):
 
         use_cases.arrange().scale(0.8).center()
 
-        # --- Human friendly names for use cases
+        # Human friendly names for use cases
 
         antibodies = use_cases[0][0]
         peptides_ppi = use_cases[0][1]
@@ -465,17 +466,21 @@ class UseCasesScene(MovingCameraScene):
 
         # --- Animate!
 
+        # Create the use cases
         self.play(Write(use_cases))
         self.wait(1)
 
+        # Example setting the camera
+        old_width = self.camera.frame_width
         if self.zoom_each_use_case:
             for use_case in chain.from_iterable(use_cases):
                 self.play(self.camera.frame.animate.move_to(use_case).set(width=use_case.width * 2))
                 self.wait(2)
 
-        self.play(self.camera.frame.animate.move_to(ORIGIN).set(width=14))
+        self.play(self.camera.frame.animate.move_to(ORIGIN).set(width=old_width))
         self.wait(2)
 
+        # Highlight groups with common / synergies
         # Indications to apply to group visually, temporarily, use cases
         # https://docs.manim.community/en/stable/reference/manim.animation.indication.html
 
@@ -492,9 +497,9 @@ class UseCasesScene(MovingCameraScene):
                 Circumscribe(toxins.frame), Circumscribe(detoxification.frame),
                 # Enzyme
                 ApplyWave(enzyme_stabilisation), ApplyWave(microbiome),
-                run_time=4
+                run_time=3
             )
-            self.wait(1)
+            self.wait(6)
 
         # Led by divisions
 
