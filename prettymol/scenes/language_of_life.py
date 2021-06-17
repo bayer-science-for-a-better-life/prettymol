@@ -1,3 +1,4 @@
+import string
 from itertools import chain
 from pathlib import Path
 from typing import Union, Optional, Tuple
@@ -15,7 +16,8 @@ from manim import (
     BarChart,
     Write, ReplacementTransform, Transform, FadeIn,
     Wiggle, Indicate, Circumscribe, ApplyWave, FocusOn,
-    SMALL_BUFF,  MED_LARGE_BUFF,
+    SMALL_BUFF, MED_LARGE_BUFF,
+    BOLD,
 )
 
 from prettymol.config import Config
@@ -24,8 +26,31 @@ from prettymol.manim_utils import manimce, is_manimce
 
 # --- Utils
 
-def get_hex_color_dict(name, chars):
-    return {char: to_hex(color) for char, color in get_color_dict(name, chars).items()}
+def get_aa_hex_color_dict(name='dmslogo_funcgroup', seed=42):
+    """A weird overcomplicated function mapping ASCII letters to colors maybe relating to some amino acid property."""
+
+    NOT_AA = 'BJOUXZ'
+    AAS = ''.join(c for c in string.ascii_uppercase if c not in NOT_AA)
+
+    aa_color_dict = {char: to_hex(color) for char, color in get_color_dict(name, AAS).items()}
+
+    not_aa_color_dict = {}
+    if seed is not None:
+        rng = np.random.RandomState(seed=seed)
+        for c in NOT_AA:
+            not_aa_color_dict[c] = rng.choice(list(aa_color_dict.values()))
+    else:
+        for c in NOT_AA:
+            not_aa_color_dict[c] = to_hex(0)
+
+    aa_color_dict.update(not_aa_color_dict)
+
+    final_color_dict = {}
+    for c, color in sorted(aa_color_dict.items()):
+        if c not in final_color_dict:
+            final_color_dict[c.upper()] = final_color_dict[c.lower()] = color
+
+    return final_color_dict
 
 
 # --- Media library
