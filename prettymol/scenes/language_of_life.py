@@ -1,4 +1,5 @@
 import string
+from functools import partial
 from itertools import chain
 from pathlib import Path
 from typing import Union, Optional, Tuple
@@ -17,7 +18,7 @@ from manim import (
     Write, ReplacementTransform, Transform, FadeIn,
     Wiggle, Indicate, Circumscribe, ApplyWave, FocusOn,
     SMALL_BUFF, MED_LARGE_BUFF,
-    BOLD,
+    BOLD, ShrinkToCenter,
 )
 
 from prettymol.config import Config
@@ -535,96 +536,60 @@ class UseCasesScene(MovingCameraScene):
         # Prediction, optimization, preclinical, clinical...
 
 
-class PretrainingScene(ZoomedScene):
-
-    def __init__(self, seed=42, **kwargs):
-        super().__init__(**kwargs)
-        self.seed = seed
-
-    def construct(self):
-
-        rng = np.random.RandomState(self.seed)
-
-        colors = RED, BLUE, GREEN, YELLOW, TEAL, GOLD, ORANGE, MAROON, PURPLE, PINK
-
-        def new_molecule(svs=SVGS.PROTEIN3D):
-            molecule = SVGMobject(svs)
-            molecule.set_color_by_gradient(rng.choice(colors, size=3, replace=True))
-            return molecule
-
-        def antibody_from_protein(protein):
-            antibody = SVGMobject(SVGS.ANTIBODY)
-            antibody.match_width(protein)
-            antibody.match_color(protein)
-            antibody.move_to(protein)
-            return antibody
-
-        def protein_universe(num_proteins: Union[int, Tuple[int, int]] = 5,
-                             in_a_grid=True):
-
-            if not in_a_grid:
-                proteins = [
-                    (SVGMobject(SVGS.PROTEIN3D)
-                     .set_color(colors[i % len(colors)])
-                     .shift(rng.uniform(-1, 1) * 3 * UP, rng.uniform(-1, 1) * 3 * LEFT))
-                    for i in range(num_proteins)
-                ]
-            else:
-                try:
-                    num_rows, num_cols = num_proteins
-                except TypeError:
-                    num_rows = num_cols = num_proteins
-
-                proteins = []
-                prev_row = None
-                for _ in range(num_rows):
-                    protein = new_molecule()
-                    if prev_row is not None:
-                        protein.next_to(prev_row, RIGHT, buff=SMALL_BUFF)
-                    prev_row = protein
-                    proteins.append(protein)
-                    prev_col = protein
-                    for _ in range(num_cols):
-                        protein = new_molecule()
-                        protein.next_to(prev_col, DOWN, buff=SMALL_BUFF)
-                        prev_col = protein
-                        proteins.append(protein)
-
-            return VGroup(*proteins)
-
-        proteins = protein_universe(num_proteins=(5, 8)).scale(0.3).center()  # .to_edge(LEFT)
-        proteins_frame = SurroundingRectangle(proteins, color=WHITE).round_corners(0.5)
-        framed_proteins = VGroup(proteins_frame, proteins)
-
-        self.play(FadeIn(framed_proteins))
-        self.wait(5)
-
-        # Sequence -> Number -> MLM
-
-        # Subsets
-        selected_proteins = [
-            proteins[i].copy() for i in
-            rng.choice(len(proteins), replace=False, size=len(proteins) // 3)
-        ]
-
-        antibodies = VGroup(
-            *[antibody_from_protein(protein) for protein in selected_proteins]
-        )
-        antibodies_frame = (SurroundingRectangle(antibodies)
-                            .match_color(proteins_frame)
-                            .match_width(proteins_frame)
-                            .match_height(proteins_frame)).round_corners(0.5)
-        framed_antibodies = VGroup(antibodies_frame, antibodies)
-
-        framed_antibodies.next_to(proteins, RIGHT, buff=MED_LARGE_BUFF)
-        self.play(*[
-            ReplacementTransform(protein, antibody) for protein, antibody in zip(selected_proteins, antibodies)],
-            Write(antibodies_frame)
-        )
-        self.wait(4)
+# --- Molecule "datasets"
 
 
-AB_H = """
+MOLECULE_COLORS = RED, BLUE, GREEN, YELLOW, TEAL, GOLD, ORANGE, MAROON, PURPLE, PINK
+
+
+def new_molecule(svs=SVGS.PROTEIN3D, colors=None):
+    molecule = SVGMobject(svs)
+    if colors is not None:
+        try:
+            colors = colors()
+        except TypeError:
+            ...
+        try:
+            molecule.set_color_by_gradient(*colors)
+        except TypeError:
+            molecule.set_color_by_gradient(colors)
+    return molecule
+
+
+def molecule_from_molecule(molecule, svs=SVGS.ANTIBODY):
+    new_molecule = SVGMobject(svs)
+    new_molecule.match_width(molecule)
+    new_molecule.match_color(molecule)
+    new_molecule.move_to(molecule)
+    return new_molecule
+
+
+def molecule_universe_grid(moleculer=new_molecule, num_molecules: Union[int, Tuple[int, int]] = 5):
+
+    try:
+        num_rows, num_cols = num_molecules
+    except TypeError:
+        num_rows = num_cols = num_molecules
+
+    proteins = []
+    prev_row = None
+    for _ in range(num_rows):
+        protein = moleculer()
+        if prev_row is not None:
+            protein.next_to(prev_row, RIGHT, buff=SMALL_BUFF)
+        prev_row = protein
+        proteins.append(protein)
+        prev_col = protein
+        for _ in range(num_cols):
+            protein = moleculer()
+            protein.next_to(prev_col, DOWN, buff=SMALL_BUFF)
+            prev_col = protein
+            proteins.append(protein)
+
+    return VGroup(*proteins)
+
+
+HIV_ANTIBODY_HEAVY = """
 QVQLVQSGAEVKKPGASVKVSCQASGYRFSNFVIHWVRQA
 PGQRFEWMGWINPYNGNKEFSAKFQDRVTFTADTSANTAY
 MELRSLRSADTAVYYCARVGPYSWDDSPQDNYYMDVWGKG
@@ -639,9 +604,9 @@ YKTTPPVLDSDGSFFLYSKLTVDKSRWQQGNVFSCSVMHE
 ALHNHYTQKSLSLSPGK
 """.strip()
 
-AB_HCDR3 = 'ARVGPYSWDDSPQDNYYMDV'
+HIB_ANTIBODY_HCDR3 = 'ARVGPYSWDDSPQDNYYMDV'
 
-AB_L = """
+HIV_ANTIBODY_LIGHT = """
 EIVLTQSPGTLSLSPGERATFSCRSSHSIRSRRVAWYQHK
 PGQAPRLVIHGVSNRASGISDRFSGSGSGTDFTLTITRVE
 PEDFALYYCQVYGASSYTFGQGTKLERKRTVAAPSVFIFP
@@ -649,6 +614,23 @@ PSDEQLKSGTASVVCLLNNFYPREAKVQWKVDNALQSGNS
 QESVTEQDSKDSTYSLSSTLTLSKADYEKHKVYACEVTHQ
 GLRSPVTKSFNRGEC
 """.strip()
+
+
+def hiv_antibody():
+    """Returns mobjects for the hiv antibody sequence"""
+
+    # Amino acid level - heavy and HCDR3 of the HIV antibody
+    # Likely this is too complex for the purpose in this video
+    heavy = [
+        aa_text(line)
+        for line in HIV_ANTIBODY_HEAVY.splitlines(keepends=False)[:-1]
+        # N.B. for aesthetics, remove the last line
+    ]
+    heavy = VGroup(*heavy).scale(0.4).arrange(DOWN, center=False)
+    hcdr3 = aa_text(HIB_ANTIBODY_HCDR3).scale(0.4)
+
+    return heavy, hcdr3
+
 
 MONO_FONTS = (
     'Apercu Mono Pro',
@@ -667,6 +649,144 @@ def aa_text(text, color_dict=None):
     )
 
 
+def embedding_text(mobject):
+    return Text(
+        '[0.42, 0.22, 0.33, 0.78, ..., 0.11, 0.92, 0, 0.13]',
+        weight=BOLD,
+        font='Apercu Mono Pro'
+    ).scale(0.4).next_to(mobject, DOWN)
+
+
+# noinspection PyAbstractClass
+class MLM(VGroup):
+
+    def __init__(self,
+                 text='PROTEIN',
+                 masked_text='PR?TEI?',
+                 encoder=None,
+                 decoder=None,
+                 **kwargs):
+        super().__init__(**kwargs)
+
+        self.text = aa_text(text)
+        self.masked_text = aa_text(masked_text).move_to(self.text)
+
+        if encoder is None:
+            encoder = (
+                SVGMobject(SVGS.MODEL)
+                .scale(0.5)
+                .set_color_by_gradient(RED, GREEN, BLUE)
+                .next_to(self.masked_text, DOWN)
+            )
+        self.encoder = encoder
+
+        self.embedding = embedding_text(encoder)
+
+        if decoder is None:
+            decoder = (
+                SVGMobject(SVGS.MODEL)
+                .scale(0.5)
+                .set_color_by_gradient(BLUE, GREEN, RED)
+                .next_to(self.embedding, DOWN)
+            )
+        self.decoder = decoder
+
+        self.masked_decoded = self.masked_text.copy().next_to(decoder, DOWN)
+        self.decoded = self.text.copy().next_to(decoder, DOWN)
+
+        self.add(
+            self.text,
+            self.masked_text,
+            self.encoder,
+            self.embedding,
+            self.decoder,
+            self.masked_decoded,
+            self.decoded
+        )
+
+    def play_encode_decode(self, scene):
+        scene.play(FadeIn(self.text))
+        scene.wait(1)
+        scene.play(ReplacementTransform(self.text, self.masked_text))
+        scene.wait(1)
+        scene.play(FadeIn(self.encoder), FadeIn(self.decoder))
+        scene.wait(1)
+        scene.play(
+            ReplacementTransform(self.text.copy(), self.encoder),
+            ReplacementTransform(self.encoder.copy(), self.embedding),
+            ReplacementTransform(self.embedding.copy(), self.decoder),
+            ReplacementTransform(self.decoder.copy(), self.masked_decoded)
+        )
+        scene.wait(1)
+        scene.play(ReplacementTransform(self.masked_decoded, self.decoded))
+        scene.wait(1)
+
+
+class PretrainingScene(ZoomedScene):
+
+    def __init__(self, seed=42, **kwargs):
+        super().__init__(**kwargs)
+        self.seed = seed
+
+    def construct(self):
+
+        rng = np.random.RandomState(self.seed)
+
+        moleculizer = partial(new_molecule, colors=lambda: rng.choice(MOLECULE_COLORS, size=3, replace=True))
+
+        proteins = molecule_universe_grid(moleculizer, num_molecules=(5, 8)).scale(0.3).center()
+        proteins_frame = SurroundingRectangle(proteins, color=WHITE).round_corners(0.5)
+        universe_title = Text('Known proteins').scale(0.7).next_to(proteins_frame, UP)
+        framed_proteins = VGroup(universe_title, proteins_frame, proteins).to_edge(LEFT)
+
+        self.play(FadeIn(framed_proteins))
+        self.wait(3)
+
+        # --- Sequence -> Number -> MLM
+
+        heavy, hcdr3 = hiv_antibody()
+        heavy.next_to(framed_proteins, RIGHT)
+        self.play(Transform(proteins[23], heavy))
+        self.wait(5)
+
+        mlm = MLM().next_to(framed_proteins, RIGHT)
+        self.play(ShrinkToCenter(heavy))  # , mlm.text
+        self.wait(5)
+
+        # FIXME: just to break here
+        if mlm.text is not None:
+            return
+
+        # --- Subsets
+        selected_proteins = [
+            proteins[i].copy() for i in
+            rng.choice(len(proteins), replace=False, size=len(proteins) // 3)
+        ]
+
+        antibodies = VGroup(
+            *[molecule_from_molecule(protein) for protein in selected_proteins]
+        )
+        antibodies_frame = (SurroundingRectangle(antibodies)
+                            .match_color(proteins_frame)
+                            .match_width(proteins_frame)
+                            .match_height(proteins_frame)).round_corners(0.5)
+        framed_antibodies = VGroup(antibodies_frame, antibodies)
+
+        framed_antibodies.next_to(proteins, RIGHT, buff=MED_LARGE_BUFF)
+        self.play(*[
+            ReplacementTransform(protein, antibody) for protein, antibody in zip(selected_proteins, antibodies)],
+            Write(antibodies_frame)
+        )
+        self.wait(4)
+
+
+class MLMScene(Scene):
+
+    def construct(self):
+        super().construct()
+        MLM('ANTIBODY', 'A?TIB?DY').play_encode_decode(self)
+
+
 class FineTuning(Scene):
 
     # To stress the need for less data in downstream tasks
@@ -674,74 +794,6 @@ class FineTuning(Scene):
     def construct(self):
         super().construct()
         raise NotImplemented
-
-
-class MLMScene(Scene):
-
-    def construct(self):
-
-        super().construct()
-
-        # Amino acid level - heavy and HCDR3 of the HIV antibody
-        # Likely this is too complex for the purpose in this video
-        heavy = [
-            aa_text(line)
-            for line in AB_H.splitlines(keepends=False)[:-1]
-            # N.B. for aesthetics, remove the last line
-        ]
-        heavy = VGroup(*heavy).scale(0.4).arrange(DOWN, center=False).to_corner(LEFT + UP)
-        hcdr3 = aa_text(AB_HCDR3).scale(0.4).next_to(heavy, RIGHT, buff=MED_LARGE_BUFF)
-
-        embedding = Text(
-            '[0.42, 0.22, 0.33, 0.78, ..., 0.11, 0.92, 0, 0.13]',
-            weight=BOLD,
-            font='Apercu Mono Pro'
-        ).scale(0.4).next_to(heavy, RIGHT)
-
-        # --- Animations
-
-        # self.play(FadeIn(hcdr3))
-        # self.wait(2)
-        # self.play(ReplacementTransform(hcdr3, embedding))
-        # self.wait(2)
-
-        antibody_text = aa_text('ANTIBODY')
-        masked_antibody_text = aa_text('A?TIB?DY').move_to(antibody_text)
-
-        encoder = (
-            SVGMobject(SVGS.MODEL)
-            .scale(0.5)
-            .set_color_by_gradient(RED, GREEN, BLUE)
-            .next_to(masked_antibody_text, DOWN)
-        )
-
-        embedding.next_to(encoder, DOWN)
-
-        decoder = (
-            SVGMobject(SVGS.MODEL)
-            .scale(0.5)
-            .set_color_by_gradient(BLUE, GREEN, RED)
-            .next_to(embedding, DOWN)
-        )
-
-        masked_decoded = masked_antibody_text.copy().next_to(decoder, DOWN)
-        decoded = antibody_text.copy().next_to(decoder, DOWN)
-
-        self.play(FadeIn(antibody_text))
-        self.wait(1)
-        self.play(ReplacementTransform(antibody_text, masked_antibody_text))
-        self.wait(1)
-        self.play(FadeIn(encoder), FadeIn(decoder))
-        self.wait(1)
-        self.play(
-            ReplacementTransform(masked_antibody_text.copy(), encoder),
-            ReplacementTransform(encoder.copy(), embedding),
-            ReplacementTransform(embedding.copy(), decoder),
-            ReplacementTransform(decoder.copy(), masked_decoded)
-        )
-        self.wait(1)
-        self.play(ReplacementTransform(masked_decoded, decoded))
-        self.wait(1)
 
 
 if __name__ == '__main__':
@@ -753,8 +805,8 @@ if __name__ == '__main__':
         # LoLCommonsIntroScene,
         # EroomScene,
         # UseCasesScene,
-        # PretrainingScene,
-        MLMScene,
+        PretrainingScene,
+        # MLMScene,
         quality=quality,
         preview=preview,
         save_last_frame=False,
