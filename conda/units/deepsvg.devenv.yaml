@@ -1,0 +1,46 @@
+name: deepsvg
+
+channels:
+  - pytorch
+  - conda-forge
+
+dependencies:
+  - python
+  - pip
+  - six
+
+  - numpy
+  - pandas
+  - scikit-learn
+  - matplotlib
+  - tqdm
+  - numba
+  - networkx
+
+  - pytorch
+  - torchvision
+  # - tensorflow
+  - tensorboardx
+
+  - pillow
+  - scikit-image
+
+  - svgwrite
+  - cairosvg
+  - svglib
+
+  - shapely
+
+  # - IPython
+  # - jupyter
+
+  # - kivy
+  - moviepy
+
+  # - umap-learn
+  # - umap-learn[plot]
+
+#  - pip:
+#    - moviepy
+# FIXME: make it pip-installable
+#    - https://github.com/alexandre01/deepsvg/archive/186d604ddc7b6ddf382fca1742dec27a41b8eb9f.zip
