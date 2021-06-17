@@ -146,7 +146,7 @@ class LoLLogo(VGroup):
 
         self.add(self.commons_left, self.commons_right)
 
-    def replace_left_right(self, scene, commons_left, commons_right=None, run_time_s=1):
+    def replace_left_right(self, scene, commons_left, commons_right=None, run_time_s: Union[float, int] = 1):
         old_left = self.commons_left
         old_right = self.commons_right
         self._set_left_right(commons_left, commons_right)
@@ -186,10 +186,12 @@ class LoLCommonsIntroScene(Scene):
     def __init__(self,
                  replacers=DEFAULT_REPLACER_SEQUENCE,
                  add_vector_transform=False,
+                 logo_down=False,
                  **kwargs):
         super().__init__(**kwargs)
         self.replacers = replacers
         self.add_vector_transform = add_vector_transform
+        self.logo_down = logo_down
 
     def construct(self):
 
@@ -201,7 +203,7 @@ class LoLCommonsIntroScene(Scene):
 
         # Amino acid level
         aas = 'VQGGAAVQQEVLA'
-        aas = Text(aas, t2c=get_hex_color_dict('skylign_protein', aas))
+        aas = Text(aas, t2c=get_aa_hex_color_dict('skylign_protein'))
 
         # Logo level
         logo = LoLLogo()
@@ -225,14 +227,15 @@ class LoLCommonsIntroScene(Scene):
         self.play(Write(logo.commons), FadeIn(logo.commons_left), FadeIn(logo.commons_right))
         self.wait()
         for replacer in self.replacers:
-            logo.replace_left_right(self, replacer)
-            self.wait(1)
+            logo.replace_left_right(self, replacer, run_time_s=0.8)
+            self.wait(0.3)
 
         # Move logo to left lower corner
-        mini_logo = logo.copy()
-        mini_logo.scale(0.5)
-        mini_logo.to_corner()
-        self.play(Transform(logo, mini_logo))
+        if self.logo_down:
+            mini_logo = logo.copy()
+            mini_logo.scale(0.5)
+            mini_logo.to_corner()
+            self.play(Transform(logo, mini_logo))
 
         # And keep the scene
         # self.play(Write(Text('Corporate info follows...')))
