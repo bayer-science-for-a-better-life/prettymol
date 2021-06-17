@@ -759,3 +759,54 @@ if __name__ == '__main__':
         preview=preview,
         save_last_frame=False,
     )
+
+
+#
+# --- "Company abstractions"
+#
+# from typing import Union, Iterable
+#
+# from manim import GREEN, BLUE, RED
+#
+#
+# class Colleague:
+#
+#     def __init__(self, name):
+#         super().__init__()
+#         self.name = name
+#
+#
+# class Division:
+#
+#     def __init__(self, name, short, color):
+#         super().__init__()
+#         self.name = name
+#         self.short = short
+#         self.color = color
+#
+#
+# DIVISION_PH = Division(name='Pharma', short='PH', color=BLUE)
+# DIVISION_CS = Division(name='Crop Science', short='CS', color=GREEN)
+# DIVISION_CH = Division(name='Consumer Health', short='CH', color=RED)
+#
+#
+# class UseCase:
+#
+#     def __init__(self,
+#                  name: str,
+#                  divisions: Union[Division, Iterable[Division]],
+#                  team):
+#         super().__init__()
+#         self.name = name
+#         self.divisions = divisions
+#         self.team = team
+#
+
+#
+# """Create git repos to visualize with gource."""
+#
+# from git import Commit, Actor
+#
+# Actor(name='Olaf')
+# Commit()
+#
