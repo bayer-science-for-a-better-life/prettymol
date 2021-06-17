@@ -624,6 +624,126 @@ class PretrainingScene(ZoomedScene):
         self.wait(4)
 
 
+AB_H = """
+QVQLVQSGAEVKKPGASVKVSCQASGYRFSNFVIHWVRQA
+PGQRFEWMGWINPYNGNKEFSAKFQDRVTFTADTSANTAY
+MELRSLRSADTAVYYCARVGPYSWDDSPQDNYYMDVWGKG
+TTVIVSSASTKGPSVFPLAPSSKSTSGGTAALGCLVKDYF
+PEPVTVSWNSGALTSGVHTFPAVLQSSGLYSLSSVVTVPS
+SSLGTQTYICNVNHKPSNTKVDKKAEPKSCDKTHTCPPCP
+APELLGGPSVFLFPPKPKDTLMISRTPEVTCVVVDVSHED
+PEVKFNWYVDGVEVHNAKTKPREEQYNSTYRVVSVLTVLH
+QDWLNGKEYKCKVSNKALPAPIEKTISKAKGQPREPQVYT
+LPPSRDELTKNQVSLTCLVKGFYPSDIAVEWESNGQPENN
+YKTTPPVLDSDGSFFLYSKLTVDKSRWQQGNVFSCSVMHE
+ALHNHYTQKSLSLSPGK
+""".strip()
+
+AB_HCDR3 = 'ARVGPYSWDDSPQDNYYMDV'
+
+AB_L = """
+EIVLTQSPGTLSLSPGERATFSCRSSHSIRSRRVAWYQHK
+PGQAPRLVIHGVSNRASGISDRFSGSGSGTDFTLTITRVE
+PEDFALYYCQVYGASSYTFGQGTKLERKRTVAAPSVFIFP
+PSDEQLKSGTASVVCLLNNFYPREAKVQWKVDNALQSGNS
+QESVTEQDSKDSTYSLSSTLTLSKADYEKHKVYACEVTHQ
+GLRSPVTKSFNRGEC
+""".strip()
+
+MONO_FONTS = (
+    'Apercu Mono Pro',
+    'Monaco',
+)
+
+
+def aa_text(text, color_dict=None):
+    if color_dict is None:
+        color_dict = get_aa_hex_color_dict()
+    return Text(
+        text,
+        t2c=color_dict,
+        font='Monaco',
+        weight=BOLD
+    )
+
+
+class FineTuning(Scene):
+
+    # To stress the need for less data in downstream tasks
+
+    def construct(self):
+        super().construct()
+        raise NotImplemented
+
+
+class MLMScene(Scene):
+
+    def construct(self):
+
+        super().construct()
+
+        # Amino acid level - heavy and HCDR3 of the HIV antibody
+        # Likely this is too complex for the purpose in this video
+        heavy = [
+            aa_text(line)
+            for line in AB_H.splitlines(keepends=False)[:-1]
+            # N.B. for aesthetics, remove the last line
+        ]
+        heavy = VGroup(*heavy).scale(0.4).arrange(DOWN, center=False).to_corner(LEFT + UP)
+        hcdr3 = aa_text(AB_HCDR3).scale(0.4).next_to(heavy, RIGHT, buff=MED_LARGE_BUFF)
+
+        embedding = Text(
+            '[0.42, 0.22, 0.33, 0.78, ..., 0.11, 0.92, 0, 0.13]',
+            weight=BOLD,
+            font='Apercu Mono Pro'
+        ).scale(0.4).next_to(heavy, RIGHT)
+
+        # --- Animations
+
+        # self.play(FadeIn(hcdr3))
+        # self.wait(2)
+        # self.play(ReplacementTransform(hcdr3, embedding))
+        # self.wait(2)
+
+        antibody_text = aa_text('ANTIBODY')
+        masked_antibody_text = aa_text('A?TIB?DY').move_to(antibody_text)
+
+        encoder = (
+            SVGMobject(SVGS.MODEL)
+            .scale(0.5)
+            .set_color_by_gradient(RED, GREEN, BLUE)
+            .next_to(masked_antibody_text, DOWN)
+        )
+
+        embedding.next_to(encoder, DOWN)
+
+        decoder = (
+            SVGMobject(SVGS.MODEL)
+            .scale(0.5)
+            .set_color_by_gradient(BLUE, GREEN, RED)
+            .next_to(embedding, DOWN)
+        )
+
+        masked_decoded = masked_antibody_text.copy().next_to(decoder, DOWN)
+        decoded = antibody_text.copy().next_to(decoder, DOWN)
+
+        self.play(FadeIn(antibody_text))
+        self.wait(1)
+        self.play(ReplacementTransform(antibody_text, masked_antibody_text))
+        self.wait(1)
+        self.play(FadeIn(encoder), FadeIn(decoder))
+        self.wait(1)
+        self.play(
+            ReplacementTransform(masked_antibody_text.copy(), encoder),
+            ReplacementTransform(encoder.copy(), embedding),
+            ReplacementTransform(embedding.copy(), decoder),
+            ReplacementTransform(decoder.copy(), masked_decoded)
+        )
+        self.wait(1)
+        self.play(ReplacementTransform(masked_decoded, decoded))
+        self.wait(1)
+
+
 if __name__ == '__main__':
     quality = 'l'
     # quality = 'h'
@@ -633,7 +753,8 @@ if __name__ == '__main__':
         # LoLCommonsIntroScene,
         # EroomScene,
         # UseCasesScene,
-        PretrainingScene,
+        # PretrainingScene,
+        MLMScene,
         quality=quality,
         preview=preview,
         save_last_frame=False,
