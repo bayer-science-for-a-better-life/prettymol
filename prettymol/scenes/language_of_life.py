@@ -74,6 +74,7 @@ class SVGS:
     CELLS = str(Config.DEFAULT_IMAGES_PATH / 'lol' / 'cells.svg')
     MUTATION = str(Config.DEFAULT_IMAGES_PATH / 'lol' / 'mutation.svg')
     PATIENT = str(Config.DEFAULT_IMAGES_PATH / 'lol' / 'patient.svg')
+    MODEL = str(Config.DEFAULT_IMAGES_PATH / 'lol' / 'chip-brain.svg')
 
 
 # --- MObjects
