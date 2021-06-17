@@ -54,5 +54,6 @@ dependencies:
 
   - pip:
     - manim
+    # - manim-fonts
     - manimpango>=0.3.0
     - moderngl-window
